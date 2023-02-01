@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./view/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Blinkit</title>
+  </head>
+  <body>
+    <div class="topNavbar flexRow">
+      <div class="topNavbar__left flexRow">
+        <p class="logo">
+          <span class="logo__yellowColor">blink</span
+          ><span class="logo__greenColor">it</span>
+        </p>
+
+        <div class="deliveryHead paddingTopBottom10px">
+          <p>Delivery in 10 minutes</p>
+          <select>
+            <option value="">Banglore,India</option>
+            <option value="">Delhi,India</option>
+            <option value="">Mumbai,India</option>
+            <option value="">Kolkata,India</option>
+          </select>
+        </div>
+      </div>
+      <div class="topNavbar__right flexRow paddingTopBottom10px">
+        <button class="loginBtn">Login</button>
+        <button class="myCart flexRow">
+          <span><i class="fa-solid fa-cart-shopping"></i></span
+          ><span class="myCart__items">My Cart</span>
+        </button>
+      </div>
+    </div>
+
+    <ul class="categories flexRow"></ul>
+
+    <div class="productsContainer">
+      <ul class="productCategoriesNavbar"></ul>
+
+      <div class="productsSection">
+        <div class="productsSection__heading">
+          <p class="buyHeading">Buy Fresh Vegetables Online</p>
+
+          <form class="productsSection__filter" action="">
+            <label for="sortBy" class="sortByLabel">Sort By</label>
+            <select class="sortBy" id="sortBy">
+              <option value="relevence">Relevence</option>
+              <option value="priceLowToHigh">Price (low to high)</option>
+              <option value="priceHighToLow">Price (high to low)</option>
+            </select>
+          </form>
+        </div>
+
+        <div class="products flexRow"></div>
+        <!-- <p class="placeOrderHeading">Place Order</p>
+        <p class="deliveryTime">Delivery in 10 minutes</p>
+        <p class="checkoutItems">6 items</p> -->
+        <div class="checkoutProducts flexRow">
+          <!-- <div class="checkout__product flexRow">
+            <div class="product__image">
+              <div class="product__offer">10% OFF</div>
+              <img src="./potato.jpeg" />
+            </div>
+            <div>
+              <div class="product__name">Potato(Aloo)</div>
+              <div class="product__weight">1Kg</div>
+              <div class="product__details">
+                <div class="product__price">
+                  <span class="product__newPrice"><span>&#8377;</span>15</span>
+                  <span class="product__oldPrice"><span>&#8377;</span>20</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="product__quantity" style="margin-left: 40rem">
+              <button>ADD</button>
+            </div>
+          </div>
+        --></div>
+
+        <div class="checkoutPrice">
+          <!-- <div class="flexRow">
+            <p>MRP</p>
+            <p>₹10</p>
+          </div>
+          <div class="flexRow">
+            <p>Product Discount</p>
+            <p>₹10</p>
+          </div>
+          <div class="flexRow">
+            <p>Delivery Charge</p>
+            <p>₹10</p>
+          </div>
+          <div class="flexRow">
+            <p>Grand Total</p>
+            <p>₹10</p>
+          </div>
+          <div class="flexRow proceedButton">
+            <div>
+              <span>1 items =</span>
+              <span>₹ 10</span>
+            </div>
+            <p>Proceed ></p>
+          </div>
+           -->
+        </div>
+      </div>
+    </div>
+
+    <div class="advantages flexRow">
+      <div class="adanvatge__card">
+        <img src="./images/fast dilevery.webp" />
+        <p class="paddingTopBottom10px adanvatgeCard__heading">
+          Superfast Delivery
+        </p>
+        <p class="adanvatgeCard__description">
+          Get your order delivered to your doorstep at the earliest from dark
+          stores near you
+        </p>
+      </div>
+      <div class="adanvatge__card">
+        <img src="./images/deliver-icon-earnings.webp" />
+        <p class="paddingTopBottom10px adanvatgeCard__heading">
+          Best Prices & Offers
+        </p>
+        <p class="adanvatgeCard__description">
+          Get your order delivered to your doorstep at the earliest from dark
+          stores near you
+        </p>
+      </div>
+      <div class="adanvatge__card">
+        <img src="./images/wide adorments.webp" />
+        <p class="paddingTopBottom10px adanvatgeCard__heading">
+          Wide Assortment
+        </p>
+        <p class="adanvatgeCard__description">
+          Get your order delivered to your doorstep at the earliest from dark
+          stores near you
+        </p>
+      </div>
+    </div>
+
+    <div class="aboutBlinkit">
+      “Blinkit” is owned & managed by "Blink Commerce Private Limited" (formerly
+      known as Grofers India Private Limited) and is not related, linked or
+      interconnected in whatsoever manner or nature, to “GROFFR.COM” which is a
+      real estate services business operated by “Redstone Consultancy Services
+      Private Limited”.
+    </div>
+
+    <hr class="footerContainer" />
+    <div class="footer">
+      <div class="footer__companyName">
+        © Blink Commerce Private Limited (formerly known as Grofers India
+        Private Limited), 2016-2023
+      </div>
+      <div class="footer__downloadApp">
+        <div class="downloadAppTitle">Download App</div>
+
+        <img class="appStore" src="./images/appstore.webp" />
+
+        <img class="playStore" src="./images/playstore.webp" />
+      </div>
+      <div class="footer__socialHandles">
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-square-instagram"></i>
+        <i class="fa-brands fa-linkedin"></i>
+      </div>
+    </div>
+
+    <script defer src="./view/index.js" type="module"></script>
+    <!-- <script defer src="./controller/index.js" type="module"></script> -->
+    <!-- <script defer src="./controller/addButton.js"></script> -->
+    <!-- <script src="./view/productCategories.js" type="module"></script> -->
+    <!-- <script src="./view/categories.js"></script> -->
+  </body>
+</html>
