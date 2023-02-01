@@ -1,0 +1,10 @@
+.advantages {
+  justify-content: space-evenly;
+  margin-left: 10%;
+  padding-top: 7rem;
+}
+
+.flexRow {
+  display: flex;
+  align-items: center;
+}

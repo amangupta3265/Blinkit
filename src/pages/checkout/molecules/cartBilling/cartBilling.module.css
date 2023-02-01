@@ -1,0 +1,45 @@
+.flexRow {
+  display: flex;
+  align-items: center;
+}
+
+.checkoutPrice {
+  font-size: 1.6rem;
+  margin: auto;
+  margin-top: 5rem;
+  width: 70rem;
+}
+
+.checkoutPrice .flexRow {
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.checkoutPrice .proceedButton {
+  color: white;
+  background-color: #23963f;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.proceedButton {
+  margin-top: 5rem;
+}
+
+.mrpPrice {
+  text-decoration-line: line-through;
+}
+
+.productDiscount,
+.deliveryCharge {
+  color: #54b226;
+}
+
+.boldText {
+  font-weight: 600;
+}
+
+.proceedButton:hover {
+  cursor: pointer;
+}

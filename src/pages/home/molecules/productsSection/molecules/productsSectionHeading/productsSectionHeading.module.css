@@ -1,0 +1,29 @@
+.flexRow {
+  display: flex;
+  align-items: center;
+}
+.productsSection__heading {
+  font-size: 1.4rem;
+  font-weight: 520;
+  justify-content: space-between;
+  margin: 1rem;
+}
+.sortByLabel {
+  color: gray;
+  font-size: 1.4rem;
+  margin-right: 1rem;
+}
+
+.buyHeading {
+  font-weight: 600;
+  color: rgb(49, 47, 47);
+}
+
+.sortBy {
+  /* appearance: none; */
+  padding: 0.3rem;
+  color: #23963f;
+  width: 15rem;
+  border: 0.1rem solid whitesmoke;
+  border-radius: 0.5rem;
+}

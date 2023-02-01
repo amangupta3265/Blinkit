@@ -1,0 +1,22 @@
+{
+  "advantages": [
+    {
+      "id": 1,
+      "img": "./images/fast dilevery.webp",
+      "heading": "Superfast Delivery",
+      "description": "Get your order delivered to your doorstep at the earliest from dark stores near you"
+    },
+    {
+      "id": 2,
+      "img": "./images/deliver-icon-earnings.webp",
+      "heading": "Best Prices & Offers",
+      "description": "Get your order delivered to your doorstep at the earliest from dark stores near you"
+    },
+    {
+      "id": 3,
+      "img": "./images/wide adorments.webp",
+      "heading": "Wide Assortment",
+      "description": "Get your order delivered to your doorstep at the earliest from dark stores near you"
+    }
+  ]
+}

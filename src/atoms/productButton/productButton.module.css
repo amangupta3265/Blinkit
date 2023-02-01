@@ -1,0 +1,38 @@
+.product__quantity__button {
+  padding: 1rem 2.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #23963f;
+  font-weight: 600;
+}
+
+.product__quantity__button:hover {
+  cursor: pointer;
+}
+
+.incrementQuantity,
+.decrementQuantity {
+  padding: 0.8rem;
+}
+
+#btn-add {
+  display: block;
+  border-radius: 0.5rem;
+  background-color: #ebfeef;
+  color: #23963f;
+  padding: 1rem 2.2rem;
+}
+
+#btn-number {
+  display: none;
+  padding: 1rem 1rem;
+  background-color: #23963f;
+  color: white;
+}
+
+.displayBlock {
+  display: block !important;
+}
+
+.displayNone {
+  display: none !important;
+}

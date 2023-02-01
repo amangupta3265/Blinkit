@@ -1,0 +1,39 @@
+.flexRow {
+  display: flex;
+  align-items: center;
+}
+
+.productCategory {
+  justify-content: flex-start;
+  padding: 0 1rem;
+}
+
+.productCategory__image {
+  width: 5rem;
+  height: 5rem;
+  margin-right: 1rem;
+  border-radius: 5rem;
+}
+
+.productCategory__name {
+  font-weight: 500;
+}
+
+.productcategoriesNavbar__category {
+  font-size: 1.4rem;
+  max-width: 24rem;
+  padding: 0.8rem;
+  background-color: #fff;
+  border: 0.1rem solid #f5f5f5;
+}
+
+.productcategoriesNavbar__category:hover {
+  border-left: 0.3rem solid #23963f;
+  background-color: #ebfeef;
+  cursor: pointer;
+}
+
+.productCategory__active {
+  border-left: 0.3rem solid #23963f;
+  background-color: #ebfeef;
+}

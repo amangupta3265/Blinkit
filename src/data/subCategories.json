@@ -1,0 +1,85 @@
+{
+    "productCategories": {
+        "Vegetables & Fruits": [
+            {
+                "id": 1,
+                "productCategory__image": "./images/potato.jpeg",
+                "productCategory__name": "All"
+            },
+            {
+                "id": 2,
+                "productCategory__image": "./images/potato.jpeg",
+                "productCategory__name": "Fresh Vegetables"
+            },
+            {
+                "id": 3,
+                "productCategory__image": "./images/fresh fruits.webp",
+                "productCategory__name": "Fresh Fruits"
+            },
+            {
+                "id": 4,
+                "productCategory__image": "./images/exotics.webp",
+                "productCategory__name": "Exotics"
+            },
+            {
+                "id": 5,
+                "productCategory__image": "./images/seasonal.webp",
+                "productCategory__name": "Seasonal"
+            },
+            {
+                "id": 6,
+                "productCategory__image": "./images/organic.jpeg",
+                "productCategory__name": "Oraganic & Hydroponic"
+            },
+            {
+                "id": 7,
+                "productCategory__image": "./images/freshly cut.webp",
+                "productCategory__name": "Freshly Cut & Sprouts"
+            }
+        ],
+        "Dairy & Breakfast": [
+            {
+                "id": 8,
+                "productCategory__image": "./images/milk.webp",
+                "productCategory__name": "Milk"
+            },
+            {
+                "id": 9,
+                "productCategory__image": "./images/bread.webp",
+                "productCategory__name": "Breads"
+            },
+            {
+                "id": 10,
+                "productCategory__image": "./images/eggs.webp",
+                "productCategory__name": "Eggs"
+            },
+            {
+                "id": 11,
+                "productCategory__image": "./images/cereal.webp",
+                "productCategory__name": "Breakfast and Cereal"
+            }
+        ],
+        "Munchies": [
+            {
+                "id": 12,
+                "productCategory__image": "./images/chips.webp",
+                "productCategory__name": "Chips & Crisps"
+            },
+            {
+                "id": 13,
+                "productCategory__image": "./images/bread.webp",
+                "productCategory__name": "Breads"
+            },
+            {
+                "id": 14,
+                "productCategory__image": "./images/eggs.webp",
+                "productCategory__name": "Eggs"
+            },
+            {
+                "id": 15,
+                "productCategory__image": "./images/cereal.webp",
+                "productCategory__name": "Breakfast and Cereal"
+            }
+        ]
+    }
+}

@@ -1,0 +1,26 @@
+.myCart {
+  font-size: 1.4rem;
+  padding: 1rem;
+  margin-right: 1.875rem;
+  color: #fff;
+  background-color: #23963f;
+  border: none;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  height: 4.5rem;
+  font-weight: 600;
+}
+
+.myCart:hover {
+  cursor: pointer;
+}
+
+.shoppingIcon {
+  margin-right: 0.625rem;
+  font-size: 2rem;
+}
+
+.flexRow {
+  display: flex;
+  align-items: center;
+}
