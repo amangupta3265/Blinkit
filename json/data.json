@@ -5,6 +5,7 @@
         "productCategory__name": "All",
         "products": [
           {
+            "product__id":1,
             "product__image": "./potato.jpeg",
             "product__offer": "10% OFF",
             "product__sourced": "sourced at : 5am",
@@ -195,7 +196,7 @@
     ],
     "Dairy & Breakfast": [
       {
-        "productCategory__image": "./images/milk.webp",
+        "productCategory__image": "../images/milk.webp",
         "productCategory__name": "Milk",
         "products": [
           {

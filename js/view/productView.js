@@ -2,22 +2,27 @@ import productController from "../controller/productController.js";
 import productCategorieElement from "../helpers/productCategorieElement.js";
 import productElement from "../helpers/productElement.js";
 import createCategoryElement from "../helpers/createCategoryElement.js";
+import cartView from "./cartView.js";
 
 let productView = {
   render: function () {
     let data = productController.getData();
 
     let categories = Object.keys(data);
+    //console.log(categories);
+
     let productCategories = data[categories[0]];
 
-    let products = data["Vegetables & fruits"]["0"]["products"];
+    //let products = data["Vegetables & fruits"]["0"]["products"];
 
     let categoriesList = document.querySelector(".categories");
 
-    let categoriesLength = productCategories.length;
+    let categoriesLength = categories.length;
 
     for (let i = 0; i < categoriesLength; i++) {
       let categorie = createCategoryElement(categories[i]);
+
+      //console.log(categories[i]);
 
       if (i == categoriesLength - 1) {
         categorie.className = "categories__more";
@@ -100,7 +105,7 @@ let productView = {
 
     let productCategoriesLength = productCategories.length;
 
-    console.log(productCategories);
+    //console.log(productCategories);
 
     for (let i = 0; i < productCategoriesLength; i++) {
       let productCategorie = productCategorieElement(productCategories[i]);
@@ -128,6 +133,8 @@ let productView = {
       });
     }
 
+    let products = data["Vegetables & fruits"]["0"]["products"];
+
     let productsDiv = document.querySelector(".products");
 
     for (let i = 0; i < products.length; i++) {
@@ -139,6 +146,35 @@ let productView = {
       data["Vegetables & fruits"][0]["products"]
     );
 
+    this.createDropdown();
+
+    let myCart = document.querySelector(".myCart");
+
+    myCart.addEventListener("click", () => {
+      cartView.render();
+    });
+
+    let categoriesDiv = document.querySelector(".categories");
+
+    categoriesDiv.addEventListener("click", () => {
+      let productsSection__heading = document.querySelector(
+        ".productsSection__heading"
+      );
+
+      productsSection__heading.innerHTML = `<p class="buyHeading">Buy Fresh Vegetables Online</p>
+
+    <form class="productsSection__filter">
+      <label for="sortBy" class="sortByLabel">Sort By</label>
+      <select class="sortBy" id="sortBy"">
+        <option value="relevence">Relevence</option>
+        <option value="priceLowToHigh">Price (low to high)</option>
+        <option value="priceHighToLow">Price (high to low)</option>
+      </select>
+    </form>`;
+    });
+  },
+
+  createDropdown: () => {
     let categoriesMore = document.querySelector(".categories__more");
 
     categoriesMore.innerHTML += `

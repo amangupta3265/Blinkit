@@ -409,15 +409,17 @@
 }
 
 .product__quantity .btn-add {
+  display: block;
   border-radius: 0.5rem;
   background-color: #23963f;
   color: white;
-  padding: 1rem 1rem;
+  padding: 1rem 2.5rem;
 }
 
 .product__quantity .btn-number {
+  display: none;
   padding: 1rem 1rem;
-  background-color: green;
+  background-color: #23963f;
   color: white;
 }
 

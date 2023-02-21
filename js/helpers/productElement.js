@@ -26,7 +26,8 @@ let productElement = (singleProduct, id) => {
   product__newPrice.className = "product__newPrice";
   product__oldPrice.className = "product__oldPrice";
   product__quantity.className = "product__quantity";
-  product__quantityButtonCount.className = "count__button";
+  product__quantityButton.className = "btn-add";
+  product__quantityButtonCount.className = "btn-number";
 
   image__section.appendChild(product__offer);
   image__section.appendChild(product__image);
@@ -41,6 +42,14 @@ let productElement = (singleProduct, id) => {
   product__oldPrice.innerText = "₹" + singleProduct["product__oldPrice"];
   product__quantityButton.textContent = "ADD";
 
+  product__quantityButtonCount.innerHTML = `
+                
+                <span class="decrementQuantity" id="decrement">-</span>
+                <span id="count">0</span>
+                <span class="incrementQuantity" id="increment">+</span>
+          
+          `;
+
   product.appendChild(image__section);
   product.appendChild(product__name);
   product.appendChild(product__weight);
@@ -51,7 +60,7 @@ let productElement = (singleProduct, id) => {
   product__details.appendChild(product__quantity);
   product.appendChild(product__details);
   product__quantity.appendChild(product__quantityButton);
-
+  product__quantity.appendChild(product__quantityButtonCount);
   return product;
 };
 
