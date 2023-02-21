@@ -59,9 +59,16 @@
   border: none;
   border-radius: 0.5rem;
   margin-left: 2rem;
+  height: 4rem;
 }
+
+.myCart:hover {
+  cursor: pointer;
+}
+
 .fa-cart-shopping {
   margin-right: 0.625rem;
+  font-size: 2rem;
 }
 .paddingTopBottom10px {
   padding-top: 0.625rem;
@@ -73,6 +80,7 @@
   justify-content: center;
 }
 .categories li {
+  display: block;
   font-size: 1.6rem;
   list-style: none;
   padding: 0.8rem;
@@ -81,6 +89,32 @@
   background-color: #f5f2f2;
   cursor: pointer;
 }
+
+.categories__more {
+  position: relative;
+}
+
+.dropdown {
+  top: 3rem;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0.8rem 0.8rem 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown li {
+  width: max-content;
+}
+
+.dropdown a {
+  text-decoration: none;
+  color: gray;
+}
+
+.categories__more:hover .dropdown {
+  display: block;
+}
+
 .productsContainer {
   display: flex;
   margin: auto;
@@ -166,6 +200,51 @@
   min-height: 15rem;
 }
 
+.placeOrderHeading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: gray;
+}
+
+.deliveryTime {
+  margin-top: 3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.checkoutItems {
+  color: gray;
+  margin-bottom: 2rem;
+}
+
+.checkoutProducts {
+  flex-direction: column;
+}
+
+.checkout__product {
+  width: 80rem;
+  justify-content: space-between;
+  /* border: 1px solid whitesmoke; */
+}
+
+.checkoutPrice {
+  font-size: 1.6rem;
+  margin-top: 10rem;
+}
+
+.checkoutPrice .flexRow {
+  justify-content: space-between;
+  margin-right: 8rem;
+}
+
+.proceedButton {
+  color: white;
+  background-color: #23963f;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
 .product__image {
   position: relative;
 }
@@ -179,7 +258,7 @@
   width: fit-content;
   border-radius: 0.5rem;
   font-size: 1rem;
-  padding: 0.1rem;
+  padding: 0.1rem 0.6rem;
   position: absolute;
 }
 .product__details {
@@ -195,6 +274,12 @@
   margin-bottom: 1.5rem;
   font-size: 1.2rem;
   color: gray;
+}
+
+.checkout__product .product__weight,
+.product__price {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .product__quantity button,
@@ -221,6 +306,15 @@
   border-radius: 0.5rem;
   border: 0.1rem solid #23963f;
   font-weight: 600;
+}
+
+.product__quantity button:hover {
+  cursor: pointer;
+}
+
+.incrementQuantity,
+.decrementQuantity {
+  padding: 0.4rem;
 }
 .advantages {
   justify-content: space-evenly;
@@ -312,4 +406,22 @@
 .footer__socialHandles i {
   font-size: 4rem;
   margin-left: 1rem;
+}
+
+.product__quantity .btn-add {
+  border-radius: 0.5rem;
+  background-color: #23963f;
+  color: white;
+  padding: 1rem 1rem;
+}
+
+.product__quantity .btn-number {
+  padding: 1rem 1rem;
+  background-color: green;
+  color: white;
+}
+
+.incrementQuantity,
+.decrementQuantity {
+  padding: 0.8rem;
 }
