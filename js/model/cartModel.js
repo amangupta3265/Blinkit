@@ -3,7 +3,6 @@ let cartModel = {
 
   setData: function (data) {
     this.cartData = data;
-    //console.log("from cart model", this.cartData);
   },
 };
 

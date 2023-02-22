@@ -3,17 +3,15 @@ import productCategorieElement from "../helpers/productCategorieElement.js";
 import productElement from "../helpers/productElement.js";
 import createCategoryElement from "../helpers/createCategoryElement.js";
 import cartView from "./cartView.js";
+import addProduct from "./addproduct.js";
 
 let productView = {
   render: function () {
     let data = productController.getData();
 
     let categories = Object.keys(data);
-    //console.log(categories);
 
     let productCategories = data[categories[0]];
-
-    //let products = data["Vegetables & fruits"]["0"]["products"];
 
     let categoriesList = document.querySelector(".categories");
 
@@ -21,8 +19,6 @@ let productView = {
 
     for (let i = 0; i < categoriesLength; i++) {
       let categorie = createCategoryElement(categories[i]);
-
-      //console.log(categories[i]);
 
       if (i == categoriesLength - 1) {
         categorie.className = "categories__more";
@@ -56,6 +52,7 @@ let productView = {
           productsContainer.innerHTML = ``;
 
           let productCategorie = productCategorieElement(productCategories[j]);
+
           if (j === 0) {
             productCategorie.className += " productCategory__active";
           }
@@ -94,6 +91,7 @@ let productView = {
             }
 
             productController.eventListeners(products);
+            //addProduct(products);
           }
         }
       });
@@ -154,6 +152,26 @@ let productView = {
       cartView.render();
     });
 
+    this.clickOnNavbar();
+  },
+
+  createDropdown: () => {
+    let categoriesMore = document.querySelector(".categories__more");
+
+    categoriesMore.innerHTML += `
+      <ul class="dropdown">
+            <li><a href="#">Sweet Tooth</a></li>
+            <li><a href="#">Atta, Rice & Dal</a></li>
+            <li><a href="#">Dry Fruits, Masala & Oil</a></li>
+            <li><a href="#">Sauces & Spreads</a></li>
+            <li><a href="#">Chicken, Meat & Fish</a></li>
+            <li><a href="#">Paan Corner</a></li>
+            <li><a href="#">Organic & Premium</a></li>
+      </ul>
+      `;
+  },
+
+  clickOnNavbar: () => {
     let categoriesDiv = document.querySelector(".categories");
 
     categoriesDiv.addEventListener("click", () => {
@@ -172,22 +190,6 @@ let productView = {
       </select>
     </form>`;
     });
-  },
-
-  createDropdown: () => {
-    let categoriesMore = document.querySelector(".categories__more");
-
-    categoriesMore.innerHTML += `
-      <ul class="dropdown">
-            <li><a href="#">Sweet Tooth</a></li>
-            <li><a href="#">Atta, Rice & Dal</a></li>
-            <li><a href="#">Dry Fruits, Masala & Oil</a></li>
-            <li><a href="#">Sauces & Spreads</a></li>
-            <li><a href="#">Chicken, Meat & Fish</a></li>
-            <li><a href="#">Paan Corner</a></li>
-            <li><a href="#">Organic & Premium</a></li>
-      </ul>
-      `;
   },
 };
 

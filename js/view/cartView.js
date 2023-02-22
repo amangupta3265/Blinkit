@@ -1,7 +1,7 @@
 import cartController from "../controller/cartController.js";
 
 let cartView = {
-  render: () => {
+  render: function () {
     let cartData = cartController.getCartData();
     // console.log(cartData);
     // console.log(cartData["10"]);
@@ -15,10 +15,6 @@ let cartView = {
     productsContainer.innerHTML = ``;
     let productSection = document.querySelector(".products");
     productSection.innerHTML = ``;
-
-    let productsSection__heading = document.querySelector(
-      ".productsSection__heading"
-    );
 
     let productCategoriesNavbar = document.querySelector(
       ".productCategoriesNavbar"
@@ -71,72 +67,27 @@ let cartView = {
       }
     }
 
-    let checkout__quantity = document.querySelectorAll(".checkout__quantity");
-    console.log(checkout__quantity);
+    cartController.eventListner(mrpPrice, actualPrice, totalCount);
 
-    const myCartItems = document.querySelector(".myCart__items");
+    this.checkoutPriceDisplay(
+      mrpPrice,
+      actualPrice,
+      totalCount,
+      dileveryCharge
+    );
+  },
 
-    for (let i = 0; i < checkout__quantity.length; i++) {
-      //checkout__quantity[i].children[0].getElementsByTagName("span")[0]
-      const countEl =
-        checkout__quantity[i].children[0].getElementsByTagName("span")[1];
-      const incrementEl =
-        checkout__quantity[i].children[0].getElementsByTagName("span")[2];
-      const decrementEl =
-        checkout__quantity[i].children[0].getElementsByTagName("span")[0];
-      let count = parseInt(
-        checkout__quantity[i].children[0].getElementsByTagName("span")[1]
-          .textContent
-      );
+  checkoutPriceDisplay: function (
+    mrpPrice,
+    actualPrice,
+    totalCount,
+    dileveryCharge
+  ) {
+    let productsSection__heading = document.querySelector(
+      ".productsSection__heading"
+    );
 
-      let productNewPriceDiv = document.querySelectorAll(".product__newPrice");
-      let productOldPriceDiv = document.querySelectorAll(".product__oldPrice");
-
-      incrementEl.addEventListener("click", () => {
-        count++;
-        totalCount++;
-        countEl.textContent = count;
-        //console.log(countEl.textContent)
-        //console.log(productNewPriceDiv[i].children[1].textContent);
-        actualPrice += parseInt(productNewPriceDiv[i].children[1].textContent);
-        mrpPrice += parseInt(productNewPriceDiv[i].children[1].textContent);
-        myCartItems.innerHTML = `
-          <div>${totalCount} items</div>
-          <div><span>&#8377;</span>${actualPrice}</div>
-          `;
-
-        //products[k]["count"] = count;
-
-        checkoutPriceCalculation();
-      });
-
-      decrementEl.addEventListener("click", function () {
-        if (count > 0) {
-          count--;
-          countEl.textContent = count;
-          totalCount--;
-          actualPrice += parseInt(
-            productNewPriceDiv[i].children[1].textContent
-          );
-          mrpPrice += parseInt(productNewPriceDiv[i].children[1].textContent);
-
-          myCartItems.innerHTML = `
-              <div>${totalCount} items</div>
-              <div><span>&#8377;</span>${actualPrice}</div>
-              `;
-
-          //products[k]["count"] = count;
-          console.log(totalCount);
-          checkoutPriceCalculation();
-          if (totalCount === 0) check();
-        }
-      });
-    }
-
-    checkoutPriceCalculation();
-
-    function checkoutPriceCalculation() {
-      productsSection__heading.innerHTML = `
+    productsSection__heading.innerHTML = `
     <div>
     <p class="placeOrderHeading">Place Order</p>
             <p class="deliveryTime">Delivery in 10 minutes</p>
@@ -144,9 +95,9 @@ let cartView = {
             <div>
         `;
 
-      let checkoutPrice = document.querySelector(".checkoutPrice");
+    let checkoutPrice = document.querySelector(".checkoutPrice");
 
-      checkoutPrice.innerHTML = `
+    checkoutPrice.innerHTML = `
     <div class="checkoutPrice">
     <div class="flexRow">
       <p>MRP</p>
@@ -173,27 +124,6 @@ let cartView = {
     </div>
   </div>
     `;
-    }
-
-    function check(totalCount) {
-      if (totalCount === 0) {
-        let productsContainer = document.querySelector(".checkoutProducts");
-        productsContainer.innerHTML = ``;
-
-        let checkoutPrice = document.querySelector(".checkoutPrice");
-
-        checkoutPrice.innerHTML = ``;
-
-        mrpPrice = 0;
-        totalCount = 0;
-        actualPrice = 0;
-        dileveryCharge = 0;
-
-        console.log(totalCount);
-
-        checkoutPriceCalculation();
-      }
-    }
   },
 };
 

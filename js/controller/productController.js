@@ -1,6 +1,5 @@
 import productModel from "../model/productModel.js";
 import productView from "../view/productView.js";
-import cartModel from "../model/cartModel.js";
 import cartController from "./cartController.js";
 
 let k = 0;
@@ -23,26 +22,83 @@ const productController = {
     cartController.init(cartData);
   },
 
+  incrementCount: function (products, i) {
+    //console.log(myCartItems.children[1].children[1]);
+    console.log("cartItemsCount", cartItemsCount);
+    console.log("cartItemsValue", cartItemsValue);
+
+    let productQuantityDiv = document.querySelectorAll(".product__quantity");
+    let count = parseInt(products[i]["count"]);
+
+    count++;
+    //cartItemsCount++;
+    productQuantityDiv[i].children[1].children[1].innerText = count;
+    console.log(productQuantityDiv[i].children[1].children[1].textContent);
+    //cartItemsValue += parseInt(products[i]["product__newPrice"]);
+
+    products[i]["count"] = count;
+
+    console.log("cartItemsCount", cartItemsCount);
+    console.log("cartItemsValue", cartItemsValue);
+  },
+
+  decrementCount: function (products, i) {
+    let count = parseInt(products[i]["count"]);
+
+    let productQuantityDiv = document.querySelectorAll(".product__quantity");
+
+    if (count > 0) {
+      count--;
+      console.log(count);
+      //console.log(cartItemsCount);
+      productQuantityDiv[i].children[1].children[1].innerText = count;
+      //cartItemsCount--;
+      cartItemsValue -= parseInt(products[i]["product__newPrice"]);
+
+      products[i]["count"] = count;
+    } else if (count === 0) {
+      productQuantityDiv[i].childNodes[1].style = "display:none";
+      productQuantityDiv[i].childNodes[0].style = "display:block";
+    }
+  },
+
+  updateCart: function () {
+    let myCartItems = document.querySelector(".myCart__items");
+
+    myCartItems.innerHTML = `
+        <div>${cartItemsCount} items</div>
+        <div><span>&#8377;</span>${cartItemsValue}</div>
+        `;
+  },
+
+  incrementCart: function (products, i) {
+    cartItemsCount++;
+    cartItemsValue += parseInt(products[i]["product__newPrice"]);
+
+    productController.updateCart();
+  },
+
+  decrementCart: function (products, i) {
+    cartItemsCount++;
+    cartItemsValue -= parseInt(products[i]["product__newPrice"]);
+
+    productController.updateCart();
+  },
+
   eventListeners: function (products) {
     //console.log(products);
 
     let productQuantityDiv = document.querySelectorAll(".product__quantity");
 
-    let myCartItems = document.querySelector(".myCart__items");
-
     for (let i = 0; i < productQuantityDiv.length; i++) {
-      //console.log(k);
       let count = 0;
       k++;
       count = parseInt(products[i]["count"]);
 
-      //console.log(productQuantityDiv[i].firstChild);
-      //console.log(productQuantityDiv[i].childNodes[1]);
-      //console.log(productQuantityDiv[i]);
+      productQuantityDiv[i].children[1].children[1].id = `count_${i}`;
+      const countEl = document.getElementById(`count_${i}`);
 
-      //count = 1;
-
-      let countEl = productQuantityDiv[i].childNodes[1].childNodes[3];
+      let myCartItems = document.querySelector(".myCart__items");
 
       if (count !== 0) {
         productQuantityDiv[i].childNodes[1].style = "display:block";
@@ -50,132 +106,36 @@ const productController = {
         countEl.textContent = count;
       }
 
-      productQuantityDiv[i].addEventListener("click", (event) => {
-        // console.log(k);
+      productQuantityDiv[i].addEventListener("click", function (event) {
+        productQuantityDiv[i].children[1].children[1].id = `count_${i}`;
 
-        //console.log(productQuantityDiv[i]);
+        const countEl = document.getElementById(`count_${i}`);
 
         if (productQuantityDiv[i].childNodes[0].textContent === "ADD") {
           productQuantityDiv[i].childNodes[1].style = "display:block";
           productQuantityDiv[i].childNodes[0].style = "display:none";
           count = 1;
-          cartItemsCount += count;
-          cartItemsValue += parseInt(products[i]["product__newPrice"]);
-          productQuantityDiv[i].childNodes[1].childNodes[3].textContent = count;
+          cartItemsCount = count;
+          cartItemsValue = parseInt(products[i]["product__newPrice"]);
+          countEl.innerText = count;
           myCartItems.innerHTML = `
               <div>${cartItemsCount} items</div>
-              <div><span>&#8377;</span>${cartItemsValue}</div>
+              <div><span>&#8377;</span><span>${cartItemsValue}</span></div>
               `;
-
-          //   window.localStorage.setItem(products[i]["product_id"], count);
-          //   window.localStorage.getItem(products[i]["product_id"]);
-          //   console.log(window.localStorage);
         }
-
-        //window.localStorage.getItem(products[i]["product_id"]);
-
-        console.log(event.target.textContent);
-
-        //console.log(productQuantityDiv[i].childNodes[1].childNodes[3]);
-
-        console.log(countEl);
-        console.log(event.target.textContent);
 
         if (event.target.textContent === "+") {
-          //event.target.addEventListener("click", function () {
-          console.log(event.target.textContent);
-
-          count++;
-          console.log(count);
-          console.log(cartItemsCount);
-          cartItemsCount++;
-          productQuantityDiv[i].childNodes[1].childNodes[3].textContent = count;
-          //console.log(countEl.textContent)
-          cartItemsValue += parseInt(products[i]["product__newPrice"]);
-          myCartItems.innerHTML = `
-                  <div>${cartItemsCount} items</div>
-                  <div><span>&#8377;</span>${cartItemsValue}</div>
-                  `;
-          products[i]["count"] = count;
-
-          // });
+          productController.incrementCount(products, i);
+          productController.incrementCart(products, i);
         } else if (event.target.textContent === "-") {
-          //event.target.addEventListener("click", function () {
-          if (count > 0) {
-            count--;
-            console.log(count);
-            console.log(cartItemsCount);
-            productQuantityDiv[i].childNodes[1].childNodes[3].textContent =
-              count;
-            cartItemsCount--;
-            cartItemsValue -= parseInt(products[i]["product__newPrice"]);
-
-            myCartItems.innerHTML = `
-                          <div>${cartItemsCount} items</div>
-                          <div><span>&#8377;</span>${cartItemsValue}</div>
-                          `;
-
-            products[i]["count"] = count;
-          }
-          //});
+          productController.decrementCount(products, i);
+          productController.decrementCart(products, i);
         }
 
-        if (count === 0) {
-          productQuantityDiv[i].childNodes[1].style = "display:none";
-          productQuantityDiv[i].childNodes[0].style = "display:block";
-        }
-
-        products[i]["count"] = count;
+        //products[i]["count"] = count;
         cartData.set(k + i, products[i]);
 
-        this.setCartData();
-
-        //console.log(cartData);
-        //console.log(products[i]);
-
-        //this.setCartData();
-        //cartModel.setData(cartData);
-        /*
-        const countEl = document.getElementById(`count_${i}`);
-        const incrementEl = document.getElementById(`increment_${i}`);
-        const decrementEl = document.getElementById(`decrement_${i}`);
-
-        incrementEl.addEventListener("click", function () {
-          count++;
-          cartItemsCount++;
-          countEl.textContent = count;
-          //console.log(countEl.textContent)
-          cartItemsValue += parseInt(products[i]["product__newPrice"]);
-          myCartItems.innerHTML = `
-                <div>${cartItemsCount} items</div>
-                <div><span>&#8377;</span>${cartItemsValue}</div>
-                `;
-          products[i]["count"] = count;
-        });
-
-        decrementEl.addEventListener("click", function () {
-          if (count > 0) {
-            count--;
-            countEl.textContent = count;
-            cartItemsCount--;
-            cartItemsValue -= parseInt(products[i]["product__newPrice"]);
-
-            myCartItems.innerHTML = `
-                    <div>${cartItemsCount} items</div>
-                    <div><span>&#8377;</span>${cartItemsValue}</div>
-                    `;
-
-            products[i]["count"] = count;
-          }
-        });
-
-        // if (count === 0) {
-        //   productQuantityDiv[i].innerHTML = `
-        //       <button class='btn-add'>ADD</button>`;
-        // }
-        products[i]["count"] = count;
-
-        */
+        productController.setCartData();
       });
     }
 

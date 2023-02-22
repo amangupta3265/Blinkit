@@ -45,7 +45,7 @@ let productElement = (singleProduct, id) => {
   product__quantityButtonCount.innerHTML = `
                 
                 <span class="decrementQuantity" id="decrement">-</span>
-                <span id="count">0</span>
+                <span id="count">${1}</span>
                 <span class="incrementQuantity" id="increment">+</span>
           
           `;
