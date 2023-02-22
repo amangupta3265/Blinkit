@@ -32,7 +32,7 @@
             "product__name": "Old Aloo",
             "product__weight": "1Kg",
             "product__newPrice": "25",
-            "product__oldPrice": "20",
+            "product__oldPrice": "30",
             "count": "0"
           },
           {
@@ -42,7 +42,7 @@
             "product__name": "Aloo",
             "product__weight": "1Kg",
             "product__newPrice": "23",
-            "product__oldPrice": "20",
+            "product__oldPrice": "30",
             "count": "0"
           },
           {

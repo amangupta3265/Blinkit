@@ -2,9 +2,9 @@ import productModel from "../model/productModel.js";
 import productView from "../view/productView.js";
 import cartController from "./cartController.js";
 
-let k = 0;
 let cartData = new Map();
 
+window.localStorage.clear();
 window.localStorage.setItem("cartItemsCount", 0);
 window.localStorage.setItem("cartItemsValue", 0);
 
@@ -28,13 +28,15 @@ const productController = {
     let count = parseInt(products[i]["count"]);
 
     count++;
+    console.log(count);
+
     productQuantityDiv[i].children[1].children[1].innerText = count;
     console.log(productQuantityDiv[i].children[1].children[1].textContent);
 
     products[i]["count"] = count;
   },
 
-  decrementCount: function (products, i) {
+  decrementCount: function (products, i, j) {
     let count = parseInt(products[i]["count"]);
 
     let productQuantityDiv = document.querySelectorAll(".product__quantity");
@@ -45,13 +47,13 @@ const productController = {
 
       productQuantityDiv[i].children[1].children[1].innerText = count;
 
-      cartItemsValue -= parseInt(products[i]["product__newPrice"]);
-
       products[i]["count"] = count;
     }
     if (count === 0) {
       productQuantityDiv[i].childNodes[1].style = "display:none";
       productQuantityDiv[i].childNodes[0].style = "display:block";
+      products[i]["count"] = 0;
+      window.localStorage.removeItem(j * 100 + i);
     }
   },
 
@@ -79,8 +81,14 @@ const productController = {
       window.localStorage.getItem("cartItemsValue")
     );
 
+    console.log("cartItemsCount", cartItemsCount);
+    console.log("cartItemsValue", cartItemsValue);
+
     cartItemsCount++;
     cartItemsValue += parseInt(products[i]["product__newPrice"]);
+
+    console.log("cartItemsCount", cartItemsCount);
+    console.log("cartItemsValue", cartItemsValue);
 
     window.localStorage.setItem("cartItemsCount", cartItemsCount);
     window.localStorage.setItem("cartItemsValue", cartItemsValue);
@@ -105,18 +113,19 @@ const productController = {
     productController.updateCart();
   },
 
-  eventListeners: function (products) {
+  eventListeners: function (products, j) {
     let productQuantityDiv = document.querySelectorAll(".product__quantity");
 
+    let k = 0;
     for (let i = 0; i < productQuantityDiv.length; i++) {
       let count = 0;
       k++;
+      console.log(k);
+
       count = parseInt(products[i]["count"]);
 
       productQuantityDiv[i].children[1].children[1].id = `count_${i}`;
       const countEl = document.getElementById(`count_${i}`);
-
-      let myCartItems = document.querySelector(".myCart__items");
 
       if (count !== 0) {
         productQuantityDiv[i].childNodes[1].style = "display:block";
@@ -125,50 +134,62 @@ const productController = {
       }
 
       productQuantityDiv[i].addEventListener("click", function (event) {
-        productQuantityDiv[i].children[1].children[1].id = `count_${i}`;
-
-        const countEl = document.getElementById(`count_${i}`);
-
-        let cartItemsCount = parseInt(
-          window.localStorage.getItem("cartItemsCount")
+        productController.eventListener(
+          event,
+          products,
+          i,
+          count,
+          productQuantityDiv[i],
+          j
         );
-        let cartItemsValue = parseInt(
-          window.localStorage.getItem("cartItemsValue")
-        );
-
-        if (count === 0) {
-          productQuantityDiv[i].childNodes[1].style = "display:block";
-          productQuantityDiv[i].childNodes[0].style = "display:none";
-          count = 1;
-          cartItemsCount += count;
-          cartItemsValue += parseInt(products[i]["product__newPrice"]);
-
-          window.localStorage.setItem("cartItemsCount", cartItemsCount);
-          window.localStorage.setItem("cartItemsValue", cartItemsValue);
-
-          countEl.innerText = count;
-          myCartItems.innerHTML = `
-              <div>${cartItemsCount} items</div>
-              <div><span>&#8377;</span><span>${cartItemsValue}</span></div>
-              `;
-
-          products[i]["count"] = 1;
-        }
-
-        if (event.target.textContent === "+") {
-          console.log(products);
-          productController.incrementCount(products, i);
-          productController.incrementCart(products, i);
-        } else if (event.target.textContent === "-") {
-          productController.decrementCount(products, i);
-          productController.decrementCart(products, i);
-        }
-
-        cartData.set(k + i, products[i]);
-
-        productController.setCartData();
       });
     }
+  },
+
+  eventListener: function (event, products, i, count, productQuantityDiv, j) {
+    let myCartItems = document.querySelector(".myCart__items");
+    productQuantityDiv.children[1].children[1].id = `count_${i}`;
+
+    const countEl = document.getElementById(`count_${i}`);
+
+    let cartItemsCount = parseInt(
+      window.localStorage.getItem("cartItemsCount")
+    );
+    let cartItemsValue = parseInt(
+      window.localStorage.getItem("cartItemsValue")
+    );
+
+    if (window.localStorage.getItem(j * 100 + i) === null) {
+      window.localStorage.setItem(j * 100 + i, i);
+      productQuantityDiv.childNodes[1].style = "display:block";
+      productQuantityDiv.childNodes[0].style = "display:none";
+      count = 1;
+      cartItemsCount += count;
+      cartItemsValue += parseInt(products[i]["product__newPrice"]);
+
+      window.localStorage.setItem("cartItemsCount", cartItemsCount);
+      window.localStorage.setItem("cartItemsValue", cartItemsValue);
+
+      countEl.innerText = count;
+      myCartItems.innerHTML = `
+          <div>${cartItemsCount} items</div>
+          <div><span>&#8377;</span><span>${cartItemsValue}</span></div>
+          `;
+      products[i]["count"] = 1;
+    }
+
+    if (event.target.textContent === "+") {
+      console.log(products);
+      productController.incrementCount(products, i);
+      productController.incrementCart(products, i);
+    } else if (event.target.textContent === "-") {
+      productController.decrementCount(products, i, j);
+      productController.decrementCart(products, i);
+    }
+
+    cartData.set(j * 100 + i, products[i]);
+
+    productController.setCartData();
   },
 };
 

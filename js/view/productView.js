@@ -71,7 +71,7 @@ let productView = {
               productsDiv.appendChild(product);
             }
 
-            productController.eventListeners(products);
+            productController.eventListeners(products, j + 2);
           });
 
           if (j == 0) {
@@ -87,7 +87,7 @@ let productView = {
               productsDiv.appendChild(product);
             }
 
-            productController.eventListeners(products);
+            productController.eventListeners(products, 2 * j + 2);
           }
         }
       });
@@ -121,7 +121,7 @@ let productView = {
           productsDiv.appendChild(product);
         }
 
-        productController.eventListeners(products);
+        productController.eventListeners(products, 2 * i + 2);
       });
     }
 
@@ -135,7 +135,8 @@ let productView = {
     }
 
     productController.eventListeners(
-      data["Vegetables & fruits"][0]["products"]
+      data["Vegetables & fruits"][0]["products"],
+      0
     );
 
     this.createDropdown();
