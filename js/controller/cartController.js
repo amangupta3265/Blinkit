@@ -38,7 +38,7 @@ let cartController = {
         totalCount++;
         countEl.textContent = count;
         actualPrice += parseInt(productNewPriceDiv[i].children[1].textContent);
-        mrpPrice += parseInt(productNewPriceDiv[i].children[1].textContent);
+        mrpPrice += parseInt(productOldPriceDiv[i].children[1].textContent);
         myCartItems.innerHTML = `
           <div>${totalCount} items</div>
           <div><span>&#8377;</span>${actualPrice}</div>
@@ -51,10 +51,10 @@ let cartController = {
           count--;
           countEl.textContent = count;
           totalCount--;
-          actualPrice += parseInt(
+          actualPrice -= parseInt(
             productNewPriceDiv[i].children[1].textContent
           );
-          mrpPrice += parseInt(productNewPriceDiv[i].children[1].textContent);
+          mrpPrice -= parseInt(productOldPriceDiv[i].children[1].textContent);
 
           myCartItems.innerHTML = `
               <div>${totalCount} items</div>
@@ -62,7 +62,7 @@ let cartController = {
               `;
           console.log(totalCount);
           cartView.checkoutPriceDisplay(mrpPrice, actualPrice, totalCount, 10);
-          if (totalCount === 0) cleanCart();
+          if (totalCount === 0) cartController.cleanCart();
         }
       });
     }
@@ -75,7 +75,6 @@ let cartController = {
     let checkoutPrice = document.querySelector(".checkoutPrice");
 
     checkoutPrice.innerHTML = ``;
-    console.log(totalCount);
 
     cartController.checkoutPriceCalculation(0, 0, 0, 0);
   },

@@ -4,8 +4,9 @@ import cartController from "./cartController.js";
 
 let k = 0;
 let cartData = new Map();
-let cartItemsCount = 0;
-let cartItemsValue = 0;
+
+window.localStorage.setItem("cartItemsCount", 0);
+window.localStorage.setItem("cartItemsValue", 0);
 
 const productController = {
   init: (data) => {
@@ -23,23 +24,14 @@ const productController = {
   },
 
   incrementCount: function (products, i) {
-    //console.log(myCartItems.children[1].children[1]);
-    console.log("cartItemsCount", cartItemsCount);
-    console.log("cartItemsValue", cartItemsValue);
-
     let productQuantityDiv = document.querySelectorAll(".product__quantity");
     let count = parseInt(products[i]["count"]);
 
     count++;
-    //cartItemsCount++;
     productQuantityDiv[i].children[1].children[1].innerText = count;
     console.log(productQuantityDiv[i].children[1].children[1].textContent);
-    //cartItemsValue += parseInt(products[i]["product__newPrice"]);
 
     products[i]["count"] = count;
-
-    console.log("cartItemsCount", cartItemsCount);
-    console.log("cartItemsValue", cartItemsValue);
   },
 
   decrementCount: function (products, i) {
@@ -50,19 +42,27 @@ const productController = {
     if (count > 0) {
       count--;
       console.log(count);
-      //console.log(cartItemsCount);
+
       productQuantityDiv[i].children[1].children[1].innerText = count;
-      //cartItemsCount--;
+
       cartItemsValue -= parseInt(products[i]["product__newPrice"]);
 
       products[i]["count"] = count;
-    } else if (count === 0) {
+    }
+    if (count === 0) {
       productQuantityDiv[i].childNodes[1].style = "display:none";
       productQuantityDiv[i].childNodes[0].style = "display:block";
     }
   },
 
   updateCart: function () {
+    let cartItemsCount = parseInt(
+      window.localStorage.getItem("cartItemsCount")
+    );
+    let cartItemsValue = parseInt(
+      window.localStorage.getItem("cartItemsValue")
+    );
+
     let myCartItems = document.querySelector(".myCart__items");
 
     myCartItems.innerHTML = `
@@ -72,22 +72,40 @@ const productController = {
   },
 
   incrementCart: function (products, i) {
+    let cartItemsCount = parseInt(
+      window.localStorage.getItem("cartItemsCount")
+    );
+    let cartItemsValue = parseInt(
+      window.localStorage.getItem("cartItemsValue")
+    );
+
     cartItemsCount++;
     cartItemsValue += parseInt(products[i]["product__newPrice"]);
+
+    window.localStorage.setItem("cartItemsCount", cartItemsCount);
+    window.localStorage.setItem("cartItemsValue", cartItemsValue);
 
     productController.updateCart();
   },
 
   decrementCart: function (products, i) {
+    let cartItemsCount = parseInt(
+      window.localStorage.getItem("cartItemsCount")
+    );
+    let cartItemsValue = parseInt(
+      window.localStorage.getItem("cartItemsValue")
+    );
+
     cartItemsCount++;
     cartItemsValue -= parseInt(products[i]["product__newPrice"]);
+
+    window.localStorage.setItem("cartItemsCount", cartItemsCount);
+    window.localStorage.setItem("cartItemsValue", cartItemsValue);
 
     productController.updateCart();
   },
 
   eventListeners: function (products) {
-    //console.log(products);
-
     let productQuantityDiv = document.querySelectorAll(".product__quantity");
 
     for (let i = 0; i < productQuantityDiv.length; i++) {
@@ -111,20 +129,34 @@ const productController = {
 
         const countEl = document.getElementById(`count_${i}`);
 
-        if (productQuantityDiv[i].childNodes[0].textContent === "ADD") {
+        let cartItemsCount = parseInt(
+          window.localStorage.getItem("cartItemsCount")
+        );
+        let cartItemsValue = parseInt(
+          window.localStorage.getItem("cartItemsValue")
+        );
+
+        if (count === 0) {
           productQuantityDiv[i].childNodes[1].style = "display:block";
           productQuantityDiv[i].childNodes[0].style = "display:none";
           count = 1;
-          cartItemsCount = count;
-          cartItemsValue = parseInt(products[i]["product__newPrice"]);
+          cartItemsCount += count;
+          cartItemsValue += parseInt(products[i]["product__newPrice"]);
+
+          window.localStorage.setItem("cartItemsCount", cartItemsCount);
+          window.localStorage.setItem("cartItemsValue", cartItemsValue);
+
           countEl.innerText = count;
           myCartItems.innerHTML = `
               <div>${cartItemsCount} items</div>
               <div><span>&#8377;</span><span>${cartItemsValue}</span></div>
               `;
+
+          products[i]["count"] = 1;
         }
 
         if (event.target.textContent === "+") {
+          console.log(products);
           productController.incrementCount(products, i);
           productController.incrementCart(products, i);
         } else if (event.target.textContent === "-") {
@@ -132,14 +164,11 @@ const productController = {
           productController.decrementCart(products, i);
         }
 
-        //products[i]["count"] = count;
         cartData.set(k + i, products[i]);
 
         productController.setCartData();
       });
     }
-
-    // this.setCartData();
   },
 };
 

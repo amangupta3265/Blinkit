@@ -196,7 +196,7 @@
     ],
     "Dairy & Breakfast": [
       {
-        "productCategory__image": "../images/milk.webp",
+        "productCategory__image": "./images/milk.webp",
         "productCategory__name": "Milk",
         "products": [
           {

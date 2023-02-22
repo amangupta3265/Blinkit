@@ -3,7 +3,6 @@ import productCategorieElement from "../helpers/productCategorieElement.js";
 import productElement from "../helpers/productElement.js";
 import createCategoryElement from "../helpers/createCategoryElement.js";
 import cartView from "./cartView.js";
-import addProduct from "./addproduct.js";
 
 let productView = {
   render: function () {
@@ -73,8 +72,6 @@ let productView = {
             }
 
             productController.eventListeners(products);
-
-            //sort(products);
           });
 
           if (j == 0) {
@@ -91,7 +88,6 @@ let productView = {
             }
 
             productController.eventListeners(products);
-            //addProduct(products);
           }
         }
       });
@@ -102,8 +98,6 @@ let productView = {
     );
 
     let productCategoriesLength = productCategories.length;
-
-    //console.log(productCategories);
 
     for (let i = 0; i < productCategoriesLength; i++) {
       let productCategorie = productCategorieElement(productCategories[i]);

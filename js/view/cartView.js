@@ -3,13 +3,6 @@ import cartController from "../controller/cartController.js";
 let cartView = {
   render: function () {
     let cartData = cartController.getCartData();
-    // console.log(cartData);
-    // console.log(cartData["10"]);
-
-    // cartData.forEach(function (value, key) {
-    //   console.log(1);
-    //   console.log(key + " = " + value);
-    // });
 
     let productsContainer = document.querySelector(".checkoutProducts");
     productsContainer.innerHTML = ``;
