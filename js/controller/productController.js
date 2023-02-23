@@ -28,10 +28,8 @@ const productController = {
     let count = parseInt(products[i]["count"]);
 
     count++;
-    console.log(count);
 
     productQuantityDiv[i].children[1].children[1].innerText = count;
-    console.log(productQuantityDiv[i].children[1].children[1].textContent);
 
     products[i]["count"] = count;
   },
@@ -43,7 +41,6 @@ const productController = {
 
     if (count > 0) {
       count--;
-      console.log(count);
 
       productQuantityDiv[i].children[1].children[1].innerText = count;
 
@@ -81,14 +78,8 @@ const productController = {
       window.localStorage.getItem("cartItemsValue")
     );
 
-    console.log("cartItemsCount", cartItemsCount);
-    console.log("cartItemsValue", cartItemsValue);
-
     cartItemsCount++;
     cartItemsValue += parseInt(products[i]["product__newPrice"]);
-
-    console.log("cartItemsCount", cartItemsCount);
-    console.log("cartItemsValue", cartItemsValue);
 
     window.localStorage.setItem("cartItemsCount", cartItemsCount);
     window.localStorage.setItem("cartItemsValue", cartItemsValue);
@@ -104,7 +95,7 @@ const productController = {
       window.localStorage.getItem("cartItemsValue")
     );
 
-    cartItemsCount++;
+    cartItemsCount--;
     cartItemsValue -= parseInt(products[i]["product__newPrice"]);
 
     window.localStorage.setItem("cartItemsCount", cartItemsCount);
@@ -114,39 +105,47 @@ const productController = {
   },
 
   eventListeners: function (products, j) {
-    let productQuantityDiv = document.querySelectorAll(".product__quantity");
+    let productQuantityDivList =
+      document.querySelectorAll(".product__quantity");
 
     let k = 0;
-    for (let i = 0; i < productQuantityDiv.length; i++) {
+    productQuantityDivList.forEach((productQuantityDiv, i) => {
       let count = 0;
       k++;
       console.log(k);
 
       count = parseInt(products[i]["count"]);
 
-      productQuantityDiv[i].children[1].children[1].id = `count_${i}`;
+      productQuantityDiv.children[1].children[1].id = `count_${i}`;
       const countEl = document.getElementById(`count_${i}`);
 
       if (count !== 0) {
-        productQuantityDiv[i].childNodes[1].style = "display:block";
-        productQuantityDiv[i].childNodes[0].style = "display:none";
+        productQuantityDiv.childNodes[1].style = "display:block";
+        productQuantityDiv.childNodes[0].style = "display:none";
         countEl.textContent = count;
       }
 
-      productQuantityDiv[i].addEventListener("click", function (event) {
-        productController.eventListener(
+      productQuantityDiv.addEventListener("click", function (event) {
+        productController.attachEventListener(
           event,
           products,
           i,
           count,
-          productQuantityDiv[i],
+          productQuantityDiv,
           j
         );
       });
-    }
+    });
   },
 
-  eventListener: function (event, products, i, count, productQuantityDiv, j) {
+  attachEventListener: function (
+    event,
+    products,
+    i,
+    count,
+    productQuantityDiv,
+    j
+  ) {
     let myCartItems = document.querySelector(".myCart__items");
     productQuantityDiv.children[1].children[1].id = `count_${i}`;
 
@@ -179,7 +178,6 @@ const productController = {
     }
 
     if (event.target.textContent === "+") {
-      console.log(products);
       productController.incrementCount(products, i);
       productController.incrementCart(products, i);
     } else if (event.target.textContent === "-") {

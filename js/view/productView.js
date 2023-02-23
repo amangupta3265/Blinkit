@@ -1,5 +1,5 @@
 import productController from "../controller/productController.js";
-import productCategorieElement from "../helpers/productCategorieElement.js";
+import createProductCategorieElement from "../helpers/createProductCategorieElement.js";
 import productElement from "../helpers/productElement.js";
 import createCategoryElement from "../helpers/createCategoryElement.js";
 import cartView from "./cartView.js";
@@ -16,8 +16,8 @@ let productView = {
 
     let categoriesLength = categories.length;
 
-    for (let i = 0; i < categoriesLength; i++) {
-      let categorie = createCategoryElement(categories[i]);
+    categories.forEach((categorieElement, i) => {
+      let categorie = createCategoryElement(categorieElement);
 
       if (i == categoriesLength - 1) {
         categorie.className = "categories__more";
@@ -32,112 +32,19 @@ let productView = {
 
         checkoutPrice.innerHTML = ``;
 
-        let productCategories = data[`${categories[i]}`];
+        let productCategories = data[`${categorieElement}`];
 
         let productCategoriesNavbar = document.querySelector(
           ".productCategoriesNavbar"
         );
 
-        let productCategoriesLength = productCategories.length;
-
         productCategoriesNavbar.innerHTML = "";
-        let productsDiv = document.querySelector(".products");
-        productsDiv.innerHTML = "";
 
-        checkoutPrice.innerHTML = ``;
-
-        for (let j = 0; j < productCategoriesLength; j++) {
-          let productsContainer = document.querySelector(".checkoutProducts");
-          productsContainer.innerHTML = ``;
-
-          let productCategorie = productCategorieElement(productCategories[j]);
-
-          if (j === 0) {
-            productCategorie.className += " productCategory__active";
-          }
-
-          productCategoriesNavbar.appendChild(productCategorie);
-
-          productCategorie.addEventListener("click", () => {
-            let products = productCategories[j]["products"];
-
-            console.log(products);
-
-            let productsDiv = document.querySelector(".products");
-            productsDiv.innerHTML = "";
-
-            for (let k = 0; k < products.length; k++) {
-              let product = productElement(products[k]);
-              productsDiv.appendChild(product);
-            }
-
-            productController.eventListeners(products, j + 2);
-          });
-
-          if (j == 0) {
-            let products = productCategories[j]["products"];
-
-            console.log(products);
-
-            let productsDiv = document.querySelector(".products");
-            productsDiv.innerHTML = "";
-
-            for (let k = 0; k < products.length; k++) {
-              let product = productElement(products[k], k);
-              productsDiv.appendChild(product);
-            }
-
-            productController.eventListeners(products, 2 * j + 2);
-          }
-        }
+        this.listnerOnProductCategories(productCategories);
       });
-    }
+    });
 
-    let productCategoriesNavbar = document.querySelector(
-      ".productCategoriesNavbar"
-    );
-
-    let productCategoriesLength = productCategories.length;
-
-    for (let i = 0; i < productCategoriesLength; i++) {
-      let productCategorie = productCategorieElement(productCategories[i]);
-      if (i === 0) {
-        productCategorie.className += " productCategory__active";
-      }
-
-      productCategoriesNavbar.appendChild(productCategorie);
-
-      productCategorie.addEventListener("click", () => {
-        let productCategoriesData = data["Vegetables & fruits"][i];
-
-        let products = productCategoriesData["products"];
-
-        let productsDiv = document.querySelector(".products");
-
-        productsDiv.innerHTML = "";
-
-        for (let k = 0; k < products.length; k++) {
-          let product = productElement(products[k], k);
-          productsDiv.appendChild(product);
-        }
-
-        productController.eventListeners(products, 2 * i + 2);
-      });
-    }
-
-    let products = data["Vegetables & fruits"]["0"]["products"];
-
-    let productsDiv = document.querySelector(".products");
-
-    for (let i = 0; i < products.length; i++) {
-      let product = productElement(products[i], i);
-      productsDiv.appendChild(product);
-    }
-
-    productController.eventListeners(
-      data["Vegetables & fruits"][0]["products"],
-      0
-    );
+    this.listnerOnProductCategories(productCategories);
 
     this.createDropdown();
 
@@ -184,6 +91,67 @@ let productView = {
         <option value="priceHighToLow">Price (high to low)</option>
       </select>
     </form>`;
+    });
+  },
+
+  listnerOnProducts: function (j, productCategories) {
+    let products = productCategories[j]["products"];
+
+    //console.log(products);
+
+    let productsDiv = document.querySelector(".products");
+    productsDiv.innerHTML = "";
+
+    this.renderProducts(products);
+
+    productController.eventListeners(products, j);
+  },
+
+  renderProducts: function (products) {
+    console.log(products);
+    let productsDiv = document.querySelector(".products");
+    productsDiv.innerHTML = "";
+
+    products.forEach((product) => {
+      product = productElement(product);
+      productsDiv.appendChild(product);
+    });
+  },
+
+  renderProductCategories: function (
+    productCategories,
+    productCategorieElement,
+    i
+  ) {
+    let productCategoriesNavbar = document.querySelector(
+      ".productCategoriesNavbar"
+    );
+
+    let productCategorie = createProductCategorieElement(
+      productCategorieElement
+    );
+    if (i === 0) {
+      productCategorie.className += " productCategory__active";
+      this.listnerOnProducts(i, productCategories);
+    }
+
+    productCategoriesNavbar.appendChild(productCategorie);
+
+    productCategorie.addEventListener("click", () => {
+      this.listnerOnProducts(i, productCategories);
+    });
+  },
+
+  listnerOnProductCategories: function (productCategories) {
+    productCategories.forEach((productCategorieElement, j) => {
+      let productsContainer = document.querySelector(".checkoutProducts");
+      productsContainer.innerHTML = ``;
+
+      this.renderProductCategories(
+        productCategories,
+        productCategorieElement,
+        j
+      );
     });
   },
 };

@@ -1,4 +1,4 @@
-let productElement = (singleProduct, id) => {
+let productElement = (singleProduct) => {
   let product = document.createElement("div");
   let image__section = document.createElement("div");
   let product__offer = document.createElement("div");

@@ -1,4 +1,4 @@
-let productCategorieElement = (singleproductCategorie) => {
+let createProductCategorieElement = (singleproductCategorie) => {
   let productCategorie = document.createElement("li");
   let productCategory__image = document.createElement("img");
   let productCategory__name = document.createElement("span");
@@ -17,4 +17,4 @@ let productCategorieElement = (singleproductCategorie) => {
   return productCategorie;
 };
 
-export default productCategorieElement;
+export default createProductCategorieElement;
