@@ -46,7 +46,7 @@ let cartController = {
         cartView.checkoutPriceDisplay(mrpPrice, actualPrice, totalCount, 10);
       });
 
-      decrementEl.addEventListener("click", function () {
+      decrementEl.addEventListener("click", () => {
         if (count > 0) {
           count--;
           countEl.textContent = count;

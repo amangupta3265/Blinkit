@@ -97,8 +97,6 @@ let productView = {
   listnerOnProducts: function (j, productCategories) {
     let products = productCategories[j]["products"];
 
-    //console.log(products);
-
     let productsDiv = document.querySelector(".products");
     productsDiv.innerHTML = "";
 
