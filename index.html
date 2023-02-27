@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./index.css" />
+    <link defer rel="stylesheet" href="./index.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -34,253 +34,37 @@
       </div>
       <div class="topNavbar__right flexRow paddingTopBottom10px">
         <button class="loginBtn">Login</button>
-        <button class="myCart">
-          <i class="fa-solid fa-cart-shopping"></i>My Cart
+        <button class="myCart flexRow">
+          <span><i class="fa-solid fa-cart-shopping"></i></span
+          ><span class="myCart__items">My Cart</span>
         </button>
       </div>
     </div>
 
-    <ul class="categories flexRow">
-      <li>Vegetables & fruits</li>
-      <li>Dairy & Breakfast</li>
-      <li>Munchies</li>
-      <li>Cold Drinks & Juices</li>
-      <li>Instant & Frozen Food</li>
-      <li>Tea, Coffee & Health Drinks</li>
-      <li>Bakery & Biscuits</li>
-      <li>More</li>
-    </ul>
+    <ul class="categories flexRow"></ul>
 
     <div class="productsContainer">
-      <div class="productCategoriesNavbar">
-        <ul>
-          <li class="productCategory productCategory__active flexRow">
-            <img class="productCategory__image" src="./potato.jpeg" />
+      <ul class="productCategoriesNavbar"></ul>
 
-            <span class="productCategory__name">All</span>
-          </li>
-          <li class="productCategory flexRow">
-            <img class="productCategory__image" src="./images/potato.jpeg" />
-
-            <span class="productCategory__name">Fresh Vegetables</span>
-          </li>
-
-          <li class="productCategory flexRow">
-            <img
-              class="productCategory__image"
-              src="./images/fresh fruits.webp"
-            />
-
-            <span class="productCategory__name">Fresh Fruits </span>
-          </li>
-          <li class="productCategory flexRow">
-            <img class="productCategory__image" src="./images/exotics.webp" />
-
-            <span class="productCategory__name">Exotics</span>
-          </li>
-          <li class="productCategory flexRow">
-            <img class="productCategory__image" src="./images/seasonal.webp" />
-
-            <span class="productCategory__name">Seasonal</span>
-          </li>
-          <li class="productCategory flexRow">
-            <img class="productCategory__image" src="./images/organic.jpeg" />
-
-            <span class="productCategory__name">Oraganic & Hydroponic</span>
-          </li>
-          <li class="productCategory flexRow">
-            <img
-              class="productCategory__image"
-              src="./images/freshly cut.webp"
-            />
-
-            <span class="productCategory__name">Freshly Cut & Sprouts</span>
-          </li>
-        </ul>
-      </div>
       <div class="productsSection">
         <div class="productsSection__heading">
           <p class="buyHeading">Buy Fresh Vegetables Online</p>
 
-          <form class="productsSection__filter">
+          <form class="productsSection__filter" action="">
             <label for="sortBy" class="sortByLabel">Sort By</label>
-            <select class="sortBy" name="sortBy">
-              <option value="relevence">Relevance</option>
+            <select class="sortBy" id="sortBy">
+              <option value="relevence">Relevence</option>
+              <option value="priceLowToHigh">Price (low to high)</option>
+              <option value="priceHighToLow">Price (high to low)</option>
             </select>
           </form>
         </div>
-        <div class="products flexRow">
-          <div class="products__product">
-            <div class="product__image">
-              <div class="product__offer">10% OFF</div>
-              <img src="./potato.jpeg" />
-              <div class="product__sourced">sourced at : 5am</div>
-            </div>
-            <div class="product__name">Potato(Aloo)</div>
-            <div class="product__weight">1Kg</div>
-            <div class="product__details">
-              <div class="product__price">
-                <span class="product__newPrice"><span>&#8377;</span>15</span>
-                <span class="product__oldPrice"><span>&#8377;</span>20</span>
-              </div>
-              <div class="product__quantity">
-                <button>ADD</button>
-              </div>
-            </div>
-          </div>
 
-          <div class="products__product">
-            <div class="product__image">
-              <div class="product__offer">10% OFF</div>
-              <img src="./images/onion.jpeg" />
-              <div class="product__sourced">sourced at : 5am</div>
-            </div>
-            <div class="product__name">Potato(Aloo)</div>
-            <div class="product__weight">1Kg</div>
-            <div class="product__details">
-              <div class="product__price">
-                <span class="product__newPrice"><span>&#8377;</span>15</span>
-                <span class="product__oldPrice"><span>&#8377;</span>20</span>
-              </div>
-              <div class="product__quantity">
-                <button>ADD</button>
-              </div>
-            </div>
-          </div>
+        <div class="products flexRow"></div>
 
-          <div class="products__product">
-            <div class="product__image">
-              <div class="product__offer">10% OFF</div>
-              <img src="./images/carrot.jpeg" />
-              <div class="product__sourced">sourced at : 5am</div>
-            </div>
-            <div class="product__name">Potato(Aloo)</div>
-            <div class="product__weight">1Kg</div>
-            <div class="product__details">
-              <div class="product__price">
-                <span class="product__newPrice"><span>&#8377;</span>15</span>
-                <span class="product__oldPrice"><span>&#8377;</span>20</span>
-              </div>
-              <div class="product__quantity">
-                <button>ADD</button>
-              </div>
-            </div>
-          </div>
+        <div class="checkoutProducts flexRow"></div>
 
-          <div class="products__product">
-            <div class="product__image">
-              <div class="product__offer">10% OFF</div>
-              <img src="./images/cauliflower.jpeg" />
-              <div class="product__sourced">sourced at : 5am</div>
-            </div>
-            <div class="product__name">Potato(Aloo)</div>
-            <div class="product__weight">1Kg</div>
-            <div class="product__details">
-              <div class="product__price">
-                <span class="product__newPrice"><span>&#8377;</span>15</span>
-                <span class="product__oldPrice"><span>&#8377;</span>20</span>
-              </div>
-              <div class="product__quantity">
-                <button>ADD</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="products__product">
-            <div class="product__image">
-              <div class="product__offer">10% OFF</div>
-              <img src="./images/ginger.jpeg" />
-              <div class="product__sourced">sourced at : 5am</div>
-            </div>
-            <div class="product__name">Potato(Aloo)</div>
-            <div class="product__weight">1Kg</div>
-            <div class="product__details">
-              <div class="product__price">
-                <span class="product__newPrice"><span>&#8377;</span>15</span>
-                <span class="product__oldPrice"><span>&#8377;</span>20</span>
-              </div>
-              <div class="product__quantity">
-                <button>ADD</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="products__product">
-            <div class="product__image">
-              <div class="product__offer">10% OFF</div>
-              <img src="./images/greenchilli.jpeg" />
-              <div class="product__sourced">sourced at : 5am</div>
-            </div>
-            <div class="product__name">Potato(Aloo)</div>
-            <div class="product__weight">1Kg</div>
-            <div class="product__details">
-              <div class="product__price">
-                <span class="product__newPrice"><span>&#8377;</span>15</span>
-                <span class="product__oldPrice"><span>&#8377;</span>20</span>
-              </div>
-              <div class="product__quantity">
-                <button>ADD</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="products__product">
-            <div class="product__image">
-              <div class="product__offer">10% OFF</div>
-              <img src="./images/toamato.jpeg" />
-              <div class="product__sourced">sourced at : 5am</div>
-            </div>
-            <div class="product__name">Potato(Aloo)</div>
-            <div class="product__weight">1Kg</div>
-            <div class="product__details">
-              <div class="product__price">
-                <span class="product__newPrice"><span>&#8377;</span>15</span>
-                <span class="product__oldPrice"><span>&#8377;</span>20</span>
-              </div>
-              <div class="product__quantity">
-                <button>ADD</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="products__product">
-            <div class="product__image">
-              <div class="product__offer">10% OFF</div>
-              <img src="./images/sweet patato.jpeg" />
-              <div class="product__sourced">sourced at : 5am</div>
-            </div>
-            <div class="product__name">Potato(Aloo)</div>
-            <div class="product__weight">1Kg</div>
-            <div class="product__details">
-              <div class="product__price">
-                <span class="product__newPrice"><span>&#8377;</span>15</span>
-                <span class="product__oldPrice"><span>&#8377;</span>20</span>
-              </div>
-              <div class="product__quantity">
-                <button>ADD</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="products__product">
-            <div class="product__image">
-              <div class="product__offer">10% OFF</div>
-              <img src="./images/karela.jpeg" />
-              <div class="product__sourced">sourced at : 5am</div>
-            </div>
-            <div class="product__name">Potato(Aloo)</div>
-            <div class="product__weight">1Kg</div>
-            <div class="product__details">
-              <div class="product__price">
-                <span class="product__newPrice"><span>&#8377;</span>15</span>
-                <span class="product__oldPrice"><span>&#8377;</span>20</span>
-              </div>
-              <div class="product__quantity">
-                <button>ADD</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="checkoutPrice"></div>
       </div>
     </div>
 
@@ -345,5 +129,8 @@
         <i class="fa-brands fa-linkedin"></i>
       </div>
     </div>
+
+    <script defer src="./js/index.js" type="module"></script>
+    <!-- <script defer src="./js/view/productView.js" type="module"></script> -->
   </body>
 </html>
