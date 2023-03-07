@@ -1,7 +1,11 @@
 import React from "react";
 
 function Categorie(props) {
-  return <li>{props.categorieName}</li>;
+  return (
+    <li onClick={() => props.changeCategorie(props.categorieName)}>
+      {props.categorieName}
+    </li>
+  );
 }
 
 export default Categorie;

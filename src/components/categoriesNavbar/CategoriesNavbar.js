@@ -17,7 +17,14 @@ function CategoriesNavbar(props) {
   let categories = Object.keys(props.data);
 
   const listItems = categories.map((categorie, id) => {
-    return <Categorie key={id} categorieName={categorie} data={props.data} />;
+    return (
+      <Categorie
+        key={id}
+        categorieName={categorie}
+        data={props.data}
+        changeCategorie={props.changeCategorie}
+      />
+    );
   });
 
   return <ul className="categories flexRow">{listItems}</ul>;

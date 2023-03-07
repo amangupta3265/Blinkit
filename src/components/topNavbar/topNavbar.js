@@ -16,7 +16,11 @@ function TopNavbar(props) {
 
         <div className="topNavbar__right flexRow paddingTopBottom10px">
           <LoginBtn />
-          <MyCart />
+          <MyCart
+            displayCartItems={props.displayCartItems}
+            cartItemsCount={props.cartItemsCount}
+            cartItemsValue={props.cartItemsValue}
+          />
         </div>
       </div>
     </>

@@ -1,23 +1,44 @@
 import React from "react";
 import ProductCategorie from "./productCategorie";
 
-function ProductCategoriesNavbar(props) {
-  let categories = Object.keys(props.data);
+class ProductCategoriesNavbar extends React.Component {
+  render() {
+    let { productCategories, changeProductCategorie } = this.props;
+    //let { productCategories, changeProductCategorie } = props;
 
-  let productCategories = props.data[categories[0]];
+    //console.log("ProductCategoriesNavbar", productCategories);
 
-  const listItems = productCategories.map((productCategorie, id) => {
-    return (
-      <ProductCategorie
-        key={id}
-        id={id}
-        productCategorie={productCategorie}
-        data={props.data}
-      />
-    );
-  });
+    // return (
+    //   <ul className="productCategoriesNavbar">
+    //     {productCategories.map((productCategorie, id) => (
+    //       <ProductCategorie
+    //         key={id}
+    //         id={id}
+    //         productCategorie={productCategorie}
+    //         // data={props.data}
+    //         style={{ border: "2rem solid black" }}
+    //         changeProductCategorie={changeProductCategorie}
+    //       />
+    //     ))}
+    //   </ul>
+    // );
 
-  return <ul className="productCategoriesNavbar">{listItems}</ul>;
+    const listItems = productCategories.map((productCategorie, id) => {
+      //console.log(changeProductCategorie);
+      //console.log(changeProductCategorie(productCategorie));
+      return (
+        <ProductCategorie
+          key={id}
+          id={id}
+          productCategorie={productCategorie}
+          // data={props.data}
+          changeProductCategorie={changeProductCategorie}
+        />
+      );
+    });
+
+    return <ul className="productCategoriesNavbar"> {listItems}</ul>;
+  }
 }
 
 export default ProductCategoriesNavbar;

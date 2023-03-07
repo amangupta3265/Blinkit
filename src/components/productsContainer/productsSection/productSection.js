@@ -5,8 +5,12 @@ import ProductsSectionHeading from "./productsSectionHeading";
 function productSection(props) {
   return (
     <div className="productsSection">
-      <ProductsSectionHeading data={props.data} />
-      <ProductsInnerContainer data={props.data} />
+      <ProductsSectionHeading />
+      <ProductsInnerContainer
+        products={props.products}
+        addItemInCart={props.addItemInCart}
+        removeItemInCart={props.removeItemInCart}
+      />
     </div>
   );
 }
