@@ -19,6 +19,8 @@ class Product extends React.Component {
       count: parseInt(prevState.count) + 1,
     }));
 
+    this.props.product.count = parseInt(this.props.product.count) + 1;
+
     this.props.addItemInCart(this.props.product.product__newPrice);
   };
 
@@ -36,6 +38,8 @@ class Product extends React.Component {
       }
     );
 
+    this.props.product.count = parseInt(this.props.product.count) - 1;
+
     this.props.removeItemInCart(this.props.product.product__newPrice);
   };
 
@@ -46,10 +50,23 @@ class Product extends React.Component {
       showCounter: true,
     });
 
+    this.props.product.count = 1;
+
     this.props.addItemInCart(this.props.product.product__newPrice);
   };
 
   render() {
+    // let data = this.props.data;
+    // //console.log("data", data);
+    // let productCategories = data[categorie];
+    // //console.log("productCategories", productCategories);
+    // let products = productCategories[id]["products"];
+    // let productCategorie = productCategories[id]["productCategory__name"];
+
+    if (parseInt(this.state.count) !== 0) {
+      this.state.showCounter = true;
+    }
+
     let product = (
       <div className="products__product">
         <div className="product__image">
@@ -68,10 +85,10 @@ class Product extends React.Component {
         <div className="product__details">
           <div className="product__price">
             <span className="product__newPrice">
-              {this.props.product.product__newPrice}
+              ₹{this.props.product.product__newPrice}
             </span>
             <span className="product__oldPrice">
-              {this.props.product.product__oldPrice}
+              ₹{this.props.product.product__oldPrice}
             </span>
           </div>
           <ProductButton

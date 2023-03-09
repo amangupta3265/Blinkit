@@ -7,8 +7,14 @@ import ProductsContainer from "./components/productsContainer/productsContainer"
 import Advantages from "./components/advantages/advantages";
 import Footer from "./components/footerContainer/footer";
 import AboutBlinkit from "./components/aboutBlinkit/aboutBlinkit";
-import data from "./json/data.json";
+import data from "./json/data";
 import React from "react";
+import { DataContext } from "./components/dataContex";
+
+// const DataContext = React.createContext();
+
+// const DataProvider = DataContext.Provider;
+// const DataConsumer = DataContext.Consumer;
 
 class App extends React.Component {
   // console.log(data);
@@ -65,6 +71,7 @@ class App extends React.Component {
 
   render() {
     console.log("render", this.state.categorie);
+    //console.log(DataProvider);
     return (
       <div className="App">
         <TopNavbar
@@ -73,12 +80,16 @@ class App extends React.Component {
           displayCartItems={this.state.displayCartItems}
         />
         <CategoriesNavbar data={data} changeCategorie={this.changeCategorie} />
-        <ProductsContainer
-          data={data}
-          categorie={this.state.categorie}
-          addItemInCart={this.addItemInCart}
-          removeItemInCart={this.removeItemInCart}
-        />
+
+        <DataContext.Provider value={data}>
+          <ProductsContainer
+            data={data}
+            categorie={this.state.categorie}
+            addItemInCart={this.addItemInCart}
+            removeItemInCart={this.removeItemInCart}
+          />
+        </DataContext.Provider>
+
         <Advantages />
         <AboutBlinkit />
         <Footer />

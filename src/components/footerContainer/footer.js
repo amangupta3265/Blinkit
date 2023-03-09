@@ -1,4 +1,5 @@
 import React from "react";
+import SocialHandles from "./socialHandles";
 import Copyright from "./copyright";
 import DownloadApp from "./downloadApp";
 
@@ -9,7 +10,7 @@ function Footer() {
       <div className="footer">
         <Copyright />
         <DownloadApp />
-        <Copyright />
+        <SocialHandles />
       </div>
     </>
   );

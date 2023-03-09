@@ -3,11 +3,16 @@ import ProductsInnerContainer from "./productsInnerContainer";
 import ProductsSectionHeading from "./productsSectionHeading";
 
 function productSection(props) {
+  console.log("from productSection", props.categorie);
   return (
     <div className="productsSection">
       <ProductsSectionHeading />
       <ProductsInnerContainer
+        data={props.data}
         products={props.products}
+        productCategorie={props.productCategorie}
+        categorie={props.categorie}
+        id={props.id}
         addItemInCart={props.addItemInCart}
         removeItemInCart={props.removeItemInCart}
       />

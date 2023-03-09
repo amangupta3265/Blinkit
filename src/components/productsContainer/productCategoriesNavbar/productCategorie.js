@@ -8,7 +8,9 @@ function ProductCategorie(props) {
           ? "productCategory flexRow productCategory__active"
           : "productCategory flexRow"
       }
-      onClick={(e) => props.changeProductCategorie(e, props.id)}
+      onClick={(e) =>
+        props.changeProductCategorie(e, props.id, productCategorie)
+      }
     >
       <img
         className="productCategory__image"
