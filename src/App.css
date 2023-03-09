@@ -23,6 +23,12 @@
   display: flex;
   align-items: center;
 }
+
+.flexColumn {
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+}
 .topNavbar {
   height: 6rem;
   justify-content: space-between;
@@ -216,27 +222,31 @@
 
 .checkoutItems {
   color: gray;
+  font-size: 1.4rem;
   margin-bottom: 2rem;
 }
 
 .checkoutProducts {
+  margin: auto;
   flex-direction: column;
 }
 
 .checkout__product {
-  width: 80rem;
+  width: 70rem;
   justify-content: space-between;
   /* border: 1px solid whitesmoke; */
 }
 
 .checkoutPrice {
   font-size: 1.6rem;
-  margin-top: 10rem;
+  margin: auto;
+  margin-top: 5rem;
+  width: 70rem;
 }
 
 .checkoutPrice .flexRow {
   justify-content: space-between;
-  margin-right: 8rem;
+  margin: auto;
 }
 
 .proceedButton {
@@ -428,4 +438,9 @@
 .incrementQuantity,
 .decrementQuantity {
   padding: 0.8rem;
+}
+
+.placeOrder {
+  margin: 1rem;
+  margin-left: 18rem;
 }

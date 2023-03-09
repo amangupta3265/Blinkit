@@ -1,8 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function MyCart(props) {
+  const navigate = useNavigate();
+
+  let handleCheckout = () => {
+    navigate("/checkout");
+  };
+
   return (
-    <button className="myCart flexRow">
+    <button className="myCart flexRow" onClick={handleCheckout}>
       <span>
         <i className="fa-solid fa-cart-shopping"></i>
       </span>

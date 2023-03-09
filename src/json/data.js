@@ -16,6 +16,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 2,
           product__image: "./potato.jpeg",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -26,6 +27,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 3,
           product__image: "./potato.jpeg",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -36,6 +38,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 4,
           product__image: "./potato.jpeg",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -46,6 +49,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 5,
           product__image: "./potato.jpeg",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -56,6 +60,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 6,
           product__image: "./potato.jpeg",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -66,6 +71,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 7,
           product__image: "./potato.jpeg",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -76,6 +82,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 8,
           product__image: "./potato.jpeg",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -86,6 +93,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 9,
           product__image: "./potato.jpeg",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -102,6 +110,7 @@ const data = {
       productCategory__name: "Fresh Vegetables",
       products: [
         {
+          product__id: 10,
           product__image: "./potato.jpeg",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -118,6 +127,7 @@ const data = {
       productCategory__name: "Fresh Fruits",
       products: [
         {
+          product__id: 11,
           product__image: "./images/fresh fruits.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -134,6 +144,7 @@ const data = {
       productCategory__name: "Exotics",
       products: [
         {
+          product__id: 12,
           product__image: "./images/exotics.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -150,6 +161,7 @@ const data = {
       productCategory__name: "Seasonal",
       products: [
         {
+          product__id: 13,
           product__image: "./images/seasonal.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -166,6 +178,7 @@ const data = {
       productCategory__name: "Oraganic & Hydroponic",
       products: [
         {
+          product__id: 14,
           product__image: "./images/organic.jpeg",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -182,6 +195,7 @@ const data = {
       productCategory__name: "Freshly Cut & Sprouts",
       products: [
         {
+          product__id: 15,
           product__image: "./images/freshly cut.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -200,6 +214,7 @@ const data = {
       productCategory__name: "Milk",
       products: [
         {
+          product__id: 15,
           product__image: "./images/milk.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -210,6 +225,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 16,
           product__image: "./images/milk.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -226,6 +242,7 @@ const data = {
       productCategory__name: "Breads",
       products: [
         {
+          product__id: 17,
           product__image: "./images/bread.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -236,6 +253,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 18,
           product__image: "./images/bread.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -252,6 +270,7 @@ const data = {
       productCategory__name: "Eggs",
       products: [
         {
+          product__id: 19,
           product__image: "./images/eggs.webp",
           product__offer: "1% OFF",
           product__sourced: "sourced at : 5am",
@@ -262,6 +281,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 20,
           product__image: "./images/eggs.webp",
           product__offer: "1% OFF",
           product__sourced: "sourced at : 5am",
@@ -278,6 +298,7 @@ const data = {
       productCategory__name: "Breakfast and Cereal",
       products: [
         {
+          product__id: 21,
           product__image: "./images/cereal.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -288,6 +309,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 22,
           product__image: "./images/cereal.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -306,6 +328,7 @@ const data = {
       productCategory__name: "Chips & Crisps",
       products: [
         {
+          product__id: 23,
           product__image: "./images/chips.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -316,6 +339,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 24,
           product__image: "./images/chips.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -332,6 +356,7 @@ const data = {
       productCategory__name: "Breads",
       products: [
         {
+          product__id: 25,
           product__image: "./images/bread.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -342,6 +367,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 26,
           product__image: "./images/bread.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -358,6 +384,7 @@ const data = {
       productCategory__name: "Eggs",
       products: [
         {
+          product__id: 27,
           product__image: "./images/eggs.webp",
           product__offer: "1% OFF",
           product__sourced: "sourced at : 5am",
@@ -368,6 +395,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 28,
           product__image: "./images/eggs.webp",
           product__offer: "1% OFF",
           product__sourced: "sourced at : 5am",
@@ -384,6 +412,7 @@ const data = {
       productCategory__name: "Breakfast and Cereal",
       products: [
         {
+          product__id: 29,
           product__image: "./images/cereal.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",
@@ -394,6 +423,7 @@ const data = {
           count: "0",
         },
         {
+          product__id: 30,
           product__image: "./images/cereal.webp",
           product__offer: "10% OFF",
           product__sourced: "sourced at : 5am",

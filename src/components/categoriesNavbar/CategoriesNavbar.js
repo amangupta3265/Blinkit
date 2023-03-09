@@ -1,5 +1,6 @@
 import React from "react";
 import Categorie from "./categorie";
+import { useNavigate } from "react-router-dom";
 
 function CategoriesNavbar(props) {
   //const data = this.data;
@@ -16,6 +17,12 @@ function CategoriesNavbar(props) {
 
   let categories = Object.keys(props.data);
 
+  const navigate = useNavigate();
+
+  let gotoHomePage = () => {
+    navigate("/");
+  };
+
   const listItems = categories.map((categorie, id) => {
     return (
       <Categorie
@@ -27,7 +34,11 @@ function CategoriesNavbar(props) {
     );
   });
 
-  return <ul className="categories flexRow">{listItems}</ul>;
+  return (
+    <ul className="categories flexRow" onClick={gotoHomePage}>
+      {listItems}
+    </ul>
+  );
 }
 
 export default CategoriesNavbar;

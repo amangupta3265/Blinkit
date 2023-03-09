@@ -2,7 +2,7 @@ import React from "react";
 import ProductCategoriesNavbar from "./productCategoriesNavbar/productCategoriesNavbar";
 import ProductsSection from "./productsSection/productSection";
 import { DataContext } from "../dataContex";
-import data from "../../json/data";
+// import data from "../../json/data";
 
 class ProductsContainer extends React.Component {
   constructor(props) {
@@ -27,6 +27,45 @@ class ProductsContainer extends React.Component {
     });
   };
 
+  incrementCount = () => {
+    console.log(this.state.count);
+
+    //let data1 = data[categorie][id]["products"][0];
+
+    this.setState((prevState) => ({
+      count: parseInt(prevState.count) + 1,
+    }));
+
+    this.props.addItemInCart(this.props.product.product__newPrice);
+  };
+
+  decrementCount = () => {
+    this.setState(
+      (prevState) => ({
+        count: parseInt(prevState.count) - 1,
+      }),
+      () => {
+        if (this.state.count === 0) {
+          this.setState({
+            showCounter: false,
+          });
+        }
+      }
+    );
+
+    this.props.removeItemInCart(this.props.product.product__newPrice);
+  };
+
+  displayCounter = () => {
+    console.log("from child");
+    this.setState({
+      count: 1,
+      showCounter: true,
+    });
+
+    this.props.addItemInCart(this.props.product.product__newPrice);
+  };
+
   render() {
     //let categories = Object.keys(this.props.data);
     var categorie = this.props.categorie;
@@ -39,7 +78,7 @@ class ProductsContainer extends React.Component {
         <DataContext.Consumer>
           {(value) => {
             //console.log(value);
-            //let data = value;
+            let data = value;
             //console.log("data", data);
             let productCategories = data[categorie];
             //console.log("productCategories", productCategories);
@@ -49,7 +88,7 @@ class ProductsContainer extends React.Component {
 
             let data1 = data[categorie][id]["products"][0];
 
-            console.log(data1);
+            //console.log(data1);
 
             return (
               <div className="productsContainer">

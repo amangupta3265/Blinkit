@@ -14,14 +14,18 @@ class Product extends React.Component {
   }
 
   incrementCount = () => {
-    console.log(this.state.count);
+    console.log("incrementCount", this.state.count);
+    console.log("incrementCount for product", this.props.product);
     this.setState((prevState) => ({
       count: parseInt(prevState.count) + 1,
     }));
 
     this.props.product.count = parseInt(this.props.product.count) + 1;
 
-    this.props.addItemInCart(this.props.product.product__newPrice);
+    this.props.addItemInCart(
+      this.props.product.product__newPrice,
+      this.props.product
+    );
   };
 
   decrementCount = () => {
@@ -40,7 +44,10 @@ class Product extends React.Component {
 
     this.props.product.count = parseInt(this.props.product.count) - 1;
 
-    this.props.removeItemInCart(this.props.product.product__newPrice);
+    this.props.removeItemInCart(
+      this.props.product.product__newPrice,
+      this.props.product
+    );
   };
 
   displayCounter = () => {
@@ -52,7 +59,10 @@ class Product extends React.Component {
 
     this.props.product.count = 1;
 
-    this.props.addItemInCart(this.props.product.product__newPrice);
+    this.props.addItemInCart(
+      this.props.product.product__newPrice,
+      this.props.product
+    );
   };
 
   render() {
@@ -63,8 +73,10 @@ class Product extends React.Component {
     // let products = productCategories[id]["products"];
     // let productCategorie = productCategories[id]["productCategory__name"];
 
+    let showCounter = this.state.showCounter;
+
     if (parseInt(this.state.count) !== 0) {
-      this.state.showCounter = true;
+      showCounter = true;
     }
 
     let product = (
@@ -93,7 +105,7 @@ class Product extends React.Component {
           </div>
           <ProductButton
             displayCounter={this.displayCounter}
-            showCounter={this.state.showCounter}
+            showCounter={showCounter}
             incrementCount={this.incrementCount}
             decrementCount={this.decrementCount}
             count={this.state.count}
