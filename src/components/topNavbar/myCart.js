@@ -7,7 +7,7 @@ function MyCart(props) {
   let handleCheckout = () => {
     navigate("/checkout");
     //<Routes path="/checkout" element={CheckoutPage} />;
-    // window.history.pushState(null, null, "/checkout");
+    //window.history.pushState({ urlPath: "/checkout" }, "", "/checkout");
     // window.location.;
     // window.location.href
     console.log("checkout");

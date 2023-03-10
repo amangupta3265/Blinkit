@@ -74,7 +74,7 @@ class Product extends React.Component {
       showCounter = true;
     }
 
-    console.log("showCounter", showCounter, this.props.product.count);
+    // console.log("showCounter", showCounter, this.props.product.count);
 
     let product = (
       <div className="products__product">

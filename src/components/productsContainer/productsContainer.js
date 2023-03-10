@@ -46,7 +46,7 @@ class ProductsContainer extends React.Component {
     data2[this.props.categorie][this.state.id]["products"][id]["count"] =
       count + 1;
 
-    this.setState((prevState) => ({
+    this.setState(() => ({
       data: data2,
     }));
 
@@ -120,7 +120,7 @@ class ProductsContainer extends React.Component {
   };
 
   changeCategorie = (categorie) => {
-    console.log("CHANGE");
+    console.log("CHANGE to", categorie, "from", this.state.categorie);
     this.setState({
       categorie: categorie,
       id: 0,
@@ -128,6 +128,13 @@ class ProductsContainer extends React.Component {
   };
 
   render() {
+    console.log("ProductsContainer render");
+    let categorie = this.props.categorie;
+
+    if (categorie !== this.state.categorie) {
+      this.changeCategorie(categorie);
+    }
+
     return (
       <>
         <DataContext.Consumer>
@@ -138,9 +145,13 @@ class ProductsContainer extends React.Component {
               return new Error("Something went wrong");
             }
 
-            let categorie = this.props.categorie;
-
             let id = parseInt(this.state.id);
+
+            if (categorie !== this.state.categorie) {
+              id = 0;
+            }
+
+            console.log("id", id);
 
             let data = this.state.data;
             //console.log("data", data);
