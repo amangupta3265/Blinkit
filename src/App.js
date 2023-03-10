@@ -123,6 +123,7 @@ class App extends React.Component {
                   <ErrorBoundary>
                     <DataContext.Provider value={data}>
                       <ProductsContainer
+                        id={0}
                         data={data}
                         categorie={this.state.categorie}
                         addItemInCart={this.addItemInCart}

@@ -6,6 +6,7 @@ class ProductCategoriesNavbar extends React.Component {
     let { productCategories, changeProductCategorie } = this.props;
 
     const listItems = productCategories.map((productCategorie, id) => {
+      //console.log("productCategorie", productCategorie);
       return (
         <ProductCategorie
           key={id}

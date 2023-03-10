@@ -10,7 +10,7 @@ class ProductsContainer extends React.Component {
 
     this.state = {
       productCategorie: "All",
-      id: 0,
+      id: this.props.id,
       categorie: "Vegetables & fruits",
       data: this.props.data,
       count: 0,
@@ -22,10 +22,11 @@ class ProductsContainer extends React.Component {
 
   changeProductCategorie = (e, id, productCategorie) => {
     //e.preventDefault();
-    //console.log("call from", productCategorie);
+    console.log("call from", productCategorie, "with id", id);
 
     this.setState({
       id: id,
+      productCategorie: productCategorie["productCategory__name"],
       // categorie: this.props.categorie,
     });
   };
@@ -62,8 +63,7 @@ class ProductsContainer extends React.Component {
 
   decrementCount = (id) => {
     let data2 = this.state.data;
-    // let data3 =
-    //   this.state.data[this.props.categorie][this.state.id]["products"];
+
     let count = parseInt(
       this.state.data[this.props.categorie][this.state.id]["products"][id][
         "count"
@@ -74,7 +74,7 @@ class ProductsContainer extends React.Component {
       count - 1;
 
     this.setState(
-      (prevState) => ({
+      () => ({
         data: data2,
       }),
       () => {
@@ -119,13 +119,15 @@ class ProductsContainer extends React.Component {
     this.props.addItemInCart(value, product);
   };
 
-  render() {
-    //let categories = Object.keys(this.props.data);
-    var categorie = this.props.categorie;
-    var id = parseInt(this.state.id);
-    //console.log(id);
+  changeCategorie = (categorie) => {
+    console.log("CHANGE");
+    this.setState({
+      categorie: categorie,
+      id: 0,
+    });
+  };
 
-    //console.log(DataConsumer);
+  render() {
     return (
       <>
         <DataContext.Consumer>
@@ -135,6 +137,10 @@ class ProductsContainer extends React.Component {
             if (!value) {
               return new Error("Something went wrong");
             }
+
+            let categorie = this.props.categorie;
+
+            let id = parseInt(this.state.id);
 
             let data = this.state.data;
             //console.log("data", data);

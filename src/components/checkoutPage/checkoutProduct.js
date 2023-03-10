@@ -116,33 +116,3 @@ class Product extends React.Component {
 }
 
 export default Product;
-
-/*
-
-<div className="checkout__product flexRow">
-          <div className="flexRow">
-            <div className="product__image">
-              <div className="product__offer">{this.props.product.product__offer}</div>
-              <img src={this.props.product.product__image} />
-            </div>
-            <div>
-              <div className="product__name">{this.props.product.product__name}</div>
-              <div className="product__weight">{this.props.product.product__weight}</div>
-              <div className="product__details">
-                <div className="product__price">
-                  <span className="product__newPrice"><span>&#8377;</span><span>{this.props.product.product__newPrice}</span></span>
-                  <span className="product__oldPrice"><span>&#8377;</span><span>{this.props.product.product__oldPrice}</span></span>
-                </div>
-              </div>
-            </div>
-            </div>
-            <ProductButton
-            displayCounter={this.displayCounter}
-            showCounter={this.state.showCounter}
-            incrementCount={this.incrementCount}
-            decrementCount={this.decrementCount}
-            count={this.state.count}
-          />
-            
-          </div>
-*/
