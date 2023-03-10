@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CartBilling from "./cartBilling";
 import PlaceOrderHeader from "./placeOrderHeader";
-import Product from "./product";
+import Product from "./checkoutProduct";
 
 export default class CheckoutPage extends Component {
   constructor(props) {

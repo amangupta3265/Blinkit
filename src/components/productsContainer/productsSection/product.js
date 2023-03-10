@@ -8,7 +8,7 @@ class Product extends React.Component {
     super(props);
 
     this.state = {
-      count: this.props.product.count,
+      count: this.props.count,
       showCounter: false,
     };
   }
@@ -30,6 +30,7 @@ class Product extends React.Component {
   };
 
   decrementCount = () => {
+    console.log("decrementCount", this.state.count);
     this.setState(
       (prevState) => ({
         count: parseInt(prevState.count) - 1,
@@ -67,18 +68,13 @@ class Product extends React.Component {
   };
 
   render() {
-    // let data = this.props.data;
-    // //console.log("data", data);
-    // let productCategories = data[categorie];
-    // //console.log("productCategories", productCategories);
-    // let products = productCategories[id]["products"];
-    // let productCategorie = productCategories[id]["productCategory__name"];
-
     let showCounter = this.state.showCounter;
 
-    if (parseInt(this.state.count) !== 0) {
+    if (parseInt(this.props.product.count) !== 0) {
       showCounter = true;
     }
+
+    console.log("showCounter", showCounter, this.props.product.count);
 
     let product = (
       <div className="products__product">
@@ -105,10 +101,10 @@ class Product extends React.Component {
             </span>
           </div>
           <ProductButton
-            displayCounter={this.displayCounter}
+            displayCounter={this.props.displayCounter}
             showCounter={showCounter}
-            incrementCount={this.incrementCount}
-            decrementCount={this.decrementCount}
+            incrementCount={this.props.incrementCount}
+            decrementCount={this.props.decrementCount}
             count={this.props.product.count}
             id={this.props.id}
           />

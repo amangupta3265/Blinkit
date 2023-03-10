@@ -84,11 +84,15 @@ class App extends React.Component {
           parseInt(product["product__oldPrice"]),
       },
       () => {
-        if (this.state.cartItemsCount === 0) {
+        if (product["count"] === 0) {
           cartData.delete(id);
           this.setState({
-            displayCartItems: false,
             cartData: cartData,
+          });
+        }
+        if (this.state.cartItemsCount === 0) {
+          this.setState({
+            displayCartItems: false,
           });
         }
       }

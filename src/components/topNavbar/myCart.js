@@ -6,6 +6,12 @@ function MyCart(props) {
 
   let handleCheckout = () => {
     navigate("/checkout");
+    //<Routes path="/checkout" element={CheckoutPage} />;
+    // window.history.pushState(null, null, "/checkout");
+    // window.location.;
+    // window.location.href
+    console.log("checkout");
+    //this.props.history.push("/checkout");
   };
 
   return (
