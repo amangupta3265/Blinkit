@@ -13,14 +13,15 @@ class Product extends React.Component {
     };
   }
 
-  incrementCount = () => {
-    console.log("incrementCount", this.state.count);
-    console.log("incrementCount for product", this.props.product);
+  incrementCount = (id) => {
+    console.log("incrementCount for product id :", id);
+    //console.log("incrementCount", this.state.count);
+    //console.log("incrementCount for product", this.props.product);
     this.setState((prevState) => ({
       count: parseInt(prevState.count) + 1,
     }));
 
-    this.props.product.count = parseInt(this.props.product.count) + 1;
+    this.props.product.count = parseInt(this.state.count) + 1;
 
     this.props.addItemInCart(
       this.props.product.product__newPrice,
@@ -50,8 +51,8 @@ class Product extends React.Component {
     );
   };
 
-  displayCounter = () => {
-    console.log("from child");
+  displayCounter = (id) => {
+    console.log("displayCounter for product id", id);
     this.setState({
       count: 1,
       showCounter: true,
@@ -108,7 +109,8 @@ class Product extends React.Component {
             showCounter={showCounter}
             incrementCount={this.incrementCount}
             decrementCount={this.decrementCount}
-            count={this.state.count}
+            count={this.props.product.count}
+            id={this.props.id}
           />
         </div>
       </div>

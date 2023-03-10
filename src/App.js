@@ -1,8 +1,6 @@
-import logo from "./logo.svg";
 import "./App.css";
 import TopNavbar from "./components/topNavbar/topNavbar";
 import CategoriesNavbar from "./components/categoriesNavbar/CategoriesNavbar";
-//import ProductsContainer from "./components/productsContainer/productsContainer";
 import ProductsContainer from "./components/productsContainer/productsContainer";
 import Advantages from "./components/advantages/advantages";
 import Footer from "./components/footerContainer/footer";
@@ -12,16 +10,9 @@ import React from "react";
 import { DataContext } from "./components/dataContex";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CheckoutPage from "./components/checkoutPage/checkoutPage";
-import { useNavigate } from "react-router-dom";
-
-// const DataContext = React.createContext();
-
-// const DataProvider = DataContext.Provider;
-// const DataConsumer = DataContext.Consumer;
+import ErrorBoundary from "./components/ErrorBoundary";
 
 class App extends React.Component {
-  // console.log(data);
-
   constructor(props) {
     super(props);
 
@@ -71,13 +62,6 @@ class App extends React.Component {
       mrpPrice:
         parseInt(this.state.mrpPrice) + parseInt(product["product__oldPrice"]),
     });
-
-    //actualPrice: parseInt(this.state.actualPrice) + parseInt(product["product__newPrice"],
-    // mrpPrice :  parseInt(this.state.mrpPrice) + parseInt(product["product__oldPrice"]
-
-    // thistotalCount++;
-    //   actualPrice += parseInt(value["product__newPrice"]);
-    //   mrpPrice += parseInt(value["product__oldPrice"]);
   };
 
   removeItemInCart = (itemValue, product) => {
@@ -115,13 +99,6 @@ class App extends React.Component {
     //console.log("render", this.state.categorie);
     //console.log(this.state.cartData);
 
-    // const navigate = useNavigate();
-
-    // let gotoHomePage = () => {
-    //   navigate("/");
-    // };
-
-    //console.log(DataProvider);
     return (
       <div className="App">
         <TopNavbar
@@ -139,13 +116,16 @@ class App extends React.Component {
               path={path}
               element={
                 <>
-                  <DataContext.Provider value={data}>
-                    <ProductsContainer
-                      categorie={this.state.categorie}
-                      addItemInCart={this.addItemInCart}
-                      removeItemInCart={this.removeItemInCart}
-                    />
-                  </DataContext.Provider>
+                  <ErrorBoundary>
+                    <DataContext.Provider value={data}>
+                      <ProductsContainer
+                        data={data}
+                        categorie={this.state.categorie}
+                        addItemInCart={this.addItemInCart}
+                        removeItemInCart={this.removeItemInCart}
+                      />
+                    </DataContext.Provider>
+                  </ErrorBoundary>
                 </>
               }
             />

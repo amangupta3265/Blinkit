@@ -6,7 +6,7 @@ export default class ProductButton extends Component {
       <div className="product__quantity">
         <button
           className="btn-add"
-          onClick={this.props.displayCounter}
+          onClick={() => this.props.displayCounter(this.props.id)}
           style={{ display: this.props.showCounter ? "none" : "block" }}
         >
           ADD
@@ -18,7 +18,7 @@ export default class ProductButton extends Component {
           <span
             className="decrementQuantity"
             id="decrement"
-            onClick={this.props.decrementCount}
+            onClick={() => this.props.decrementCount(this.props.id)}
           >
             -
           </span>
@@ -26,7 +26,7 @@ export default class ProductButton extends Component {
           <span
             className="incrementQuantity"
             id="increment"
-            onClick={this.props.incrementCount}
+            onClick={() => this.props.incrementCount(this.props.id)}
           >
             +
           </span>

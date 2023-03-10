@@ -8,11 +8,11 @@ function productSection(props) {
     <div className="productsSection">
       <ProductsSectionHeading />
       <ProductsInnerContainer
+        incrementCount={props.incrementCount}
         data={props.data}
         products={props.products}
         productCategorie={props.productCategorie}
         categorie={props.categorie}
-        id={props.id}
         addItemInCart={props.addItemInCart}
         removeItemInCart={props.removeItemInCart}
       />

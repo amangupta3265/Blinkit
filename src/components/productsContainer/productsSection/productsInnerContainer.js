@@ -9,12 +9,14 @@ function ProductsInnerContainer(props) {
   let productsArray = products.map((product, id) => {
     return (
       <Product
+        incrementCount={props.incrementCount}
         data={props.data}
         product={product}
         key={id + props.productCategorie}
         productCategorie={props.productCategorie}
         categorie={props.categorie}
         //index={props.id}
+        id={id}
         addItemInCart={props.addItemInCart}
         removeItemInCart={props.removeItemInCart}
       />

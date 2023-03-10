@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import CartBilling from "./cartBilling";
+import PlaceOrderHeader from "./placeOrderHeader";
 import Product from "./product";
 
 export default class CheckoutPage extends Component {
@@ -116,17 +118,7 @@ export default class CheckoutPage extends Component {
       dileveryCharge = parseInt(this.props.dileveryCharge),
       totalCount = parseInt(this.props.totalCount);
 
-    // console.log("mrpPrice", mrpPrice);
-    // console.log("actualPrice", actualPrice);
-    // console.log("dileveryCharge", dileveryCharge);
-    // console.log("totalCount", totalCount);
-
-    //for (let value of cartData.values()) {
     for (let [key, value] of cartData) {
-      //console.log(value);
-      //   totalCount++;
-      //   actualPrice += parseInt(value["product__newPrice"]);
-      //   mrpPrice += parseInt(value["product__oldPrice"]);
       checkoutProducts.push(
         <Product
           key={key}
@@ -137,53 +129,17 @@ export default class CheckoutPage extends Component {
       );
     }
 
-    // const checkoutProducts = cartData.forEach((key, value) => {
-    //   console.log(key + " = " + value);
-    //   return (
-    //     <Product
-    //       key={value}
-    //       product={key}
-    //       addItemInCart={this.props.addItemInCart}
-    //       removeItemInCart={this.props.removeItemInCart}
-    //     />
-    //   );
-    // });
-
     return (
       <>
         <div className="productsContainer flexColumn ">
-          <div className="placeOrder">
-            <p className="placeOrderHeading">Place Order</p>
-            <p className="deliveryTime">Delivery in 10 minutes</p>
-            <p className="checkoutItems">{totalCount} items</p>
-          </div>
+          <PlaceOrderHeader totalCount={totalCount} />
           <div className="checkoutProducts">{checkoutProducts}</div>
-          <div className="checkoutPrice">
-            <div className="flexRow">
-              <p>MRP</p>
-              <p>₹{mrpPrice}</p>
-            </div>
-            <div className="flexRow">
-              <p>Product Discount</p>
-              <p>₹{mrpPrice - actualPrice}</p>
-            </div>
-            <div className="flexRow">
-              <p>Delivery Charge</p>
-              <p>₹{dileveryCharge}</p>
-            </div>
-            <div className="flexRow">
-              <p>Grand Total</p>
-              <p>₹{actualPrice + 10}</p>
-            </div>
-            <div className="flexRow proceedButton">
-              <div>
-                <span>{totalCount} items =</span>
-                <span>₹ {actualPrice + dileveryCharge}</span>
-              </div>
-              <p>Proceed ＞ </p>
-            </div>
-          </div>
-          ;
+          <CartBilling
+            actualPrice={actualPrice}
+            mrpPrice={mrpPrice}
+            dileveryCharge={dileveryCharge}
+            totalCount={totalCount}
+          />
         </div>
       </>
     );

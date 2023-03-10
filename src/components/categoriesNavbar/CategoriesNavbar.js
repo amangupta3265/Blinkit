@@ -3,18 +3,6 @@ import Categorie from "./categorie";
 import { useNavigate } from "react-router-dom";
 
 function CategoriesNavbar(props) {
-  //const data = this.data;
-  // let categories = [
-  //   "Vegetables & fruits",
-  //   "Dairy & Breakfast",
-  //   "Munchies",
-  //   "Cold Drinks & Juices",
-  //   "Instant & Frozen Food",
-  //   "Tea, Coffee & Health Drinks",
-  //   "Bakery & Biscuits",
-  //   "More",
-  // ];
-
   let categories = Object.keys(props.data);
 
   const navigate = useNavigate();
