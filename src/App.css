@@ -186,18 +186,15 @@
 }
 .sortByLabel {
   color: gray;
-  font-size: 0.8rem;
-}
-
-.sortByLabel {
   font-size: 1.4rem;
+  margin-right: 1rem;
 }
 
 .sortBy {
   appearance: none;
   padding: 0.3rem;
   color: #23963f;
-  width: 10rem;
+  width: 13rem;
 }
 .products {
   flex-wrap: wrap;
@@ -245,12 +242,16 @@
   width: 70rem;
 }
 
-.checkoutPrice .flexRow {
-  justify-content: space-between;
-  margin: auto;
+.proceedButton {
+  margin-top: 5rem;
 }
 
-.proceedButton {
+.checkoutPrice .flexRow {
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.checkoutPrice .proceedButton {
   color: white;
   background-color: #23963f;
   padding: 1rem;
@@ -280,6 +281,7 @@
 }
 .product__name {
   font-size: 1.4rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
 }
 

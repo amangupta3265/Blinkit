@@ -84,11 +84,15 @@ class App extends React.Component {
           parseInt(product["product__oldPrice"]),
       },
       () => {
-        if (this.state.cartItemsCount === 0) {
+        if (product["count"] === 0) {
           cartData.delete(id);
           this.setState({
-            displayCartItems: false,
             cartData: cartData,
+          });
+        }
+        if (this.state.cartItemsCount === 0) {
+          this.setState({
+            displayCartItems: false,
           });
         }
       }
@@ -110,30 +114,42 @@ class App extends React.Component {
         <CategoriesNavbar data={data} changeCategorie={this.changeCategorie} />
 
         <Routes>
-          {["/", "/home"].map((path, id) => (
-            <Route
-              key={id}
-              path={path}
-              element={
-                <>
-                  <ErrorBoundary>
-                    <DataContext.Provider value={data}>
-                      <ProductsContainer
-                        data={data}
-                        categorie={this.state.categorie}
-                        addItemInCart={this.addItemInCart}
-                        removeItemInCart={this.removeItemInCart}
-                      />
-                    </DataContext.Provider>
-                  </ErrorBoundary>
-                </>
-              }
-            />
-          ))}
+          {/* {["/", "/blinkit/home"].map((path, id) => ( */}
+          <Route
+            path="/"
+            // key={id}
+            // path={path}
+            element={
+              <>
+                <ErrorBoundary>
+                  <DataContext.Provider value={data}>
+                    <ProductsContainer
+                      id={0}
+                      data={data}
+                      categorie={this.state.categorie}
+                      addItemInCart={this.addItemInCart}
+                      removeItemInCart={this.removeItemInCart}
+                    />
+                  </DataContext.Provider>
+                </ErrorBoundary>
+              </>
+            }
+          />
+          {/* ))} */}
 
           <Route
             path="/checkout"
-            element={<CheckoutPage cartInfo={this.state} />}
+            element={
+              <CheckoutPage
+                addItemInCart={this.addItemInCart}
+                removeItemInCart={this.removeItemInCart}
+                cartData={this.state.cartData}
+                actualPrice={this.state.actualPrice}
+                mrpPrice={this.state.mrpPrice}
+                totalCount={this.state.totalCount}
+                dileveryCharge={this.state.dileveryCharge}
+              />
+            }
           />
         </Routes>
 
