@@ -10,23 +10,21 @@ class ProductsContainer extends React.Component {
 
     this.state = {
       productCategorie: "All",
-      id: this.props.id,
+      id: 0,
       categorie: "Vegetables & fruits",
       data: this.props.data,
       count: 0,
-      showCounter: false,
     };
 
     this.changeProductCategorie = this.changeProductCategorie.bind(this);
   }
 
   changeProductCategorie = (e, id, productCategorie) => {
-    //e.preventDefault();
-    console.log("call from", productCategorie, "with id", id);
+    e.preventDefault();
+    //console.log("call from", productCategorie);
 
     this.setState({
       id: id,
-      productCategorie: productCategorie["productCategory__name"],
       // categorie: this.props.categorie,
     });
   };
@@ -35,50 +33,36 @@ class ProductsContainer extends React.Component {
     console.log("incrementCount for product id :", id);
     //console.log("incrementCount", this.state.count);
     //console.log("incrementCount for product", this.props.product);
-    let data2 = this.state.data;
-
+    let data2 =
+      this.state.data[this.props.categorie][this.state.id]["products"][id];
     let count = parseInt(
       this.state.data[this.props.categorie][this.state.id]["products"][id][
         "count"
       ]
     );
+    //data2[this.props.categorie][this.state.id]["products"][id]["count"] = 1;
 
-    data2[this.props.categorie][this.state.id]["products"][id]["count"] =
-      count + 1;
-
-    this.setState(() => ({
+    console.log("data2", data2, count);
+    this.setState((prevState) => ({
+      count: parseInt(prevState.count) + 1,
       data: data2,
     }));
 
-    let value =
-      this.state.data[this.props.categorie][this.state.id]["products"][id][
-        "product__newPrice"
-      ];
+    this.props.product.count = parseInt(this.state.count) + 1;
 
-    let product =
-      this.state.data[this.props.categorie][this.state.id]["products"][id];
-
-    this.props.addItemInCart(value, product);
+    this.props.addItemInCart(
+      this.props.product.product__newPrice,
+      this.props.product
+    );
   };
 
   decrementCount = (id) => {
-    let data2 = this.state.data;
-
-    let count = parseInt(
-      this.state.data[this.props.categorie][this.state.id]["products"][id][
-        "count"
-      ]
-    );
-
-    data2[this.props.categorie][this.state.id]["products"][id]["count"] =
-      count - 1;
-
     this.setState(
-      () => ({
-        data: data2,
+      (prevState) => ({
+        count: parseInt(prevState.count) - 1,
       }),
       () => {
-        if (count === 0) {
+        if (this.state.count === 0) {
           this.setState({
             showCounter: false,
           });
@@ -86,78 +70,26 @@ class ProductsContainer extends React.Component {
       }
     );
 
-    let value =
-      this.state.data[this.props.categorie][this.state.id]["products"][id][
-        "product__newPrice"
-      ];
-    let product =
-      this.state.data[this.props.categorie][this.state.id]["products"][id];
-
-    this.props.removeItemInCart(value, product);
+    this.props.removeItemInCart(this.props.product.product__newPrice);
   };
 
   displayCounter = (id) => {
-    console.log("displayCounter", id);
-
-    let data2 = this.state.data;
-
-    data2[this.props.categorie][this.state.id]["products"][id]["count"] = 1;
-
+    console.log("from child");
     this.setState({
-      data: data2,
+      count: 1,
       showCounter: true,
     });
 
-    let value =
-      this.state.data[this.props.categorie][this.state.id]["products"][id][
-        "product__newPrice"
-      ];
-
-    let product =
-      this.state.data[this.props.categorie][this.state.id]["products"][id];
-
-    this.props.addItemInCart(value, product);
+    this.props.addItemInCart(this.props.product.product__newPrice);
   };
-
-  changeCategorie = (categorie) => {
-    console.log("CHANGE to", categorie, "from", this.state.categorie);
-    this.setState({
-      categorie: categorie,
-      id: 0,
-    });
-  };
-
-  // shouldComponentUpdate() {
-  //   var categorie = this.props.categorie;
-  //   console.log(
-  //     "shouldComponentUpdate",
-  //     categorie,
-  //     " old categorie",
-  //     this.state.categorie
-  //   );
-
-  //   if (categorie !== this.state.categorie) {
-  //     console.log("CHANGE 1");
-  //     this.changeCategorie(categorie);
-  //   }
-  //   console.log("CHALA");
-  //   console.log(
-  //     "CHALA",
-  //     this.props.categorie,
-  //     "---------",
-  //     this.state.categorie
-  //   );
-  //   return true;
-  // }
 
   render() {
-    console.log("ProductsContainer render");
-    let categorie = this.props.categorie;
+    //let categories = Object.keys(this.props.data);
+    var categorie = this.props.categorie;
+    var id = parseInt(this.state.id);
+    //console.log(id);
 
-    if (categorie !== this.state.categorie) {
-      this.changeCategorie(categorie);
-    }
-
+    //console.log(DataConsumer);
     return (
       <>
         <DataContext.Consumer>
@@ -168,21 +100,17 @@ class ProductsContainer extends React.Component {
               return new Error("Something went wrong");
             }
 
-            let id = parseInt(this.state.id);
-
-            if (categorie !== this.state.categorie) {
-              id = 0;
-            }
-
-            console.log("id", id);
-
-            let data = this.state.data;
+            let data = value;
             //console.log("data", data);
             let productCategories = data[categorie];
             //console.log("productCategories", productCategories);
             let products = productCategories[id]["products"];
             let productCategorie =
               productCategories[id]["productCategory__name"];
+
+            let data1 = data[categorie][id]["products"][0];
+
+            //console.log(data1);
 
             return (
               <div className="productsContainer">
@@ -192,9 +120,6 @@ class ProductsContainer extends React.Component {
                 />
                 <ProductsSection
                   incrementCount={this.incrementCount}
-                  decrementCount={this.decrementCount}
-                  showCounter={this.state.showCounter}
-                  displayCounter={this.displayCounter}
                   products={products}
                   data={data}
                   productCategorie={productCategorie}

@@ -9,9 +9,6 @@ function productSection(props) {
       <ProductsSectionHeading />
       <ProductsInnerContainer
         incrementCount={props.incrementCount}
-        decrementCount={props.decrementCount}
-        showCounter={props.showCounter}
-        displayCounter={props.displayCounter}
         data={props.data}
         products={props.products}
         productCategorie={props.productCategorie}

@@ -84,15 +84,11 @@ class App extends React.Component {
           parseInt(product["product__oldPrice"]),
       },
       () => {
-        if (product["count"] === 0) {
+        if (this.state.cartItemsCount === 0) {
           cartData.delete(id);
           this.setState({
-            cartData: cartData,
-          });
-        }
-        if (this.state.cartItemsCount === 0) {
-          this.setState({
             displayCartItems: false,
+            cartData: cartData,
           });
         }
       }
@@ -123,7 +119,6 @@ class App extends React.Component {
                   <ErrorBoundary>
                     <DataContext.Provider value={data}>
                       <ProductsContainer
-                        id={0}
                         data={data}
                         categorie={this.state.categorie}
                         addItemInCart={this.addItemInCart}
@@ -138,17 +133,7 @@ class App extends React.Component {
 
           <Route
             path="/checkout"
-            element={
-              <CheckoutPage
-                addItemInCart={this.addItemInCart}
-                removeItemInCart={this.removeItemInCart}
-                cartData={this.state.cartData}
-                actualPrice={this.state.actualPrice}
-                mrpPrice={this.state.mrpPrice}
-                totalCount={this.state.totalCount}
-                dileveryCharge={this.state.dileveryCharge}
-              />
-            }
+            element={<CheckoutPage cartInfo={this.state} />}
           />
         </Routes>
 

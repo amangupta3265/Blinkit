@@ -10,16 +10,12 @@ function ProductsInnerContainer(props) {
     return (
       <Product
         incrementCount={props.incrementCount}
-        decrementCount={props.decrementCount}
-        showCounter={props.showCounter}
-        displayCounter={props.displayCounter}
         data={props.data}
         product={product}
         key={id + props.productCategorie}
         productCategorie={props.productCategorie}
         categorie={props.categorie}
         //index={props.id}
-        count={product["count"]}
         id={id}
         addItemInCart={props.addItemInCart}
         removeItemInCart={props.removeItemInCart}
