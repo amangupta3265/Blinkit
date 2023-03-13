@@ -127,6 +127,29 @@ class ProductsContainer extends React.Component {
     });
   };
 
+  // shouldComponentUpdate() {
+  //   var categorie = this.props.categorie;
+  //   console.log(
+  //     "shouldComponentUpdate",
+  //     categorie,
+  //     " old categorie",
+  //     this.state.categorie
+  //   );
+
+  //   if (categorie !== this.state.categorie) {
+  //     console.log("CHANGE 1");
+  //     this.changeCategorie(categorie);
+  //   }
+  //   console.log("CHALA");
+  //   console.log(
+  //     "CHALA",
+  //     this.props.categorie,
+  //     "---------",
+  //     this.state.categorie
+  //   );
+  //   return true;
+  // }
+
   render() {
     console.log("ProductsContainer render");
     let categorie = this.props.categorie;

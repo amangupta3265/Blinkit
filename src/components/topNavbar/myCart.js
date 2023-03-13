@@ -1,21 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 function MyCart(props) {
-  const navigate = useNavigate();
-
-  let handleCheckout = () => {
-    navigate("/checkout");
-    //<Routes path="/checkout" element={CheckoutPage} />;
-    //window.history.pushState({ urlPath: "/checkout" }, "", "/checkout");
-    // window.location.;
-    // window.location.href
-    console.log("checkout");
-    //this.props.history.push("/checkout");
-  };
-
   return (
-    <button className="myCart flexRow" onClick={handleCheckout}>
+    <button className="myCart flexRow">
       <span>
         <i className="fa-solid fa-cart-shopping"></i>
       </span>
