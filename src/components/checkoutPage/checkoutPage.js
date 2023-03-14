@@ -104,7 +104,7 @@ export default class CheckoutPage extends Component {
     //   },
     // ];
 
-    let cartData = this.props.cartData;
+    let cartData = this.props.myCartInfo.cartData;
 
     console.log("CheckoutPage CartData", cartData);
 
@@ -113,18 +113,18 @@ export default class CheckoutPage extends Component {
 
     let checkoutProducts = [];
 
-    let mrpPrice = parseInt(this.props.mrpPrice);
-    let actualPrice = parseInt(this.props.actualPrice),
-      dileveryCharge = parseInt(this.props.dileveryCharge),
-      totalCount = parseInt(this.props.totalCount);
+    let mrpPrice = parseInt(this.props.myCartInfo.mrpPrice);
+    let actualPrice = parseInt(this.props.myCartInfo.actualPrice),
+      dileveryCharge = parseInt(this.props.myCartInfo.dileveryCharge),
+      totalCount = parseInt(this.props.myCartInfo.totalCount);
 
     for (let [key, value] of cartData) {
       checkoutProducts.push(
         <Product
           key={key}
           product={value}
-          addItemInCart={this.props.addItemInCart}
-          removeItemInCart={this.props.removeItemInCart}
+          addItemInCart={this.props.myCartInfo.addItemInCart}
+          removeItemInCart={this.props.myCartInfo.removeItemInCart}
         />
       );
     }
