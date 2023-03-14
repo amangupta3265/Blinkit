@@ -34,7 +34,9 @@ class productSection extends React.Component {
   render() {
     console.log("from productSection", this.props.categorie);
 
-    let products = this.state.products;
+    let products = this.props.products;
+
+    //console.log("products", products);
 
     return (
       <div className="productsSection">

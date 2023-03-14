@@ -9,6 +9,7 @@ import data from "./json/data";
 import React from "react";
 import { DataContext } from "./components/dataContex";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import CheckoutPage from "./components/checkoutPage/checkoutPage";
 import ErrorBoundary from "./components/ErrorBoundary";
 
@@ -134,13 +135,26 @@ class App extends React.Component {
                 </ErrorBoundary>
               </>
             }
-          />
+          >
+            {/* {redirect("/checkout")} */}
+          </Route>
           {/* ))} */}
 
           <Route
             path="/checkout"
-            element={<CheckoutPage myCartInfo={this.state} />}
+            element={
+              <CheckoutPage
+                addItemInCart={this.addItemInCart}
+                removeItemInCart={this.removeItemInCart}
+                cartData={this.state.cartData}
+                actualPrice={this.state.actualPrice}
+                mrpPrice={this.state.mrpPrice}
+                totalCount={this.state.totalCount}
+                dileveryCharge={this.state.dileveryCharge}
+              />
+            }
           />
+          {/* <Route path="*" element={<Navigate to="/blinkit/home" />} /> */}
         </Routes>
 
         <Advantages />
