@@ -2,6 +2,8 @@ import React from "react";
 import ProductCategoriesNavbar from "./productCategoriesNavbar/productCategoriesNavbar";
 import ProductsSection from "./productsSection/productSection";
 import { DataContext } from "../dataContex";
+import { changeProductCategorie } from "../../redux/product/productActions";
+import { connect } from "react-redux";
 //import data from "../../json/data";
 
 class ProductsContainer extends React.Component {
@@ -9,9 +11,9 @@ class ProductsContainer extends React.Component {
     super(props);
 
     this.state = {
-      productCategorie: "All",
+      productCategorie: this.props.productCategorie,
       id: this.props.id,
-      categorie: "Vegetables & fruits",
+      categorie: this.props.categorie,
       data: this.props.data,
       count: 0,
       showCounter: false,
@@ -145,7 +147,7 @@ class ProductsContainer extends React.Component {
               return new Error("Something went wrong");
             }
 
-            let id = parseInt(this.state.id);
+            let id = parseInt(this.props.id);
 
             if (categorie !== this.state.categorie) {
               id = 0;
@@ -153,18 +155,19 @@ class ProductsContainer extends React.Component {
 
             console.log("id", id);
 
-            let data = this.state.data;
+            let data = this.props.data;
             //console.log("data", data);
             let productCategories = data[categorie];
-            //console.log("productCategories", productCategories);
+            console.log("productCategories", productCategories);
             let products = productCategories[id]["products"];
+            console.log("products", products);
             let productCategorie =
               productCategories[id]["productCategory__name"];
 
             return (
               <div className="productsContainer">
                 <ProductCategoriesNavbar
-                  changeProductCategorie={this.changeProductCategorie}
+                  changeProductCategorie={this.props.changeProductCategorie}
                   productCategories={productCategories}
                 />
                 <ProductsSection
@@ -176,7 +179,7 @@ class ProductsContainer extends React.Component {
                   data={data}
                   productCategorie={productCategorie}
                   categorie={categorie}
-                  id={id}
+                  productCategorieId={id}
                   addItemInCart={this.props.addItemInCart}
                   removeItemInCart={this.props.removeItemInCart}
                 />
@@ -190,4 +193,18 @@ class ProductsContainer extends React.Component {
   }
 }
 
-export default ProductsContainer;
+const mapStateToProps = (state) => {
+  return {
+    productCategorie: state.product.productCategorie,
+    id: state.product.id,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeProductCategorie: (e, id, productCategorie) =>
+      dispatch(changeProductCategorie(id, productCategorie)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

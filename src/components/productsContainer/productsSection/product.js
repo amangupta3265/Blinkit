@@ -1,4 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+import {
+  decrementCount,
+  displayCounter,
+  incrementCount,
+} from "../../../redux/product/productActions";
 import ProductButton from "./productButton";
 
 class Product extends React.Component {
@@ -9,25 +15,24 @@ class Product extends React.Component {
 
     this.state = {
       count: this.props.count,
-      showCounter: false,
     };
   }
 
-  incrementCount = (id) => {
-    console.log("incrementCount for product id :", id);
-    //console.log("incrementCount", this.state.count);
-    //console.log("incrementCount for product", this.props.product);
-    this.setState((prevState) => ({
-      count: parseInt(prevState.count) + 1,
-    }));
+  // incrementCount = (id) => {
+  //   console.log("incrementCount for product id :", id);
+  //   //console.log("incrementCount", this.state.count);
+  //   //console.log("incrementCount for product", this.props.product);
+  //   this.setState((prevState) => ({
+  //     count: parseInt(prevState.count) + 1,
+  //   }));
 
-    this.props.product.count = parseInt(this.state.count) + 1;
+  //   this.props.product.count = parseInt(this.state.count) + 1;
 
-    this.props.addItemInCart(
-      this.props.product.product__newPrice,
-      this.props.product
-    );
-  };
+  //   this.props.addItemInCart(
+  //     this.props.product.product__newPrice,
+  //     this.props.product
+  //   );
+  // };
 
   decrementCount = () => {
     console.log("decrementCount", this.state.count);
@@ -52,29 +57,33 @@ class Product extends React.Component {
     );
   };
 
-  displayCounter = (id) => {
-    console.log("displayCounter for product id", id);
-    this.setState({
-      count: 1,
-      showCounter: true,
-    });
+  // displayCounter = (id) => {
+  //   console.log("displayCounter for product id", id);
+  //   this.setState({
+  //     count: 1,
+  //     showCounter: true,
+  //   });
 
-    this.props.product.count = 1;
+  //   this.props.product.count = 1;
 
-    this.props.addItemInCart(
-      this.props.product.product__newPrice,
-      this.props.product
-    );
-  };
+  //   this.props.addItemInCart(
+  //     this.props.product.product__newPrice,
+  //     this.props.product
+  //   );
+  // };
 
   render() {
-    let showCounter = this.state.showCounter;
+    let showCounter = this.props.showCounter;
 
     if (parseInt(this.props.product.count) !== 0) {
       showCounter = true;
     }
 
-    // console.log("showCounter", showCounter, this.props.product.count);
+    if (parseInt(this.props.product.count) === 0) {
+      showCounter = false;
+    }
+
+    //console.log("showCounter", showCounter, this.props.product.count);
 
     let product = (
       <div className="products__product">
@@ -107,6 +116,10 @@ class Product extends React.Component {
             decrementCount={this.props.decrementCount}
             count={this.props.product.count}
             id={this.props.id}
+            product={this.props.product}
+            categorie={this.props.categorie}
+            productCategorie={this.props.productCategorie}
+            productCategorieId={this.props.productCategorieId}
           />
         </div>
       </div>
@@ -115,4 +128,19 @@ class Product extends React.Component {
   }
 }
 
-export default Product;
+const mapStateToProps = (state) => {
+  return {
+    showCounter: state.product.showCounter,
+    count: state.product.count,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    displayCounter: () => dispatch(displayCounter()),
+    incrementCount: (id) => dispatch(incrementCount(id)),
+    decrementCount: (id) => dispatch(decrementCount(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

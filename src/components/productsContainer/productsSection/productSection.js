@@ -52,6 +52,7 @@ class productSection extends React.Component {
           categorie={this.props.categorie}
           addItemInCart={this.props.addItemInCart}
           removeItemInCart={this.props.removeItemInCart}
+          productCategorieId={this.props.productCategorieId}
         />
       </div>
     );

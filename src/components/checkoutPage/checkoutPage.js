@@ -11,99 +11,6 @@ export default class CheckoutPage extends Component {
   }
 
   render() {
-    // let products = [
-    //   {
-    //     product__image: "./potato.jpeg",
-    //     product__offer: "10% OFF",
-    //     product__sourced: "sourced at : 5am",
-    //     product__name: "Aloo",
-    //     product__weight: "1Kg",
-    //     product__newPrice: "15",
-    //     product__oldPrice: "20",
-    //     count: 0,
-    //   },
-    //   {
-    //     product__image: "./potato.jpeg",
-    //     product__offer: "10% OFF",
-    //     product__sourced: "sourced at : 5am",
-    //     product__name: "Aloo",
-    //     product__weight: "1Kg",
-    //     product__newPrice: "15",
-    //     product__oldPrice: "20",
-    //     count: 0,
-    //   },
-    //   {
-    //     product__image: "./potato.jpeg",
-    //     product__offer: "10% OFF",
-    //     product__sourced: "sourced at : 5am",
-    //     product__name: "Aloo",
-    //     product__weight: "1Kg",
-    //     product__newPrice: "15",
-    //     product__oldPrice: "20",
-    //     count: 0,
-    //   },
-    //   {
-    //     product__image: "./potato.jpeg",
-    //     product__offer: "10% OFF",
-    //     product__sourced: "sourced at : 5am",
-    //     product__name: "Aloo",
-    //     product__weight: "1Kg",
-    //     product__newPrice: "15",
-    //     product__oldPrice: "20",
-    //     count: 0,
-    //   },
-    //   {
-    //     product__image: "./potato.jpeg",
-    //     product__offer: "10% OFF",
-    //     product__sourced: "sourced at : 5am",
-    //     product__name: "Aloo",
-    //     product__weight: "1Kg",
-    //     product__newPrice: "15",
-    //     product__oldPrice: "20",
-    //     count: 0,
-    //   },
-    //   {
-    //     product__image: "./potato.jpeg",
-    //     product__offer: "10% OFF",
-    //     product__sourced: "sourced at : 5am",
-    //     product__name: "Aloo",
-    //     product__weight: "1Kg",
-    //     product__newPrice: "15",
-    //     product__oldPrice: "20",
-    //     count: 0,
-    //   },
-    //   {
-    //     product__image: "./potato.jpeg",
-    //     product__offer: "10% OFF",
-    //     product__sourced: "sourced at : 5am",
-    //     product__name: "Aloo",
-    //     product__weight: "1Kg",
-    //     product__newPrice: "15",
-    //     product__oldPrice: "20",
-    //     count: 0,
-    //   },
-    //   {
-    //     product__image: "./potato.jpeg",
-    //     product__offer: "10% OFF",
-    //     product__sourced: "sourced at : 5am",
-    //     product__name: "Aloo",
-    //     product__weight: "1Kg",
-    //     product__newPrice: "15",
-    //     product__oldPrice: "20",
-    //     count: 0,
-    //   },
-    //   {
-    //     product__image: "./potato.jpeg",
-    //     product__offer: "10% OFF",
-    //     product__sourced: "sourced at : 5am",
-    //     product__name: "Aloo",
-    //     product__weight: "1Kg",
-    //     product__newPrice: "15",
-    //     product__oldPrice: "20",
-    //     count: 0,
-    //   },
-    // ];
-
     let cartData = this.props.cartData;
 
     console.log("CheckoutPage CartData", cartData);
@@ -119,10 +26,17 @@ export default class CheckoutPage extends Component {
       totalCount = parseInt(this.props.totalCount);
 
     for (let [key, value] of cartData) {
+      let id = value.id;
+      let productCategorieId = value.productCategorieId;
+      let categorie = value.categorie;
+      //console.log("value["product__id"]")
       checkoutProducts.push(
         <Product
           key={key}
-          product={value}
+          id={id}
+          productCategorieId={productCategorieId}
+          categorie={categorie}
+          product={value.product}
           addItemInCart={this.props.addItemInCart}
           removeItemInCart={this.props.removeItemInCart}
         />

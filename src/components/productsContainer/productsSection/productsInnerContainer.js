@@ -23,6 +23,7 @@ function ProductsInnerContainer(props) {
         id={id}
         addItemInCart={props.addItemInCart}
         removeItemInCart={props.removeItemInCart}
+        productCategorieId={props.productCategorieId}
       />
     );
   });

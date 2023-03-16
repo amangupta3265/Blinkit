@@ -5,13 +5,15 @@ import ProductsContainer from "./components/productsContainer/productsContainer"
 import Advantages from "./components/advantages/advantages";
 import Footer from "./components/footerContainer/footer";
 import AboutBlinkit from "./components/aboutBlinkit/aboutBlinkit";
-import data from "./json/data";
 import React from "react";
 import { DataContext } from "./components/dataContex";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import CheckoutPage from "./components/checkoutPage/checkoutPage";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { connect } from "react-redux";
+import { addItemInCart, removeItemInCart } from "./redux/cart/cartActions";
+import { changeCategorie } from "./redux/product/productActions";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,14 +21,6 @@ class App extends React.Component {
 
     this.state = {
       categorie: "Vegetables & fruits",
-      cartItemsCount: 0,
-      cartItemsValue: 0,
-      displayCartItems: false,
-      cartData: new Map(),
-      mrpPrice: 0,
-      actualPrice: 0,
-      dileveryCharge: 10,
-      totalCount: 0,
     };
   }
 
@@ -38,67 +32,67 @@ class App extends React.Component {
     });
   };
 
-  addItemInCart = (itemValue, product) => {
-    console.log("item value", itemValue);
-    if (!this.state.displayCartItems) {
-      this.setState({
-        displayCartItems: true,
-      });
-    }
+  // addItemInCart = (itemValue, product) => {
+  //   console.log("item value", itemValue);
+  //   if (!this.state.displayCartItems) {
+  //     this.setState({
+  //       displayCartItems: true,
+  //     });
+  //   }
 
-    let cartData = this.state.cartData;
-    let id = product["product__id"];
-    cartData.set(id, product);
+  //   let cartData = this.state.cartData;
+  //   let id = product["product__id"];
+  //   cartData.set(id, product);
 
-    //console.log("product in addItemInCart", product);
+  //   //console.log("product in addItemInCart", product);
 
-    this.setState({
-      cartItemsCount: parseInt(this.state.cartItemsCount) + 1,
-      cartItemsValue: parseInt(this.state.cartItemsValue) + parseInt(itemValue),
-      cartData: cartData,
-      totalCount: parseInt(this.state.totalCount) + 1,
-      actualPrice:
-        parseInt(this.state.actualPrice) +
-        parseInt(product["product__newPrice"]),
-      mrpPrice:
-        parseInt(this.state.mrpPrice) + parseInt(product["product__oldPrice"]),
-    });
-  };
+  //   this.setState({
+  //     cartItemsCount: parseInt(this.state.cartItemsCount) + 1,
+  //     cartItemsValue: parseInt(this.state.cartItemsValue) + parseInt(itemValue),
+  //     cartData: cartData,
+  //     totalCount: parseInt(this.state.totalCount) + 1,
+  //     actualPrice:
+  //       parseInt(this.state.actualPrice) +
+  //       parseInt(product["product__newPrice"]),
+  //     mrpPrice:
+  //       parseInt(this.state.mrpPrice) + parseInt(product["product__oldPrice"]),
+  //   });
+  // };
 
-  removeItemInCart = (itemValue, product) => {
-    let cartData = this.state.cartData;
-    let id = product["product__id"];
-    cartData.set(id, product);
+  // removeItemInCart = (itemValue, product) => {
+  //   let cartData = this.state.cartData;
+  //   let id = product["product__id"];
+  //   cartData.set(id, product);
 
-    this.setState(
-      {
-        cartItemsCount: parseInt(this.state.cartItemsCount) - 1,
-        cartItemsValue:
-          parseInt(this.state.cartItemsValue) - parseInt(itemValue),
-        cartData: cartData,
-        totalCount: parseInt(this.state.totalCount) - 1,
-        actualPrice:
-          parseInt(this.state.actualPrice) -
-          parseInt(product["product__newPrice"]),
-        mrpPrice:
-          parseInt(this.state.mrpPrice) -
-          parseInt(product["product__oldPrice"]),
-      },
-      () => {
-        if (product["count"] === 0) {
-          cartData.delete(id);
-          this.setState({
-            cartData: cartData,
-          });
-        }
-        if (this.state.cartItemsCount === 0) {
-          this.setState({
-            displayCartItems: false,
-          });
-        }
-      }
-    );
-  };
+  //   this.setState(
+  //     {
+  //       cartItemsCount: parseInt(this.state.cartItemsCount) - 1,
+  //       cartItemsValue:
+  //         parseInt(this.state.cartItemsValue) - parseInt(itemValue),
+  //       cartData: cartData,
+  //       totalCount: parseInt(this.state.totalCount) - 1,
+  //       actualPrice:
+  //         parseInt(this.state.actualPrice) -
+  //         parseInt(product["product__newPrice"]),
+  //       mrpPrice:
+  //         parseInt(this.state.mrpPrice) -
+  //         parseInt(product["product__oldPrice"]),
+  //     },
+  //     () => {
+  //       if (product["count"] === 0) {
+  //         cartData.delete(id);
+  //         this.setState({
+  //           cartData: cartData,
+  //         });
+  //       }
+  //       if (this.state.cartItemsCount === 0) {
+  //         this.setState({
+  //           displayCartItems: false,
+  //         });
+  //       }
+  //     }
+  //   );
+  // };
 
   render() {
     //console.log("render", this.state.categorie);
@@ -107,12 +101,15 @@ class App extends React.Component {
     return (
       <div className="App">
         <TopNavbar
-          cartItemsCount={this.state.cartItemsCount}
-          cartItemsValue={this.state.cartItemsValue}
-          displayCartItems={this.state.displayCartItems}
+          cartItemsCount={this.props.cartItemsCount}
+          cartItemsValue={this.props.cartItemsValue}
+          displayCartItems={this.props.displayCartItems}
         />
 
-        <CategoriesNavbar data={data} changeCategorie={this.changeCategorie} />
+        <CategoriesNavbar
+          data={this.props.data}
+          changeCategorie={this.props.changeCategorie}
+        />
 
         <Routes>
           {/* {["/", "/blinkit/home"].map((path, id) => ( */}
@@ -123,13 +120,11 @@ class App extends React.Component {
             element={
               <>
                 <ErrorBoundary>
-                  <DataContext.Provider value={data}>
+                  <DataContext.Provider value={this.props.data}>
                     <ProductsContainer
                       id={0}
-                      data={data}
-                      categorie={this.state.categorie}
-                      addItemInCart={this.addItemInCart}
-                      removeItemInCart={this.removeItemInCart}
+                      data={this.props.data}
+                      categorie={this.props.categorie}
                     />
                   </DataContext.Provider>
                 </ErrorBoundary>
@@ -144,13 +139,13 @@ class App extends React.Component {
             path="/checkout"
             element={
               <CheckoutPage
-                addItemInCart={this.addItemInCart}
-                removeItemInCart={this.removeItemInCart}
-                cartData={this.state.cartData}
-                actualPrice={this.state.actualPrice}
-                mrpPrice={this.state.mrpPrice}
-                totalCount={this.state.totalCount}
-                dileveryCharge={this.state.dileveryCharge}
+                addItemInCart={this.props.addItemInCart}
+                removeItemInCart={this.props.removeItemInCart}
+                cartData={this.props.cartData}
+                actualPrice={this.props.actualPrice}
+                mrpPrice={this.props.mrpPrice}
+                totalCount={this.props.totalCount}
+                dileveryCharge={this.props.dileveryCharge}
               />
             }
           />
@@ -165,4 +160,27 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    cartData: state.cart.cartData,
+    displayCartItems: state.cart.displayCartItems,
+    cartItemsCount: state.cart.cartItemsCount,
+    totalCount: state.cart.totalCount,
+    cartItemsValue: state.cart.cartItemsValue,
+    actualPrice: state.cart.actualPrice,
+    mrpPrice: state.cart.mrpPrice,
+    data: state.product.data,
+    categorie: state.product.categorie,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addItemInCart: (value, product) => dispatch(addItemInCart(value, product)),
+    removeItemInCart: (value, product) =>
+      dispatch(removeItemInCart(value, product)),
+    changeCategorie: (categorie) => dispatch(changeCategorie(categorie)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

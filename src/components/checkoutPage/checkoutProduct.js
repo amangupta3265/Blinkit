@@ -105,9 +105,13 @@ class Product extends React.Component {
         <ProductButton
           displayCounter={this.displayCounter}
           showCounter={showCounter}
-          incrementCount={this.incrementCount}
-          decrementCount={this.decrementCount}
-          count={this.state.count}
+          id={this.props.id}
+          productCategorieId={this.props.productCategorieId}
+          categorie={this.props.categorie}
+          product={this.props.product}
+          // incrementCount={this.incrementCount}
+          // decrementCount={this.decrementCount}
+          count={this.props.product.count}
         />
       </div>
     );
