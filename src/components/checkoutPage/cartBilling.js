@@ -14,7 +14,7 @@ function CartBilling(props) {
         </div>
         <div className="flexRow">
           <p>Delivery Charge</p>
-          <p>₹{props.dileveryCharge}</p>
+          <p>₹{parseInt(10)}</p>
         </div>
         <div className="flexRow">
           <p>Grand Total</p>
@@ -23,7 +23,7 @@ function CartBilling(props) {
         <div className="flexRow proceedButton">
           <div>
             <span>{props.totalCount} items =</span>
-            <span>₹ {props.actualPrice + props.dileveryCharge}</span>
+            <span>₹ {parseInt(props.actualPrice) + parseInt(10)}</span>
           </div>
           <p>Proceed ＞ </p>
         </div>

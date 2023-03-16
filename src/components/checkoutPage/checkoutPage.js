@@ -25,6 +25,8 @@ export default class CheckoutPage extends Component {
       dileveryCharge = parseInt(this.props.dileveryCharge),
       totalCount = parseInt(this.props.totalCount);
 
+    console.log("dileveryCharge", this.props);
+
     for (let [key, value] of cartData) {
       let id = value.id;
       let productCategorieId = value.productCategorieId;

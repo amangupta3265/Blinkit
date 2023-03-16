@@ -7,7 +7,7 @@ const cartState = {
   cartData: new Map(),
   mrpPrice: 0,
   actualPrice: 0,
-  dileveryCharge: 10,
+  dileveryCharge: 0,
   totalCount: 0,
 };
 

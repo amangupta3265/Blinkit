@@ -49,17 +49,21 @@ const productReducer = (state = productState, action) => {
     case DECREMENT_COUNT: {
       //console.log(data);
       let newData = state.data;
-      //   console.log(
-      //     "product count",
-      //     newData[state.categorie][state.id]["products"][action.id]["count"]
-      //   );
+      let categorie = action.payload.categorie;
+      let id = action.payload.id;
+      let productCategorieId = action.payload.productCategorieId;
+
+      console.log(
+        "product count",
+        newData[categorie][productCategorieId]["products"]
+      );
       let count =
         parseInt(
-          newData[state.categorie][state.id]["products"][action.id]["count"]
+          newData[categorie][productCategorieId]["products"][id]["count"]
         ) - 1;
-      newData[state.categorie][state.id]["products"][action.id]["count"] =
-        count;
+      newData[categorie][productCategorieId]["products"][id]["count"] = count;
 
+      console.log("DECREMENT_COUNT", count);
       return {
         ...state,
         count: parseInt(state.count) - 1,

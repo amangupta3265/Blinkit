@@ -20,13 +20,27 @@ export const incrementCount = (productObj) => {
   };
 };
 
-export const decrementCount = (id, product) => {
+export const decrementCount = (productObj) => {
+  console.log("decrementCount", productObj);
   return {
     type: DECREMENT_COUNT,
-    id: id,
-    product: product,
+    payload: {
+      value: productObj.value,
+      product: productObj.product,
+      id: productObj.id,
+      categorie: productObj.categorie,
+      productCategorieId: productObj.productCategorieId,
+    },
   };
 };
+
+// export const decrementCount = (id, product) => {
+//   return {
+//     type: DECREMENT_COUNT,
+//     id: id,
+//     product: product,
+//   };
+// };
 
 export const displayCounter = (id) => {
   return {

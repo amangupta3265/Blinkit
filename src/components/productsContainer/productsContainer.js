@@ -12,7 +12,7 @@ class ProductsContainer extends React.Component {
 
     this.state = {
       productCategorie: this.props.productCategorie,
-      id: this.props.id,
+      id: 0,
       categorie: this.props.categorie,
       data: this.props.data,
       count: 0,
@@ -132,62 +132,50 @@ class ProductsContainer extends React.Component {
   render() {
     console.log("ProductsContainer render");
     let categorie = this.props.categorie;
+    let id = parseInt(this.props.id);
 
     if (categorie !== this.state.categorie) {
+      this.props.changeProductCategorie(0, 0);
       this.changeCategorie(categorie);
+      id = 0;
+    }
+
+    console.log("categorie", categorie, "categorie", this.state.categorie);
+    console.log("id", id);
+
+    let data = this.props.data;
+    //console.log("data", data);
+    let productCategories = data[categorie];
+    console.log("productCategories", productCategories);
+    let products = productCategories[id]["products"];
+    console.log("products", products);
+    let productCategorie = productCategories[id]["productCategory__name"];
+
+    if (!data) {
+      return new Error("Something went wrong");
     }
 
     return (
       <>
-        <DataContext.Consumer>
-          {(value) => {
-            //console.log(value);
-
-            if (!value) {
-              return new Error("Something went wrong");
-            }
-
-            let id = parseInt(this.props.id);
-
-            if (categorie !== this.state.categorie) {
-              id = 0;
-            }
-
-            console.log("id", id);
-
-            let data = this.props.data;
-            //console.log("data", data);
-            let productCategories = data[categorie];
-            console.log("productCategories", productCategories);
-            let products = productCategories[id]["products"];
-            console.log("products", products);
-            let productCategorie =
-              productCategories[id]["productCategory__name"];
-
-            return (
-              <div className="productsContainer">
-                <ProductCategoriesNavbar
-                  changeProductCategorie={this.props.changeProductCategorie}
-                  productCategories={productCategories}
-                />
-                <ProductsSection
-                  incrementCount={this.incrementCount}
-                  decrementCount={this.decrementCount}
-                  showCounter={this.state.showCounter}
-                  displayCounter={this.displayCounter}
-                  products={products}
-                  data={data}
-                  productCategorie={productCategorie}
-                  categorie={categorie}
-                  productCategorieId={id}
-                  addItemInCart={this.props.addItemInCart}
-                  removeItemInCart={this.props.removeItemInCart}
-                />
-              </div>
-            );
-          }}
-        </DataContext.Consumer>
-        ;
+        <div className="productsContainer">
+          <ProductCategoriesNavbar
+            changeProductCategorie={this.props.changeProductCategorie}
+            productCategories={productCategories}
+          />
+          <ProductsSection
+            incrementCount={this.incrementCount}
+            decrementCount={this.decrementCount}
+            showCounter={this.state.showCounter}
+            displayCounter={this.displayCounter}
+            products={products}
+            data={data}
+            productCategorie={productCategorie}
+            categorie={categorie}
+            productCategorieId={id}
+            addItemInCart={this.props.addItemInCart}
+            removeItemInCart={this.props.removeItemInCart}
+          />
+        </div>
       </>
     );
   }

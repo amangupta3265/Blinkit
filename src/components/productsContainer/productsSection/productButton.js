@@ -41,15 +41,15 @@ class ProductButton extends Component {
     this.props.addItemInCart(productObj);
   };
 
-  handleDecrement = (id, product, categorie, productCategorieId) => {
+  handleDecrement = (id, product) => {
     console.log("handleDecrement", product);
     console.log("value", product["product__newPrice"]);
-    let value = product["product__newPrice"];
+    let value = this.props.product["product__newPrice"];
 
     let productObj = {
-      id: id,
+      id: this.props.id,
       value: value,
-      product: product,
+      product: this.props.product,
       categorie: this.props.categorie,
       productCategorieId: this.props.productCategorieId,
     };
@@ -88,12 +88,7 @@ class ProductButton extends Component {
             className="decrementQuantity"
             id="decrement"
             onClick={() =>
-              this.handleDecrement(
-                this.props.id,
-                this.props.product,
-                this.props.categorie,
-                this.props.productCategorieId
-              )
+              this.handleDecrement(this.props.id, this.props.product)
             }
           >
             -
@@ -103,12 +98,7 @@ class ProductButton extends Component {
             className="incrementQuantity"
             id="increment"
             onClick={() =>
-              this.handleIncrement(
-                this.props.id,
-                this.props.product,
-                this.props.categorie,
-                this.props.productCategorieId
-              )
+              this.handleIncrement(this.props.id, this.props.product)
             }
           >
             +
@@ -129,7 +119,7 @@ const mapDispatchToProps = (dispatch) => {
     removeItemInCart: (value, product) =>
       dispatch(removeItemInCart(value, product)),
     incrementCount: (productObj) => dispatch(incrementCount(productObj)),
-    decrementCount: (id, product) => dispatch(decrementCount(id, product)),
+    decrementCount: (productObj) => dispatch(decrementCount(productObj)),
   };
 };
 

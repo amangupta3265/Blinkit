@@ -24,13 +24,13 @@ class App extends React.Component {
     };
   }
 
-  changeCategorie = (categorie) => {
-    console.log("categorie got changed", categorie);
+  // changeCategorie = (categorie) => {
+  //   console.log("categorie got changed", categorie);
 
-    this.setState({
-      categorie: categorie,
-    });
-  };
+  //   this.setState({
+  //     categorie: categorie,
+  //   });
+  // };
 
   // addItemInCart = (itemValue, product) => {
   //   console.log("item value", itemValue);
@@ -120,13 +120,14 @@ class App extends React.Component {
             element={
               <>
                 <ErrorBoundary>
-                  <DataContext.Provider value={this.props.data}>
-                    <ProductsContainer
-                      id={0}
-                      data={this.props.data}
-                      categorie={this.props.categorie}
-                    />
-                  </DataContext.Provider>
+                  {/* <DataContext.Provider value={this.props.data}> */}
+                  <ProductsContainer
+                    id={0}
+                    data={this.props.data}
+                    categorie={this.props.categorie}
+                    changeCategorie={this.props.changeCategorie}
+                  />
+                  {/* </DataContext.Provider> */}
                 </ErrorBoundary>
               </>
             }
@@ -139,6 +140,7 @@ class App extends React.Component {
             path="/checkout"
             element={
               <CheckoutPage
+                changeCategorie={this.props.changeCategorie}
                 addItemInCart={this.props.addItemInCart}
                 removeItemInCart={this.props.removeItemInCart}
                 cartData={this.props.cartData}
@@ -171,6 +173,7 @@ const mapStateToProps = (state) => {
     mrpPrice: state.cart.mrpPrice,
     data: state.product.data,
     categorie: state.product.categorie,
+    dileveryCharge: state.product.dileveryCharge,
   };
 };
 
