@@ -23,26 +23,58 @@ const productState = {
 const productReducer = (state = productState, action) => {
   switch (action.type) {
     case INCREMENT_COUNT: {
-      //console.log(data);
-      let newData = state.data;
-      let categorie = action.payload.categorie;
-      let id = action.payload.id;
-      let productCategorieId = action.payload.productCategorieId;
+      const { data } = state;
+      const { categorie, id, productCategorieId } = action.payload;
 
-      console.log(
-        "product count",
-        newData[categorie][productCategorieId]["products"]
-      );
-      let count =
-        parseInt(
-          newData[categorie][productCategorieId]["products"][id]["count"]
-        ) + 1;
-      newData[categorie][productCategorieId]["products"][id]["count"] = count;
+      const newData = {
+        ...data,
+        [categorie]: {
+          ...data[categorie],
+          [productCategorieId]: {
+            ...data[categorie][productCategorieId],
+            products: data[categorie][productCategorieId].products.map(
+              (product, index) =>
+                index === id
+                  ? {
+                      ...product,
+                      count: parseInt(product.count) + 1,
+                    }
+                  : product
+            ),
+          },
+        },
+      };
+
+      if (newData === state) {
+        console.log("true");
+      } else {
+        console.log("false");
+      }
+
+      console.log("INCREMENT_COUNT", newData);
+      console.log("INCREMENT_COUNT", state.data);
 
       return {
         ...state,
-        count: parseInt(state.count) + 1,
-        data: newData,
+        count: state.count + 1,
+        data: {
+          ...data,
+          [categorie]: {
+            ...data[categorie],
+            [productCategorieId]: {
+              ...data[categorie][productCategorieId],
+              products: data[categorie][productCategorieId].products.map(
+                (product, index) =>
+                  index === id
+                    ? {
+                        ...product,
+                        count: parseInt(product.count) + 1,
+                      }
+                    : product
+              ),
+            },
+          },
+        },
       };
     }
 

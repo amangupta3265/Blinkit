@@ -15,19 +15,19 @@ class ProductButton extends Component {
     //this.props.incrementCount(id, product);
     console.log("value", product["product__newPrice"]);
     let value = this.props.product["product__newPrice"];
-    console.log(
-      "handleIncrement",
-      "value",
-      value,
-      "id",
-      id,
-      "product",
-      product,
-      "categorie",
-      this.props.categorie,
-      "productCategorieId",
-      this.props.productCategorieId
-    );
+    // console.log(
+    //   "handleIncrement",
+    //   "value",
+    //   value,
+    //   "id",
+    //   id,
+    //   "product",
+    //   product,
+    //   "categorie",
+    //   this.props.categorie,
+    //   "productCategorieId",
+    //   this.props.productCategorieId
+    // );
 
     let productObj = {
       id: this.props.id,

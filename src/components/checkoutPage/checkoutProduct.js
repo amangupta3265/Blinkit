@@ -11,7 +11,7 @@ class Product extends React.Component {
 
     this.state = {
       data: this.props,
-      count: this.props.product.count,
+      count: this.props.count,
       showCounter: false,
     };
   }
@@ -69,10 +69,15 @@ class Product extends React.Component {
   // };
 
   render() {
-    let showCounter = this.state.showCounter;
+    let showCounter = this.props.showCounter;
 
-    if (parseInt(this.state.count) !== 0) {
+    if (parseInt(this.props.count) !== 0) {
       showCounter = true;
+    }
+
+    if (parseInt(this.props.count) === 0) {
+      //this.props.displayCounter(false);
+      showCounter = false;
     }
 
     console.log("checkout product", this.state.data);
@@ -109,14 +114,14 @@ class Product extends React.Component {
         </div>
         <ProductButton
           displayCounter={this.props.displayCounter}
-          showCounter={this.props.showCounter}
+          showCounter={showCounter}
           id={this.state.data.id}
-          productCategorieId={this.state.data.productCategorieId}
+          productCategorieId={this.props.productCategorieId}
           categorie={this.state.data.categorie}
-          product={this.state.data.product}
+          product={this.props.product}
           // incrementCount={this.incrementCount}
           // decrementCount={this.decrementCount}
-          count={this.state.data.product.count}
+          count={this.props.product.count}
         />
       </div>
     );
@@ -133,7 +138,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    displayCounter: () => dispatch(displayCounter()),
+    displayCounter: (id) => dispatch(displayCounter(id)),
     // incrementCount: (id) => dispatch(incrementCount(id)),
     // decrementCount: (id) => dispatch(decrementCount(id)),
   };

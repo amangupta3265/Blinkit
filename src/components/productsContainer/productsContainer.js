@@ -1,7 +1,6 @@
 import React from "react";
 import ProductCategoriesNavbar from "./productCategoriesNavbar/productCategoriesNavbar";
 import ProductsSection from "./productsSection/productSection";
-import { DataContext } from "../dataContex";
 import { changeProductCategorie } from "../../redux/product/productActions";
 import { connect } from "react-redux";
 //import data from "../../json/data";

@@ -1,19 +1,19 @@
 import { ADD_ITEM_IN_CART, REMOVE_ITEM_IN_CART } from "./cartTypes";
 
 export const addItemInCart = (productObj) => {
-  console.log(
-    "addItemInCart",
-    "value",
-    productObj.value,
-    "id",
-    productObj.id,
-    "product",
-    productObj.product,
-    "categorie",
-    productObj.categorie,
-    "productCategorieId",
-    productObj.productCategorieId
-  );
+  //   console.log(
+  //     "addItemInCart",
+  //     "value",
+  //     productObj.value,
+  //     "id",
+  //     productObj.id,
+  //     "product",
+  //     productObj.product,
+  //     "categorie",
+  //     productObj.categorie,
+  //     "productCategorieId",
+  //     productObj.productCategorieId
+  //   );
 
   return {
     type: ADD_ITEM_IN_CART,
@@ -28,19 +28,19 @@ export const addItemInCart = (productObj) => {
 };
 
 export const removeItemInCart = (productObj) => {
-  console.log(
-    "addItemInCart",
-    "value",
-    productObj.value,
-    "id",
-    productObj.id,
-    "product",
-    productObj.product,
-    "categorie",
-    productObj.categorie,
-    "productCategorieId",
-    productObj.productCategorieId
-  );
+  //   console.log(
+  //     "addItemInCart",
+  //     "value",
+  //     productObj.value,
+  //     "id",
+  //     productObj.id,
+  //     "product",
+  //     productObj.product,
+  //     "categorie",
+  //     productObj.categorie,
+  //     "productCategorieId",
+  //     productObj.productCategorieId
+  //   );
   return {
     type: REMOVE_ITEM_IN_CART,
     payload: {

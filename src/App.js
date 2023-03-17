@@ -140,6 +140,7 @@ class App extends React.Component {
             path="/checkout"
             element={
               <CheckoutPage
+                data={this.props.data}
                 changeCategorie={this.props.changeCategorie}
                 addItemInCart={this.props.addItemInCart}
                 removeItemInCart={this.props.removeItemInCart}

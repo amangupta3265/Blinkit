@@ -29,15 +29,6 @@ const cartReducer = (state = cartState, action) => {
 
       cartData.set(id, productObj);
 
-      //   let product__id = product["product__id"];
-
-      //   let categorie = action.categorie;
-      //   let productCategorieId = action.productCategorieId;
-
-      //   cartData.set(
-      //     { productCategorieId, categorie, product__id },
-      //     action.product
-      //   );
       let cartItemsCount = parseInt(state.cartItemsCount) + value;
       let cartItemsValue = parseInt(state.cartItemsValue) + value;
       let totalCount = state.totalCount + 1;
@@ -65,7 +56,15 @@ const cartReducer = (state = cartState, action) => {
       console.log("action", action);
       console.log("product from cartReducer", product);
       let id = product["product__id"];
-      cartData.set(id, product);
+      let productObj = {
+        productCategorieId: action.payload.productCategorieId,
+        categorie: action.payload.categorie,
+        id: action.payload.id,
+        product: product,
+      };
+
+      cartData.set(id, productObj);
+
       let cartItemsCount = parseInt(state.cartItemsCount) - value;
       let cartItemsValue = parseInt(state.cartItemsValue) - value;
       let totalCount = state.totalCount - 1;
@@ -76,7 +75,8 @@ const cartReducer = (state = cartState, action) => {
 
       let displayCartItems = state.displayCartItems;
 
-      if (product["count"] === 0) {
+      if (parseInt(product["count"]) === 0) {
+        console.log("REMOVE_ITEM_IN_CART", product["count"]);
         cartData.delete(id);
       }
 
@@ -95,6 +95,45 @@ const cartReducer = (state = cartState, action) => {
         cartData: cartData,
       };
     }
+
+    // case REMOVE_ITEM_IN_CART: {
+    //   let cartData = state.cartData;
+    //   let product = action.payload.product;
+    //   let value = parseInt(action.payload.value);
+    //   console.log("action", action);
+    //   console.log("product from cartReducer", product);
+    //   let id = product["product__id"];
+    //   cartData.set(id, product);
+    //   let cartItemsCount = parseInt(state.cartItemsCount) - value;
+    //   let cartItemsValue = parseInt(state.cartItemsValue) - value;
+    //   let totalCount = state.totalCount - 1;
+    //   let actualPrice =
+    //     parseInt(state.actualPrice) - parseInt(product["product__newPrice"]);
+    //   let mrpPrice =
+    //     parseInt(state.mrpPrice) - parseInt(product["product__oldPrice"]);
+
+    //   let displayCartItems = state.displayCartItems;
+
+    //   if (parseInt(product["count"]) === 0) {
+    //     console.log("REMOVE_ITEM_IN_CART", product["count"]);
+    //     cartData.delete(id);
+    //   }
+
+    //   if (cartItemsCount === 0) {
+    //     displayCartItems = false;
+    //   }
+
+    //   return {
+    //     ...state,
+    //     displayCartItems: displayCartItems,
+    //     cartItemsCount: cartItemsCount,
+    //     totalCount: totalCount,
+    //     cartItemsValue: cartItemsValue,
+    //     actualPrice: actualPrice,
+    //     mrpPrice: mrpPrice,
+    //     cartData: cartData,
+    //   };
+    // }
 
     default:
       return state;

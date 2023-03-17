@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CartBilling from "./cartBilling";
 import PlaceOrderHeader from "./placeOrderHeader";
 import Product from "./checkoutProduct";
+import product from "../productsContainer/productsSection/product";
 
 export default class CheckoutPage extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class CheckoutPage extends Component {
     // console.log(products);
 
     let checkoutProducts = [];
+    let data = this.props.data;
 
     let mrpPrice = parseInt(this.props.mrpPrice);
     let actualPrice = parseInt(this.props.actualPrice),
@@ -31,6 +33,8 @@ export default class CheckoutPage extends Component {
       let id = value.id;
       let productCategorieId = value.productCategorieId;
       let categorie = value.categorie;
+      let product = data[categorie][productCategorieId]["products"][id];
+
       //console.log("value["product__id"]")
       checkoutProducts.push(
         <Product
@@ -38,7 +42,7 @@ export default class CheckoutPage extends Component {
           id={id}
           productCategorieId={productCategorieId}
           categorie={categorie}
-          product={value.product}
+          product={product}
           addItemInCart={this.props.addItemInCart}
           removeItemInCart={this.props.removeItemInCart}
         />
