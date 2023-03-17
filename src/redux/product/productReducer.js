@@ -1,5 +1,5 @@
-import { addItemInCart } from "../cart/cartActions";
-import { incrementCount } from "./productActions";
+// import { addItemInCart } from "../cart/cartActions";
+// import { incrementCount } from "./productActions";
 import data from "../../json/data.json";
 
 import {
@@ -23,58 +23,27 @@ const productState = {
 const productReducer = (state = productState, action) => {
   switch (action.type) {
     case INCREMENT_COUNT: {
-      const { data } = state;
-      const { categorie, id, productCategorieId } = action.payload;
+      //console.log(data);
+      let newData = state.data;
+      let categorie = action.payload.categorie;
+      let id = action.payload.id;
+      let productCategorieId = action.payload.productCategorieId;
 
-      const newData = {
-        ...data,
-        [categorie]: {
-          ...data[categorie],
-          [productCategorieId]: {
-            ...data[categorie][productCategorieId],
-            products: data[categorie][productCategorieId].products.map(
-              (product, index) =>
-                index === id
-                  ? {
-                      ...product,
-                      count: parseInt(product.count) + 1,
-                    }
-                  : product
-            ),
-          },
-        },
-      };
+      console.log(
+        "product count",
+        newData[categorie][productCategorieId]["products"]
+      );
+      let count =
+        parseInt(
+          newData[categorie][productCategorieId]["products"][id]["count"]
+        ) + 1;
+      newData[categorie][productCategorieId]["products"][id]["count"] = count;
 
-      if (newData === state) {
-        console.log("true");
-      } else {
-        console.log("false");
-      }
-
-      //console.log("INCREMENT_COUNT", newData);
-      //console.log("INCREMENT_COUNT", state.data);
-
+      console.log("DECREMENT_COUNT", count);
       return {
         ...state,
-        count: state.count + 1,
-        data: {
-          ...data,
-          [categorie]: {
-            ...data[categorie],
-            [productCategorieId]: {
-              ...data[categorie][productCategorieId],
-              products: data[categorie][productCategorieId].products.map(
-                (product, index) =>
-                  index === id
-                    ? {
-                        ...product,
-                        count: parseInt(product.count) + 1,
-                      }
-                    : product
-              ),
-            },
-          },
-        },
+        count: parseInt(state.count) + 1,
+        data: newData,
       };
     }
 

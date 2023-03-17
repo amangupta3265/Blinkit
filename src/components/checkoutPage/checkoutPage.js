@@ -3,8 +3,9 @@ import CartBilling from "./cartBilling";
 import PlaceOrderHeader from "./placeOrderHeader";
 import Product from "./checkoutProduct";
 import product from "../productsContainer/productsSection/product";
+import { connect } from "react-redux";
 
-export default class CheckoutPage extends Component {
+class CheckoutPage extends Component {
   constructor(props) {
     super(props);
 
@@ -63,3 +64,18 @@ export default class CheckoutPage extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    cartData: state.cart.cartData,
+    cartItemsCount: state.cart.cartItemsCount,
+    totalCount: state.cart.totalCount,
+    cartItemsValue: state.cart.cartItemsValue,
+    actualPrice: state.cart.actualPrice,
+    mrpPrice: state.cart.mrpPrice,
+    data: state.product.data,
+    dileveryCharge: state.product.dileveryCharge,
+  };
+};
+
+export default connect(mapStateToProps)(CheckoutPage);

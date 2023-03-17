@@ -1,7 +1,10 @@
 import React from "react";
 import ProductCategoriesNavbar from "./productCategoriesNavbar/productCategoriesNavbar";
 import ProductsSection from "./productsSection/productSection";
-import { changeProductCategorie } from "../../redux/product/productActions";
+import {
+  changeCategorie,
+  changeProductCategorie,
+} from "../../redux/product/productActions";
 import { connect } from "react-redux";
 //import data from "../../json/data";
 
@@ -25,14 +28,31 @@ class ProductsContainer extends React.Component {
     });
   };
 
+  componentDidUpdate() {
+    let categorie = this.props.categorie;
+    if (categorie !== this.state.categorie) {
+      this.props.changeProductCategorie(0, 0);
+      console.log(
+        "CHANGE to",
+        this.props.categorie,
+        "from",
+        this.state.categorie
+      );
+      this.setState({
+        categorie: this.props.categorie,
+        id: 0,
+      });
+    }
+  }
+
   render() {
     console.log("ProductsContainer render");
     let categorie = this.props.categorie;
     let id = parseInt(this.props.id);
 
     if (categorie !== this.state.categorie) {
-      this.props.changeProductCategorie(0, 0);
-      this.changeCategorie(categorie);
+      //this.props.changeProductCategorie(0, 0);
+      //this.changeCategorie(categorie);
       id = 0;
     }
 
@@ -75,11 +95,14 @@ const mapStateToProps = (state) => {
   return {
     productCategorie: state.product.productCategorie,
     id: state.product.id,
+    data: state.product.data,
+    categorie: state.product.categorie,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    changeCategorie: (categorie) => dispatch(changeCategorie(categorie)),
     changeProductCategorie: (e, id, productCategorie) =>
       dispatch(changeProductCategorie(id, productCategorie)),
   };

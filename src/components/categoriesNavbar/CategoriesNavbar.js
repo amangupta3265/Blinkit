@@ -5,7 +5,9 @@ import { connect } from "react-redux";
 import { changeCategorie } from "../../redux/product/productActions";
 
 function CategoriesNavbar(props) {
-  let categories = props.categories;
+  //let categories = props.categories;
+
+  let categories = Object.keys(props.data);
 
   const navigate = useNavigate();
 
@@ -31,10 +33,16 @@ function CategoriesNavbar(props) {
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    data: state.product.data,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     changeCategorie: (categorie) => dispatch(changeCategorie(categorie)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(CategoriesNavbar);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesNavbar);

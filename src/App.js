@@ -10,9 +10,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import CheckoutPage from "./components/checkoutPage/checkoutPage";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { connect } from "react-redux";
-import { addItemInCart, removeItemInCart } from "./redux/cart/cartActions";
-import { changeCategorie } from "./redux/product/productActions";
+// import { connect } from "react-redux";
+// import { changeCategorie } from "./redux/product/productActions";
 
 class App extends React.Component {
   constructor(props) {
@@ -27,17 +26,11 @@ class App extends React.Component {
     //console.log("render", this.state.categorie);
     //console.log(this.state.cartData);
 
-    let categories = Object.keys(this.props.data);
-
     return (
       <div className="App">
-        <TopNavbar
-          cartItemsCount={this.props.cartItemsCount}
-          cartItemsValue={this.props.cartItemsValue}
-          displayCartItems={this.props.displayCartItems}
-        />
+        <TopNavbar />
 
-        <CategoriesNavbar categories={categories} />
+        <CategoriesNavbar />
 
         <Routes>
           {/* {["/", "/blinkit/home"].map((path, id) => ( */}
@@ -48,14 +41,7 @@ class App extends React.Component {
             element={
               <>
                 <ErrorBoundary>
-                  {/* <DataContext.Provider value={this.props.data}> */}
-                  <ProductsContainer
-                    id={0}
-                    data={this.props.data}
-                    categorie={this.props.categorie}
-                    changeCategorie={this.props.changeCategorie}
-                  />
-                  {/* </DataContext.Provider> */}
+                  <ProductsContainer />
                 </ErrorBoundary>
               </>
             }
@@ -64,20 +50,7 @@ class App extends React.Component {
           </Route>
           {/* ))} */}
 
-          <Route
-            path="/checkout"
-            element={
-              <CheckoutPage
-                data={this.props.data}
-                changeCategorie={this.props.changeCategorie}
-                cartData={this.props.cartData}
-                actualPrice={this.props.actualPrice}
-                mrpPrice={this.props.mrpPrice}
-                totalCount={this.props.totalCount}
-                dileveryCharge={this.props.dileveryCharge}
-              />
-            }
-          />
+          <Route path="/checkout" element={<CheckoutPage />} />
           {/* <Route path="*" element={<Navigate to="/blinkit/home" />} /> */}
         </Routes>
 
@@ -89,6 +62,9 @@ class App extends React.Component {
   }
 }
 
+export default App;
+
+/*
 const mapStateToProps = (state) => {
   return {
     cartData: state.cart.cartData,
@@ -114,3 +90,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+*/

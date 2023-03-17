@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function MyCart(props) {
@@ -35,4 +36,21 @@ function MyCart(props) {
   );
 }
 
-export default MyCart;
+const mapStateToProps = (state) => {
+  return {
+    displayCartItems: state.cart.displayCartItems,
+    cartItemsCount: state.cart.cartItemsCount,
+    cartItemsValue: state.cart.cartItemsValue,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // addItemInCart: (value, product) => dispatch(addItemInCart(value, product)),
+    // removeItemInCart: (value, product) =>
+    //   dispatch(removeItemInCart(value, product)),
+    //changeCategorie: (categorie) => dispatch(changeCategorie(categorie)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyCart);
