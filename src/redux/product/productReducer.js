@@ -51,8 +51,8 @@ const productReducer = (state = productState, action) => {
         console.log("false");
       }
 
-      console.log("INCREMENT_COUNT", newData);
-      console.log("INCREMENT_COUNT", state.data);
+      //console.log("INCREMENT_COUNT", newData);
+      //console.log("INCREMENT_COUNT", state.data);
 
       return {
         ...state,

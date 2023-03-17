@@ -6,7 +6,6 @@ import Advantages from "./components/advantages/advantages";
 import Footer from "./components/footerContainer/footer";
 import AboutBlinkit from "./components/aboutBlinkit/aboutBlinkit";
 import React from "react";
-import { DataContext } from "./components/dataContex";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import CheckoutPage from "./components/checkoutPage/checkoutPage";
@@ -23,76 +22,6 @@ class App extends React.Component {
       categorie: "Vegetables & fruits",
     };
   }
-
-  // changeCategorie = (categorie) => {
-  //   console.log("categorie got changed", categorie);
-
-  //   this.setState({
-  //     categorie: categorie,
-  //   });
-  // };
-
-  // addItemInCart = (itemValue, product) => {
-  //   console.log("item value", itemValue);
-  //   if (!this.state.displayCartItems) {
-  //     this.setState({
-  //       displayCartItems: true,
-  //     });
-  //   }
-
-  //   let cartData = this.state.cartData;
-  //   let id = product["product__id"];
-  //   cartData.set(id, product);
-
-  //   //console.log("product in addItemInCart", product);
-
-  //   this.setState({
-  //     cartItemsCount: parseInt(this.state.cartItemsCount) + 1,
-  //     cartItemsValue: parseInt(this.state.cartItemsValue) + parseInt(itemValue),
-  //     cartData: cartData,
-  //     totalCount: parseInt(this.state.totalCount) + 1,
-  //     actualPrice:
-  //       parseInt(this.state.actualPrice) +
-  //       parseInt(product["product__newPrice"]),
-  //     mrpPrice:
-  //       parseInt(this.state.mrpPrice) + parseInt(product["product__oldPrice"]),
-  //   });
-  // };
-
-  // removeItemInCart = (itemValue, product) => {
-  //   let cartData = this.state.cartData;
-  //   let id = product["product__id"];
-  //   cartData.set(id, product);
-
-  //   this.setState(
-  //     {
-  //       cartItemsCount: parseInt(this.state.cartItemsCount) - 1,
-  //       cartItemsValue:
-  //         parseInt(this.state.cartItemsValue) - parseInt(itemValue),
-  //       cartData: cartData,
-  //       totalCount: parseInt(this.state.totalCount) - 1,
-  //       actualPrice:
-  //         parseInt(this.state.actualPrice) -
-  //         parseInt(product["product__newPrice"]),
-  //       mrpPrice:
-  //         parseInt(this.state.mrpPrice) -
-  //         parseInt(product["product__oldPrice"]),
-  //     },
-  //     () => {
-  //       if (product["count"] === 0) {
-  //         cartData.delete(id);
-  //         this.setState({
-  //           cartData: cartData,
-  //         });
-  //       }
-  //       if (this.state.cartItemsCount === 0) {
-  //         this.setState({
-  //           displayCartItems: false,
-  //         });
-  //       }
-  //     }
-  //   );
-  // };
 
   render() {
     //console.log("render", this.state.categorie);

@@ -52,17 +52,3 @@ export const removeItemInCart = (productObj) => {
     },
   };
 };
-
-// export const removeItemInCart = ({
-//   value,
-//   product,
-//   id,
-//   categorie,
-//   productCategorieId,
-// }) => {
-//   return {
-//     type: REMOVE_ITEM_IN_CART,
-//     value: value,
-//     product: product,
-//   };
-// };

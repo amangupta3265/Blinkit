@@ -18,60 +18,6 @@ class Product extends React.Component {
     };
   }
 
-  // incrementCount = (id) => {
-  //   console.log("incrementCount for product id :", id);
-  //   //console.log("incrementCount", this.state.count);
-  //   //console.log("incrementCount for product", this.props.product);
-  //   this.setState((prevState) => ({
-  //     count: parseInt(prevState.count) + 1,
-  //   }));
-
-  //   this.props.product.count = parseInt(this.state.count) + 1;
-
-  //   this.props.addItemInCart(
-  //     this.props.product.product__newPrice,
-  //     this.props.product
-  //   );
-  // };
-
-  decrementCount = () => {
-    console.log("decrementCount", this.state.count);
-    this.setState(
-      (prevState) => ({
-        count: parseInt(prevState.count) - 1,
-      }),
-      () => {
-        if (this.state.count === 0) {
-          this.setState({
-            showCounter: false,
-          });
-        }
-      }
-    );
-
-    this.props.product.count = parseInt(this.props.product.count) - 1;
-
-    this.props.removeItemInCart(
-      this.props.product.product__newPrice,
-      this.props.product
-    );
-  };
-
-  // displayCounter = (id) => {
-  //   console.log("displayCounter for product id", id);
-  //   this.setState({
-  //     count: 1,
-  //     showCounter: true,
-  //   });
-
-  //   this.props.product.count = 1;
-
-  //   this.props.addItemInCart(
-  //     this.props.product.product__newPrice,
-  //     this.props.product
-  //   );
-  // };
-
   render() {
     let showCounter = this.props.showCounter;
 

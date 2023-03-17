@@ -34,14 +34,6 @@ export const decrementCount = (productObj) => {
   };
 };
 
-// export const decrementCount = (id, product) => {
-//   return {
-//     type: DECREMENT_COUNT,
-//     id: id,
-//     product: product,
-//   };
-// };
-
 export const displayCounter = (id) => {
   return {
     type: DISPLAY_COUNTER,
