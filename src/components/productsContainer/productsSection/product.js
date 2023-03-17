@@ -15,18 +15,15 @@ class Product extends React.Component {
 
     this.state = {
       count: this.props.count,
+      showCounter: false,
     };
   }
 
   render() {
-    let showCounter = this.props.showCounter;
+    let showCounter = this.state.showCounter;
 
     if (parseInt(this.props.product.count) !== 0) {
       showCounter = true;
-    }
-
-    if (parseInt(this.props.product.count) === 0) {
-      showCounter = false;
     }
 
     //console.log("showCounter", showCounter, this.props.product.count);
@@ -76,7 +73,7 @@ class Product extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    showCounter: state.product.showCounter,
+    // showCounter: state.product.showCounter,
     count: state.product.count,
   };
 };

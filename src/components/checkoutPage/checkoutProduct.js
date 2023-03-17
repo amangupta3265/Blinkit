@@ -79,7 +79,7 @@ class Product extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    showCounter: state.product.showCounter,
+    // showCounter: state.product.showCounter,
     count: state.product.count,
   };
 };

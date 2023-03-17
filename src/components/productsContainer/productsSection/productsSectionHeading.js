@@ -2,7 +2,7 @@ import React from "react";
 
 function ProductsSectionHeading(props) {
   return (
-    <div className="productsSection__heading">
+    <div className="productsSection__heading flexRow">
       <p className="buyHeading">Buy Fresh Vegetables Online</p>
 
       <form className="productsSection__filter" action="">

@@ -59,7 +59,7 @@ class ProductButton extends Component {
   };
 
   handleDisplayCounter = (id, product) => {
-    this.props.displayCounter(id);
+    //this.props.displayCounter(id);
     this.handleIncrement(id, product);
   };
 

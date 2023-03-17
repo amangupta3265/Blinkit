@@ -103,13 +103,13 @@ const productReducer = (state = productState, action) => {
       };
     }
 
-    case DISPLAY_COUNTER: {
-      //dispatch(incrementCount())
-      return {
-        ...state,
-        showCounter: true,
-      };
-    }
+    // case DISPLAY_COUNTER: {
+    //   //dispatch(incrementCount())
+    //   return {
+    //     ...state,
+    //     showCounter: true,
+    //   };
+    // }
 
     case CHANGE_CATEGORY: {
       return {
