@@ -102,32 +102,3 @@ const cartReducer = (state = cartState, action) => {
 };
 
 export default cartReducer;
-
-/*
-addItemInCart = (itemValue, product) => {
-    console.log("item value", itemValue);
-    if (!this.state.displayCartItems) {
-      this.setState({
-        displayCartItems: true,
-      });
-    }
-
-    let cartData = this.state.cartData;
-    let id = product["product__id"];
-    cartData.set(id, product);
-
-    //console.log("product in addItemInCart", product);
-
-    this.setState({
-      cartItemsCount: parseInt(this.state.cartItemsCount) + 1,
-      cartItemsValue: parseInt(this.state.cartItemsValue) + parseInt(itemValue),
-      cartData: cartData,
-      totalCount: parseInt(this.state.totalCount) + 1,
-      actualPrice:
-        parseInt(this.state.actualPrice) +
-        parseInt(product["product__newPrice"]),
-      mrpPrice:
-        parseInt(this.state.mrpPrice) + parseInt(product["product__oldPrice"]),
-    });
-  };
-  */

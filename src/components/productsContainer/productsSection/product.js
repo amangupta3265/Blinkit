@@ -53,10 +53,8 @@ class Product extends React.Component {
             </span>
           </div>
           <ProductButton
-            displayCounter={this.props.displayCounter}
+            //displayCounter={this.props.displayCounter}
             showCounter={showCounter}
-            incrementCount={this.props.incrementCount}
-            decrementCount={this.props.decrementCount}
             count={this.props.product.count}
             id={this.props.id}
             product={this.props.product}
@@ -78,12 +76,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    displayCounter: () => dispatch(displayCounter()),
-    incrementCount: (id) => dispatch(incrementCount(id)),
-    decrementCount: (id) => dispatch(decrementCount(id)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default connect(mapStateToProps)(Product);

@@ -11,7 +11,7 @@ class Product extends React.Component {
 
     this.state = {
       data: this.props,
-      count: this.props.count,
+      //count: this.props.count,
       showCounter: false,
     };
   }
@@ -61,7 +61,7 @@ class Product extends React.Component {
           </div>
         </div>
         <ProductButton
-          displayCounter={this.props.displayCounter}
+          // displayCounter={this.props.displayCounter}
           showCounter={showCounter}
           id={this.state.data.id}
           productCategorieId={this.props.productCategorieId}
@@ -86,7 +86,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    displayCounter: (id) => dispatch(displayCounter(id)),
+    //displayCounter: (id) => dispatch(displayCounter(id)),
   };
 };
 

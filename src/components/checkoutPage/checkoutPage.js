@@ -43,8 +43,6 @@ export default class CheckoutPage extends Component {
           productCategorieId={productCategorieId}
           categorie={categorie}
           product={product}
-          addItemInCart={this.props.addItemInCart}
-          removeItemInCart={this.props.removeItemInCart}
         />
       );
     }

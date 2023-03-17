@@ -27,6 +27,8 @@ class App extends React.Component {
     //console.log("render", this.state.categorie);
     //console.log(this.state.cartData);
 
+    let categories = Object.keys(this.props.data);
+
     return (
       <div className="App">
         <TopNavbar
@@ -35,10 +37,7 @@ class App extends React.Component {
           displayCartItems={this.props.displayCartItems}
         />
 
-        <CategoriesNavbar
-          data={this.props.data}
-          changeCategorie={this.props.changeCategorie}
-        />
+        <CategoriesNavbar categories={categories} />
 
         <Routes>
           {/* {["/", "/blinkit/home"].map((path, id) => ( */}
@@ -71,8 +70,6 @@ class App extends React.Component {
               <CheckoutPage
                 data={this.props.data}
                 changeCategorie={this.props.changeCategorie}
-                addItemInCart={this.props.addItemInCart}
-                removeItemInCart={this.props.removeItemInCart}
                 cartData={this.props.cartData}
                 actualPrice={this.props.actualPrice}
                 mrpPrice={this.props.mrpPrice}
@@ -109,9 +106,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addItemInCart: (value, product) => dispatch(addItemInCart(value, product)),
-    removeItemInCart: (value, product) =>
-      dispatch(removeItemInCart(value, product)),
+    // addItemInCart: (value, product) => dispatch(addItemInCart(value, product)),
+    // removeItemInCart: (value, product) =>
+    //   dispatch(removeItemInCart(value, product)),
     changeCategorie: (categorie) => dispatch(changeCategorie(categorie)),
   };
 };

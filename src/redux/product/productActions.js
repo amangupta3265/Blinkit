@@ -34,11 +34,11 @@ export const decrementCount = (productObj) => {
   };
 };
 
-export const displayCounter = (id) => {
-  return {
-    type: DISPLAY_COUNTER,
-  };
-};
+// export const displayCounter = (id) => {
+//   return {
+//     type: DISPLAY_COUNTER,
+//   };
+// };
 
 export const changeCategorie = (categorie) => {
   return {

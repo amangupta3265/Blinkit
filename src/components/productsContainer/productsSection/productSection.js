@@ -42,16 +42,10 @@ class productSection extends React.Component {
       <div className="productsSection">
         <ProductsSectionHeading sortProducts={this.sortProducts} />
         <ProductsInnerContainer
-          incrementCount={this.props.incrementCount}
-          decrementCount={this.props.decrementCount}
-          showCounter={this.props.showCounter}
-          displayCounter={this.props.displayCounter}
           data={this.props.data}
           products={products}
           productCategorie={this.props.productCategorie}
           categorie={this.props.categorie}
-          addItemInCart={this.props.addItemInCart}
-          removeItemInCart={this.props.removeItemInCart}
           productCategorieId={this.props.productCategorieId}
         />
       </div>
