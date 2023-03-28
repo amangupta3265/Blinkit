@@ -1,0 +1,444 @@
+{
+  "Vegetables & fruits": [
+    {
+      "productCategory__image": "./potato.jpeg",
+      "productCategory__name": "All",
+      "products": [
+        {
+          "product__id": 1,
+          "product__image": "./potato.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "17",
+          "product__oldPrice": "20",
+          "count": "0"
+        },
+        {
+          "product__id": 2,
+          "product__image": "./potato.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "New Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "16",
+          "product__oldPrice": "20",
+          "count": "0"
+        },
+        {
+          "product__id": 3,
+          "product__image": "./potato.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Old Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "25",
+          "product__oldPrice": "30",
+          "count": "0"
+        },
+        {
+          "product__id": 4,
+          "product__image": "./potato.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "23",
+          "product__oldPrice": "30",
+          "count": "0"
+        },
+        {
+          "product__id": 5,
+          "product__image": "./potato.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "27",
+          "product__oldPrice": "20",
+          "count": "0"
+        },
+        {
+          "product__id": 6,
+          "product__image": "./potato.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "15",
+          "product__oldPrice": "20",
+          "count": "0"
+        },
+        {
+          "product__id": 7,
+          "product__image": "./potato.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "15",
+          "product__oldPrice": "20",
+          "count": "0"
+        },
+        {
+          "product__id": 8,
+          "product__image": "./potato.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "15",
+          "product__oldPrice": "20",
+          "count": "0"
+        },
+        {
+          "product__id": 9,
+          "product__image": "./potato.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "15",
+          "product__oldPrice": "20",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/potato.jpeg",
+      "productCategory__name": "Fresh Vegetables",
+      "products": [
+        {
+          "product__id": 10,
+          "product__image": "./potato.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "15",
+          "product__oldPrice": "20",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/fresh fruits.webp",
+      "productCategory__name": "Fresh Fruits",
+      "products": [
+        {
+          "product__id": 11,
+          "product__image": "./images/fresh fruits.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Apple",
+          "product__weight": "1Kg",
+          "product__newPrice": "15",
+          "product__oldPrice": "20",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/exotics.webp",
+      "productCategory__name": "Exotics",
+      "products": [
+        {
+          "product__id": 12,
+          "product__image": "./images/exotics.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Apple",
+          "product__weight": "1Kg",
+          "product__newPrice": "15",
+          "product__oldPrice": "20",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/seasonal.webp",
+      "productCategory__name": "Seasonal",
+      "products": [
+        {
+          "product__id": 13,
+          "product__image": "./images/seasonal.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Carrot",
+          "product__weight": "1Kg",
+          "product__newPrice": "15",
+          "product__oldPrice": "20",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/organic.jpeg",
+      "productCategory__name": "Oraganic & Hydroponic",
+      "products": [
+        {
+          "product__id": 14,
+          "product__image": "./images/organic.jpeg",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Caulifower",
+          "product__weight": "1Kg",
+          "product__newPrice": "15",
+          "product__oldPrice": "20",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/freshly cut.webp",
+      "productCategory__name": "Freshly Cut & Sprouts",
+      "products": [
+        {
+          "product__id": 15,
+          "product__image": "./images/freshly cut.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Sprouts",
+          "product__weight": "1Kg",
+          "product__newPrice": "15",
+          "product__oldPrice": "20",
+          "count": "0"
+        }
+      ]
+    }
+  ],
+  "Dairy & Breakfast": [
+    {
+      "productCategory__image": "./images/milk.webp",
+      "productCategory__name": "Milk",
+      "products": [
+        {
+          "product__id": 15,
+          "product__image": "./images/milk.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Milk",
+          "product__weight": "500ml",
+          "product__newPrice": "21",
+          "product__oldPrice": "22",
+          "count": "0"
+        },
+        {
+          "product__id": 16,
+          "product__image": "./images/milk.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Milk",
+          "product__weight": "500ml",
+          "product__newPrice": "20",
+          "product__oldPrice": "21",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/bread.webp",
+      "productCategory__name": "Breads",
+      "products": [
+        {
+          "product__id": 17,
+          "product__image": "./images/bread.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "30",
+          "product__oldPrice": "35",
+          "count": "0"
+        },
+        {
+          "product__id": 18,
+          "product__image": "./images/bread.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "30",
+          "product__oldPrice": "35",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/eggs.webp",
+      "productCategory__name": "Eggs",
+      "products": [
+        {
+          "product__id": 19,
+          "product__image": "./images/eggs.webp",
+          "product__offer": "1% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Eggs",
+          "product__weight": "1Pack(6 pieces)",
+          "product__newPrice": "54",
+          "product__oldPrice": "55",
+          "count": "0"
+        },
+        {
+          "product__id": 20,
+          "product__image": "./images/eggs.webp",
+          "product__offer": "1% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Eggs",
+          "product__weight": "1Pack(6 pieces)",
+          "product__newPrice": "54",
+          "product__oldPrice": "55",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/cereal.webp",
+      "productCategory__name": "Breakfast and Cereal",
+      "products": [
+        {
+          "product__id": 21,
+          "product__image": "./images/cereal.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Cereal",
+          "product__weight": "500g",
+          "product__newPrice": "205",
+          "product__oldPrice": "210",
+          "count": "0"
+        },
+        {
+          "product__id": 22,
+          "product__image": "./images/cereal.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Cereal",
+          "product__weight": "500g",
+          "product__newPrice": "205",
+          "product__oldPrice": "210",
+          "count": "0"
+        }
+      ]
+    }
+  ],
+  "Munchies": [
+    {
+      "productCategory__image": "./images/chips.webp",
+      "productCategory__name": "Chips & Crisps",
+      "products": [
+        {
+          "product__id": 23,
+          "product__image": "./images/chips.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Lays",
+          "product__weight": "50g",
+          "product__newPrice": "45",
+          "product__oldPrice": "50",
+          "count": "0"
+        },
+        {
+          "product__id": 24,
+          "product__image": "./images/chips.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Lays",
+          "product__weight": "50g",
+          "product__newPrice": "45",
+          "product__oldPrice": "50",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/bread.webp",
+      "productCategory__name": "Breads",
+      "products": [
+        {
+          "product__id": 25,
+          "product__image": "./images/bread.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "30",
+          "product__oldPrice": "35",
+          "count": "0"
+        },
+        {
+          "product__id": 26,
+          "product__image": "./images/bread.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Aloo",
+          "product__weight": "1Kg",
+          "product__newPrice": "30",
+          "product__oldPrice": "35",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/eggs.webp",
+      "productCategory__name": "Eggs",
+      "products": [
+        {
+          "product__id": 27,
+          "product__image": "./images/eggs.webp",
+          "product__offer": "1% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Eggs",
+          "product__weight": "1Pack(6 pieces)",
+          "product__newPrice": "54",
+          "product__oldPrice": "55",
+          "count": "0"
+        },
+        {
+          "product__id": 28,
+          "product__image": "./images/eggs.webp",
+          "product__offer": "1% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Eggs",
+          "product__weight": "1Pack(6 pieces)",
+          "product__newPrice": "54",
+          "product__oldPrice": "55",
+          "count": "0"
+        }
+      ]
+    },
+    {
+      "productCategory__image": "./images/cereal.webp",
+      "productCategory__name": "Breakfast and Cereal",
+      "products": [
+        {
+          "product__id": 29,
+          "product__image": "./images/cereal.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Cereal",
+          "product__weight": "500g",
+          "product__newPrice": "205",
+          "product__oldPrice": "210",
+          "count": "0"
+        },
+        {
+          "product__id": 30,
+          "product__image": "./images/cereal.webp",
+          "product__offer": "10% OFF",
+          "product__sourced": "sourced at : 5am",
+          "product__name": "Cereal",
+          "product__weight": "500g",
+          "product__newPrice": "205",
+          "product__oldPrice": "210",
+          "count": "0"
+        }
+      ]
+    }
+  ],
+  "Cold Drinks & Juices": [],
+  "Instant & Frozen Food": [],
+  "Tea, Coffee & Health Drinks": [],
+  "Bakery & Biscuits": [],
+  "More": []
+}
