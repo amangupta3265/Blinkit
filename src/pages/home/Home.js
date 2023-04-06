@@ -9,7 +9,6 @@ import Advantages from "../../molecules/advantages/";
 import ErrorBoundary from "../../atoms/errorBoundary";
 import PropTypes from "prop-types";
 import lodash from "lodash";
-import { connect } from "react-redux";
 
 function Home(props) {
   const { categoryId, changeCategory } = props;

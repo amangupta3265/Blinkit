@@ -1,15 +1,21 @@
+import lodash from "lodash";
+
 function sortProducts(event, products) {
   const value = event.target.options[event.target.selectedIndex].value;
 
   const sortedProducts = products;
 
   if (value === "priceLowToHigh") {
-    sortedProducts.sort(function (a, b) {
-      return a.product__newPrice - b.product__newPrice;
+    lodash.sort(sortedProducts, function (a, b) {
+      return (
+        lodash.get(a, "product__newPrice") - lodash.get(b, "product__newPrice")
+      );
     });
   } else if (value === "priceHighToLow") {
-    sortedProducts.sort(function (a, b) {
-      return b.product__newPrice - a.product__newPrice;
+    lodash.sort(sortedProducts, function (a, b) {
+      return (
+        lodash.get(b, "product__newPrice") - lodash.get(a, "product__newPrice")
+      );
     });
   }
 

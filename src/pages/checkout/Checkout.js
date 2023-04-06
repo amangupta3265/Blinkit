@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import lodash from "lodash";
 import { getCartInfo } from "./helpers/getCartInfo";
 import { getCheckoutProducts } from "./helpers/getCheckoutProducts";
+import { EMPTY_OBJECT } from "../../constants/general.constants";
 
 function Checkout(props) {
   const { cartData, changeCategory } = props;
@@ -49,7 +50,7 @@ Checkout.propTypes = {
 };
 
 Checkout.defaultProps = {
-  cartData: {},
+  cartData: EMPTY_OBJECT,
 };
 
 const mapStateToProps = (state) => {

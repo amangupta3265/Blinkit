@@ -6,6 +6,9 @@ import {
 import lodash from "lodash";
 import { addItemInCartProducer } from "../../helpers/addItemInCartProducer";
 import { removeItemInCartProducer } from "../../helpers/removeItemInCartProducer";
+import { enableMapSet } from "immer";
+
+enableMapSet();
 
 const cartState = {
   cartData: new Map(),
