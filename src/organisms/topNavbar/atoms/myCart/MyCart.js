@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import styles from "./myCart.module.css";
 import { getCartItemsData } from "../../../../pages/home/helpers/getCartItemsData";
+import { EMPTY_OBJECT } from "../../../../constants/general.constants";
 
 function MyCart(props) {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ MyCart.propTypes = {
 };
 
 MyCart.defaultProps = {
-  cartData: {},
+  cartData: EMPTY_OBJECT,
 };
 
 export default MyCart;

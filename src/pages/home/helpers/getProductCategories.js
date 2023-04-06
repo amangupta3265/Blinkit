@@ -1,7 +1,11 @@
 import subCategories from "../../../data/subCategories.json";
+import lodash from "lodash";
 
 function getProductCategories(category) {
-  const productcategories = subCategories["productCategories"][category];
+  const productcategories = lodash.get(subCategories, [
+    "productCategories",
+    category,
+  ]);
   return productcategories;
 }
 

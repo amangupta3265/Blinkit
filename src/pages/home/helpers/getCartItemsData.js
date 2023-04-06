@@ -10,11 +10,12 @@ function getCartItemsData(cartData) {
 
   lodash.forEach([...cartData], (value) => {
     const productObj = value[1];
+    const productCount = lodash.get(productObj, "count");
     cartItemsValue +=
-      parseInt(productObj.product["product__newPrice"]) *
-      parseInt(productObj.count);
+      parseInt(lodash.get(productObj, ["product", "product__newPrice"])) *
+      parseInt(productCount);
 
-    cartItemsCount += parseInt(productObj.count);
+    cartItemsCount += parseInt(productCount);
   });
 
   return { cartItemsCount, cartItemsValue, displayCartItems };
