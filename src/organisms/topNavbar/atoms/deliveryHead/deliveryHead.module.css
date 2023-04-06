@@ -1,0 +1,11 @@
+.deliveryHead {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-left: 4rem;
+  margin-top: 0.5rem;
+}
+
+.paddingTopBottom10px {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}

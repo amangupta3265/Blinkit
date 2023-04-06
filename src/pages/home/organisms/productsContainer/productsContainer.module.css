@@ -1,0 +1,7 @@
+.productsContainer {
+  display: flex;
+  margin: auto;
+  width: 70%;
+  height: auto;
+  border: 0.1rem solid #f5f5f5;
+}

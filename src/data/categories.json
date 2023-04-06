@@ -1,0 +1,60 @@
+{
+    "categories": [
+        {
+            "id": 0,
+            "name": "Vegetables & Fruits"
+        },
+        {
+            "id": 1,
+            "name": "Dairy & Breakfast"
+        },
+        {
+            "id": 2,
+            "name": "Munchies"
+        },
+        {
+            "id": 3,
+            "name": "Cold Drinks & Juices"
+        },
+        {
+            "id": 4,
+            "name": "Instant and Frozen Food"
+        },
+        {
+            "id": 5,
+            "name": "Tea, Coffee & Health Drinks"
+        },
+        {
+            "id": 6,
+            "name": "Bakery & Biscuits"
+        },
+        {
+            "id": 7,
+            "name": "Sweet Tooth"
+        },
+        {
+            "id": 8,
+            "name": "Atta, Rice & Dal"
+        },
+        {
+            "id": 9,
+            "name": "Dry Fruits, Masala & Oil"
+        },
+        {
+            "id": 10,
+            "name": "Sauces & Spreads"
+        },
+        {
+            "id": 11,
+            "name": "Chicken, Meat & Fish"
+        },
+        {
+            "id": 12,
+            "name": "Paan Corner"
+        },
+        {
+            "id": 13,
+            "name": "Organic & Premium"
+        }
+    ]
+}

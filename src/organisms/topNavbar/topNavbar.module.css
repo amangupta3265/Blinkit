@@ -1,0 +1,17 @@
+.flexRow {
+  display: flex;
+  align-items: center;
+}
+
+.topNavbar {
+  height: 6rem;
+  justify-content: space-between;
+  border-bottom: 0.1rem solid #f5f5f5;
+  padding: 0.625rem 1.5625rem;
+  border-right: 0.1875rem solid #f5f5f5;
+}
+
+.paddingTopBottom10px {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}

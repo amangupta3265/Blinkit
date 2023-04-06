@@ -1,0 +1,30 @@
+.footer__downloadApp {
+  margin-left: 15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 27rem;
+  height: 2rem;
+}
+
+.appStore {
+  max-width: 8rem;
+}
+
+.playStore {
+  margin-left: 2rem;
+  max-width: 8rem;
+}
+
+.downloadAppTitle {
+  font-weight: 700;
+  color: gray;
+  margin-right: 2rem;
+  width: 100rem;
+  display: inline;
+}
+
+.downloadApp__img {
+  width: 6.25rem;
+  height: 2.5rem;
+}

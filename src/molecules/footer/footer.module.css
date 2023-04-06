@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  background-color: #fcfcfc;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.footerContainer {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 3rem;
+  border: 0.1rem solid #f5f5f5;
+}

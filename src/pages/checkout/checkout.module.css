@@ -1,0 +1,17 @@
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkoutProducts {
+  margin: auto;
+  flex-direction: column;
+}
+
+.productsContainer {
+  display: flex;
+  margin: auto;
+  width: 70%;
+  height: auto;
+  border: 0.1rem solid #f5f5f5;
+}
